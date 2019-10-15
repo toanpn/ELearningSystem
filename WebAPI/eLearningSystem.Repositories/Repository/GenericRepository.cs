@@ -1,4 +1,6 @@
-﻿using eLearningSystem.Data.UnitOfWork;
+﻿using eLearningSystem.Data;
+using eLearningSystem.Data.GerenicRepository;
+using eLearningSystem.Data.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -7,17 +9,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eLearningSystem.Data.GerenicRepository
+namespace eLearningSystem.Repositories.Repository
 {
     public class GenericRepository<T> : IGenericRepository<T>, IDisposable where T : class
     {
         private IDbSet<T> _entities;
         private string _errorMessage = string.Empty;
         private bool _isDisposed;
-        public GenericRepository(IUnitOfWork<eLearningDataContext> unitOfWork)
-        : this(unitOfWork.Context)
-        {
-        }
+        //public GenericRepository(IUnitOfWork<eLearningDataContext> unitOfWork)
+        //: this(unitOfWork.Context)
+        //{
+        //}
+
         public GenericRepository(eLearningDataContext context)
         {
             _isDisposed = false;

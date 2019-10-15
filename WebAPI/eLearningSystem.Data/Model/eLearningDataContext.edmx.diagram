@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d32fe76924ba44c7baef1cba478b2235" Name="Diagram1">
+        <EntityTypeShape EntityType="MtaELearningModel.Anwser" Width="1.5" PointX="8.25" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MtaELearningModel.Category" Width="1.5" PointX="1.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MtaELearningModel.Chapter" Width="1.5" PointX="1.5" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MtaELearningModel.Comment" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MtaELearningModel.Course" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MtaELearningModel.Lesson" Width="1.5" PointX="0.75" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MtaELearningModel.Question" Width="1.5" PointX="6" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MtaELearningModel.Rating" Width="1.5" PointX="6" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="MtaELearningModel.sysdiagram" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MtaELearningModel.Test" Width="1.5" PointX="3.75" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MtaELearningModel.Transaction" Width="1.5" PointX="3" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MtaELearningModel.User" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MtaELearningModel.User_Course" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MtaELearningModel.User_Lesson" Width="1.5" PointX="3" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MtaELearningModel.User_Test" Width="1.5" PointX="6" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MtaELearningModel.Video" Width="1.5" PointX="1.5" PointY="24.375" IsExpanded="true" />
+        <AssociationConnector Association="MtaELearningModel.FK_Anwser_Question" ManuallyRouted="false" />
+        <AssociationConnector Association="MtaELearningModel.FK_Course_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="MtaELearningModel.FK_Chapter_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="MtaELearningModel.FK_Lesson_Chapter" ManuallyRouted="false" />
+        <AssociationConnector Association="MtaELearningModel.FK_Test_Chapter" ManuallyRouted="false" />
+        <AssociationConnector Association="MtaELearningModel.FK_Comment_Comment" ManuallyRouted="false" />
+        <AssociationConnector Association="MtaELearningModel.FK_Comment_Lesson" ManuallyRouted="false" />
+        <AssociationConnector Association="MtaELearningModel.FK_Comment_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MtaELearningModel.FK_Rating_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="MtaELearningModel.FK_User_Course_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="MtaELearningModel.FK_Lesson_Video" ManuallyRouted="false" />
+        <AssociationConnector Association="MtaELearningModel.FK_User_Lesson_Lesson" ManuallyRouted="false" />
+        <AssociationConnector Association="MtaELearningModel.FK_Question_Test" ManuallyRouted="false" />
+        <AssociationConnector Association="MtaELearningModel.FK_Rating_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MtaELearningModel.FK_User_Test_Test" ManuallyRouted="false" />
+        <AssociationConnector Association="MtaELearningModel.FK_Transaction_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MtaELearningModel.FK_User_Course_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MtaELearningModel.FK_User_Lesson_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MtaELearningModel.FK_User_Test_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
