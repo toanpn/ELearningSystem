@@ -1,0 +1,43 @@
+.datepicker {
+  margin-top: 60px;
+}
+
+.article {
+  cursor: pointer;
+
+  .article-title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: -.42px;
+    text-align: left;
+    margin: 5px 0;
+  }
+
+  .article-create-time {
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0;
+    font-size: 13px;
+    color: rgba(0, 0, 0, .54);
+  }
+
+  .article-create-by {
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0;
+    font-size: 15px;
+    line-height: 20px;
+    transform: translateY(1.8px);
+  }
+
+  img{
+    width: 260px;
+  }
+
+  .col-xs-8.col-sm-8.col-md-8.col-lg-8.column-left {
+    overflow: auto;
+    max-height: 80vh;
+  }
+  
+}
