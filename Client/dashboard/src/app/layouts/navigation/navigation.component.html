@@ -1,0 +1,34 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+  <div class="sidebar-collapse">
+    <ul class="nav metismenu" id="side-menu">
+      <li class="nav-header Tranparent">
+        <div class="profile-element">
+          <img alt="image" class="img-circle avatar"
+               src="../../../assets/images/admin.png">
+          <p class="text-info">Admin</p>
+        </div>
+        
+      </li>
+      <li class="Tranparent">
+        <a [routerLink]="['/dashboard']">
+          <i aria-hidden="true" class="fa fa-home"></i>
+          <span class="nav-label">Trang chủ</span>
+        </a>
+      </li>
+      <li class="Tranparent">
+        <a [routerLink]="['/product']">
+          <i aria-hidden="true" class="fa fa-laptop"></i>
+          <span class="nav-label">Quản lý sản phẩm</span>
+        </a>
+      </li>
+      <!-- <li class="Tranparent">
+        <a><i aria-hidden="true" class="fa fa-user"></i> <span class="nav-label">Quản lý sản phẩm</span></a>
+        <ul aria-expanded="true" class="nav nav-second-level collapse in">
+          <li [ngClass]="{active: activeRoute('/list-users')}">
+            <a [routerLink]="['/list-users']">Thông tin chung</a>
+          </li>
+        </ul>
+      </li> -->
+    </ul>
+  </div>
+</nav>
