@@ -310,6 +310,10 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\eLearningSystem.Data\eLearningSystem.Data.csproj">
+      <Project>{64E1C831-4D20-40C7-BC8F-F83744252C84}</Project>
+      <Name>eLearningSystem.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\eLearningSystem.Repositories\eLearningSystem.Repositories.csproj">
       <Project>{A28637B5-883B-49BE-A76D-CF677C2983B4}</Project>
       <Name>eLearningSystem.Repositories</Name>
