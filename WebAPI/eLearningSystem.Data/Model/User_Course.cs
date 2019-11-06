@@ -8,11 +8,14 @@ namespace eLearningSystem.Data.Model
 
     public partial class User_Course
     {
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
 
-        public int? user_id { get; set; }
+        [ForeignKey("User")]
+        public string user_id { get; set; }
 
+        [ForeignKey("Course")]
         public int? course_id { get; set; }
 
         public bool? isowner { get; set; }

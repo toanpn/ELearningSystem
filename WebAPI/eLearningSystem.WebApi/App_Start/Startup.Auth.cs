@@ -10,6 +10,8 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using eLearningSystem.WebApi.Providers;
 using eLearningSystem.WebApi.Models;
+using eLearningSystem.Data.Model;
+using Microsoft.Owin.Cors;
 
 namespace eLearningSystem.WebApi
 {
@@ -22,8 +24,9 @@ namespace eLearningSystem.WebApi
         // For more information on configuring authentication, please visit https://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
+            app.UseCors(CorsOptions.AllowAll);
             // Configure the db context and user manager to use a single instance per request
-            app.CreatePerOwinContext(ApplicationDbContext.Create);
+            app.CreatePerOwinContext(eLearningDataContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
 
             // Enable the application to use a cookie to store information for the signed in user

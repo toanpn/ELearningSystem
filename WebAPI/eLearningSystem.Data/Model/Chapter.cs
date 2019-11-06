@@ -16,12 +16,14 @@ namespace eLearningSystem.Data.Model
             Tests = new HashSet<Test>();
         }
 
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
 
         [StringLength(255)]
         public string name { get; set; }
 
+        [ForeignKey("Course")]
         public int? course_id { get; set; }
 
         public int? index_num { get; set; }

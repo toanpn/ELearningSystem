@@ -4,7 +4,6 @@ namespace eLearningSystem.Data.Model
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("Lesson")]
     public partial class Lesson
@@ -16,6 +15,7 @@ namespace eLearningSystem.Data.Model
             User_Lesson = new HashSet<User_Lesson>();
         }
 
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
 
@@ -27,7 +27,11 @@ namespace eLearningSystem.Data.Model
         [StringLength(255)]
         public string video_url { get; set; }
 
-        public int? chapter_id { get; set; }
+        [ForeignKey("Chapter")]
+        public int? chapter_id { get; set; }      
+        
+        [ForeignKey("Video")]
+        public int? video_id { get; set; }
 
         public double? video_time { get; set; }
 
