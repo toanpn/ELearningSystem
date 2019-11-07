@@ -1,4 +1,6 @@
-﻿using System;
+﻿using eLearningSystem.Repositories.UnitOfWork;
+using eLearningSystem.Services.IService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,6 +12,10 @@ namespace eLearningSystem.WebApi.Controllers
     [Authorize]
     public class ValuesController : ApiController
     {
+        public ValuesController(UnitOfWork unitOfWork)
+        {
+
+        }
         // GET api/values
         public IEnumerable<string> Get()
         {

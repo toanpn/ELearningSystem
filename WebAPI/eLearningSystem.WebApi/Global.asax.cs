@@ -43,7 +43,9 @@ namespace eLearningSystem.WebApi
 
             // Set the dependency resolver to be Autofac.
             var container = builder.Build();
-            config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+            //config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+
 
             // Config automapper
             var mapperConfig = new MapperConfiguration(cfg => {
