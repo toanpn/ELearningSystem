@@ -21,7 +21,6 @@ namespace eLearningSystem.WebApi.APIs
         // GET: api/User
         public IHttpActionResult GetUsers()
         {
-            this.service.AddUser(1, 1);
             return Ok(new { results = 12 });
         }
     }

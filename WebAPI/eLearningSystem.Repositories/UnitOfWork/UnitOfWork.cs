@@ -2,6 +2,7 @@
 using eLearningSystem.Data.GerenicRepository;
 using eLearningSystem.Data.Model;
 using eLearningSystem.Repositories.Repository;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
@@ -23,7 +24,7 @@ namespace eLearningSystem.Repositories.UnitOfWork
         #endregion Private member variables...
 
         #region Public member variables...
-        public IGenericRepository<User> _userRepository { get; set; }
+        public IGenericRepository<IdentityUser> _userRepository { get; set; }
         public IGenericRepository<User_Course> _userCourseRepository { get; set; }
         public IGenericRepository<User_Lesson> _userLessonRepository { get; set; }
         public IGenericRepository<User_Test> _userTestRepository { get; set; }
@@ -36,13 +37,14 @@ namespace eLearningSystem.Repositories.UnitOfWork
         public IGenericRepository<Category> _categoryRepository { get; set; }
         public IGenericRepository<Test> _testRepository { get; set; }
         public IGenericRepository<Question> _questionRepository { get; set; }
-
+        public IGenericRepository<IdentityRole> _roleRepository { get; set; }
+        public IGenericRepository<IdentityUserRole> _userRoleRepository { get; set; }
         #endregion Public member variables...
 
         public UnitOfWork()
         {
             _context = new eLearningDataContext();
-            _userRepository = new GenericRepository<User>(_context);
+            _userRepository = new GenericRepository<IdentityUser>(_context);
             _userCourseRepository = new GenericRepository<User_Course>(_context);
             _userLessonRepository = new GenericRepository<User_Lesson>(_context);
             _userTestRepository = new GenericRepository<User_Test>(_context);
@@ -55,6 +57,8 @@ namespace eLearningSystem.Repositories.UnitOfWork
             _categoryRepository = new GenericRepository<Category>(_context);
             _testRepository = new GenericRepository<Test>(_context);
             _questionRepository = new GenericRepository<Question>(_context);
+            _roleRepository = new GenericRepository<IdentityRole>(_context);
+            _userRoleRepository = new GenericRepository<IdentityUserRole>(_context);
         }
 
         //#region Public Repository Creation properties...

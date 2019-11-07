@@ -1,5 +1,6 @@
 ﻿using eLearningSystem.Data;
 using eLearningSystem.Data.Model;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,10 @@ namespace eLearningSystem.Services.IService
 {
     public interface IUserService
     {
-        User UpsertUser(User User);
-        IEnumerable<User> GetUsers();
-        bool DeleteUser(long UserId);
-        bool AddUser(long userId, long UserId);
+        IdentityUser GetUsers(string UserId);
+        bool DeleteUser(string UserId);
+        bool AddUser(string userName, string email, string password);
+        IEnumerable<IdentityUser> GetUsersByRole(string RoleId);
+        bool UpdateUser(User user);
     }
 }
