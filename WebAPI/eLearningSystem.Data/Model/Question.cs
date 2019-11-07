@@ -15,11 +15,13 @@ namespace eLearningSystem.Data.Model
             Anwsers = new HashSet<Anwser>();
         }
 
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
 
         public int? scores { get; set; }
 
+        [ForeignKey("Test")]
         public int? test_id { get; set; }
 
         [StringLength(1)]

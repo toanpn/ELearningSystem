@@ -15,6 +15,7 @@ namespace eLearningSystem.Data.Model
             Comment1 = new HashSet<Comment>();
         }
 
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
 
@@ -27,8 +28,10 @@ namespace eLearningSystem.Data.Model
         [StringLength(10)]
         public string status { get; set; }
 
-        public int? user_id { get; set; }
+        [ForeignKey("User")]
+        public string user_id { get; set; }
 
+        [ForeignKey("Lesson")]
         public int? lesson_id { get; set; }
 
         public int? index_num { get; set; }

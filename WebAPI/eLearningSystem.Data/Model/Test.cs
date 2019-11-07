@@ -16,6 +16,7 @@ namespace eLearningSystem.Data.Model
             User_Test = new HashSet<User_Test>();
         }
 
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
 
@@ -24,6 +25,7 @@ namespace eLearningSystem.Data.Model
 
         public double? time { get; set; }
 
+        [ForeignKey("Chapter")]
         public int? chapter_id { get; set; }
 
         public virtual Chapter Chapter { get; set; }

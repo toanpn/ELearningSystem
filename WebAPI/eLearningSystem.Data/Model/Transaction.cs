@@ -9,6 +9,7 @@ namespace eLearningSystem.Data.Model
     [Table("Transaction")]
     public partial class Transaction
     {
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
 
@@ -24,7 +25,8 @@ namespace eLearningSystem.Data.Model
 
         public double? paid { get; set; }
 
-        public int? user_id { get; set; }
+        [ForeignKey("User")]
+        public string user_id { get; set; }
 
         public virtual User User { get; set; }
     }

@@ -15,8 +15,9 @@ namespace eLearningSystem.Data.Model
             Lessons = new HashSet<Lesson>();
         }
 
-        [StringLength(255)]
-        public string id { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int id { get; set; }
 
         [StringLength(50)]
         public string name { get; set; }
