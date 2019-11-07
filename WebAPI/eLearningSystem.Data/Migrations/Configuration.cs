@@ -10,7 +10,7 @@ namespace eLearningSystem.Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = false;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(eLearningSystem.Data.Model.eLearningDataContext context)
