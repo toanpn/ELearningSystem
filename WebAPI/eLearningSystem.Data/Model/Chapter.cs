@@ -1,5 +1,6 @@
-namespace eLearningSystem.Data
+namespace eLearningSystem.Data.Model
 {
+    using eLearningSystem.Data.Common;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -7,7 +8,7 @@ namespace eLearningSystem.Data
     using System.Data.Entity.Spatial;
 
     [Table("Chapter")]
-    public partial class Chapter
+    public partial class Chapter : BaseEntity 
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Chapter()
@@ -16,8 +17,8 @@ namespace eLearningSystem.Data
             Tests = new HashSet<Test>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int id { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
+        //public int id { get; set; }
 
         [StringLength(255)]
         public string name { get; set; }

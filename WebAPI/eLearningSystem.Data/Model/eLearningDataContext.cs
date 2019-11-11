@@ -1,4 +1,4 @@
-namespace eLearningSystem.Data
+namespace eLearningSystem.Data.Model
 {
     using System;
     using System.Data.Entity;
@@ -26,7 +26,7 @@ namespace eLearningSystem.Data
         public virtual DbSet<User_Course> User_Course { get; set; }
         public virtual DbSet<User_Lesson> User_Lesson { get; set; }
         public virtual DbSet<User_Test> User_Test { get; set; }
-        public virtual DbSet<Video> Videos { get; set; }
+        //public virtual DbSet<Video> Videos { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -150,10 +150,10 @@ namespace eLearningSystem.Data
                 .WithOptional(e => e.User)
                 .HasForeignKey(e => e.user_id);
 
-            modelBuilder.Entity<Video>()
-                .HasMany(e => e.Lessons)
-                .WithOptional(e => e.Video)
-                .HasForeignKey(e => e.video_url);
+            //modelBuilder.Entity<Video>()
+            //    .HasMany(e => e.Lessons)
+            //    .WithOptional(e => e.Video)
+            //    .HasForeignKey(e => e.video_url);
         }
     }
 }

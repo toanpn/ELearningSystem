@@ -1,5 +1,6 @@
-namespace eLearningSystem.Data
+namespace eLearningSystem.Data.Model
 {
+    using eLearningSystem.Data.Common;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -7,7 +8,7 @@ namespace eLearningSystem.Data
     using System.Data.Entity.Spatial;
 
     [Table("Video")]
-    public partial class Video
+    public partial class Video : BaseEntity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Video()
@@ -15,8 +16,8 @@ namespace eLearningSystem.Data
             Lessons = new HashSet<Lesson>();
         }
 
-        [StringLength(255)]
-        public string id { get; set; }
+        //[StringLength(255)]
+        //public string id { get; set; }
 
         [StringLength(50)]
         public string name { get; set; }

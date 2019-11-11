@@ -50,8 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GerenicRepository\GenericRepository.cs" />
-    <Compile Include="GerenicRepository\IGenericRepository.cs" />
+    <Compile Include="Common\Entity.cs" />
+    <Compile Include="Migrations\201910150855151_Initial.cs" />
+    <Compile Include="Migrations\201910150855151_Initial.Designer.cs">
+      <DependentUpon>201910150855151_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Anwser.cs" />
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\Chapter.cs" />
@@ -59,7 +63,6 @@
     <Compile Include="Model\Course.cs" />
     <Compile Include="Model\eLearningDataContext.cs" />
     <Compile Include="Model\Lesson.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Question.cs" />
     <Compile Include="Model\Rating.cs" />
     <Compile Include="Model\Test.cs" />
@@ -68,14 +71,19 @@
     <Compile Include="Model\User_Course.cs" />
     <Compile Include="Model\User_Lesson.cs" />
     <Compile Include="Model\User_Test.cs" />
-    <Compile Include="Model\Video.cs" />
-    <Compile Include="UnitOfWork\IUnitOfWork.cs" />
-    <Compile Include="UnitOfWork\UnitOfWork.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201910150855151_Initial.resx">
+      <DependentUpon>201910150855151_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
