@@ -1,5 +1,6 @@
 namespace eLearningSystem.Data.Model
 {
+    using eLearningSystem.Data.Common;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -7,7 +8,7 @@ namespace eLearningSystem.Data.Model
     using System.Data.Entity.Spatial;
 
     [Table("User")]
-    public partial class User
+    public partial class User : BaseEntity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
@@ -20,7 +21,7 @@ namespace eLearningSystem.Data.Model
             User_Test = new HashSet<User_Test>();
         }
 
-        public int id { get; set; }
+        //public int id { get; set; }
 
         [StringLength(20)]
         public string user_name { get; set; }

@@ -1,15 +1,16 @@
 namespace eLearningSystem.Data.Model
 {
+    using eLearningSystem.Data.Common;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class User_Lesson
+    public partial class User_Lesson : BaseEntity
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int id { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
+        //public int id { get; set; }
 
         public int? user_id { get; set; }
 

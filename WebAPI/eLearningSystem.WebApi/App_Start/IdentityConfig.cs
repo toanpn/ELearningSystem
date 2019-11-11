@@ -1,9 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using eLearningSystem.WebApi.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
-using eLearningSystem.WebApi.Models;
 
 namespace eLearningSystem.WebApi
 {

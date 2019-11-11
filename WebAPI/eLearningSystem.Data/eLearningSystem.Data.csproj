@@ -50,7 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GerenicRepository\IGenericRepository.cs" />
+    <Compile Include="Common\Entity.cs" />
     <Compile Include="Migrations\201910150855151_Initial.cs" />
     <Compile Include="Migrations\201910150855151_Initial.Designer.cs">
       <DependentUpon>201910150855151_Initial.cs</DependentUpon>
@@ -71,7 +71,6 @@
     <Compile Include="Model\User_Course.cs" />
     <Compile Include="Model\User_Lesson.cs" />
     <Compile Include="Model\User_Test.cs" />
-    <Compile Include="Model\Video.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
