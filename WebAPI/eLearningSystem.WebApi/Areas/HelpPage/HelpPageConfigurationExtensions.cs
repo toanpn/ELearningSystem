@@ -1,3 +1,5 @@
+using eLearningSystem.WebApi.Areas.HelpPage.ModelDescriptions;
+using eLearningSystem.WebApi.Areas.HelpPage.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,8 +13,6 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
-using eLearningSystem.WebApi.Areas.HelpPage.ModelDescriptions;
-using eLearningSystem.WebApi.Areas.HelpPage.Models;
 
 namespace eLearningSystem.WebApi.Areas.HelpPage
 {
@@ -282,7 +282,7 @@ namespace eLearningSystem.WebApi.Areas.HelpPage
                     //     public int Y { get; set; }
                     // }
                     // Class Point is bindable with a TypeConverter, so Point will be added to UriParameters collection.
-                    // 
+                    //
                     // public class Point
                     // {
                     //     public int X { get; set; }

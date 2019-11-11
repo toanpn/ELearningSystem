@@ -1,5 +1,6 @@
-namespace eLearningSystem.Data
+namespace eLearningSystem.Data.Model
 {
+    using eLearningSystem.Data.Common;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -7,7 +8,7 @@ namespace eLearningSystem.Data
     using System.Data.Entity.Spatial;
 
     [Table("Comment")]
-    public partial class Comment
+    public partial class Comment : BaseEntity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Comment()
@@ -15,8 +16,8 @@ namespace eLearningSystem.Data
             Comment1 = new HashSet<Comment>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int id { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
+        //public int id { get; set; }
 
         public int? comment_parrent { get; set; }
 

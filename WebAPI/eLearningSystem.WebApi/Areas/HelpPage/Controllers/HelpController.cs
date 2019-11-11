@@ -1,8 +1,8 @@
+using eLearningSystem.WebApi.Areas.HelpPage.ModelDescriptions;
+using eLearningSystem.WebApi.Areas.HelpPage.Models;
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using eLearningSystem.WebApi.Areas.HelpPage.ModelDescriptions;
-using eLearningSystem.WebApi.Areas.HelpPage.Models;
 
 namespace eLearningSystem.WebApi.Areas.HelpPage.Controllers
 {

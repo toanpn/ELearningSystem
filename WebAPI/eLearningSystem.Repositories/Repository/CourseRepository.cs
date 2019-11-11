@@ -20,9 +20,5 @@ namespace eLearningSystem.Repositories.Repository
             return _entities.Set<Course>().AsEnumerable();
         }
 
-        public Course GetById(long id)
-        {
-            return _dbset.Include(x => x.id).Where(x => x.id == id).FirstOrDefault();
-        }
     }
 }

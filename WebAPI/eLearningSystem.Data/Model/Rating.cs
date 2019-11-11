@@ -1,5 +1,6 @@
-namespace eLearningSystem.Data
+namespace eLearningSystem.Data.Model
 {
+    using eLearningSystem.Data.Common;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -7,10 +8,10 @@ namespace eLearningSystem.Data
     using System.Data.Entity.Spatial;
 
     [Table("Rating")]
-    public partial class Rating
+    public partial class Rating : BaseEntity
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int id { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
+        //public int id { get; set; }
 
         [StringLength(255)]
         public string content { get; set; }

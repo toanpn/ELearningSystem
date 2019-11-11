@@ -1,5 +1,6 @@
-namespace eLearningSystem.Data
+namespace eLearningSystem.Data.Model
 {
+    using eLearningSystem.Data.Common;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -7,11 +8,8 @@ namespace eLearningSystem.Data
     using System.Data.Entity.Spatial;
 
     [Table("Anwser")]
-    public partial class Anwser
+    public partial class Anwser : BaseEntity
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int id { get; set; }
-
         public string content { get; set; }
 
         [StringLength(1)]
