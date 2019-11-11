@@ -48,6 +48,7 @@ namespace eLearningSystem.WebApi
             config2.Formatters.JsonFormatter
                         .SerializerSettings
                         .ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+
         }
     }
 }

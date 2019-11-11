@@ -56,7 +56,6 @@
     <Compile Include="Common\GenericRepository.cs" />
     <Compile Include="Common\IGenericRepository.cs" />
     <Compile Include="Repository\CourseRepository.cs" />
-    <Compile Include="Repository\ICourseRepository.cs" />
     <Compile Include="Repository\TestRepository.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />

@@ -10,6 +10,5 @@ namespace eLearningSystem.Repositories.Repository
 {
     public interface ICourseRepository : IGenericRepository<Course>
     {
-        Course GetById(long id);
     }
 }

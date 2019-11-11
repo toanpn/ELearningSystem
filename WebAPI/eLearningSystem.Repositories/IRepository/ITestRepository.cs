@@ -10,6 +10,5 @@ namespace eLearningSystem.Repositories.Repository
 {
     public interface ITestRepository : IGenericRepository<Test>
     {
-        Test GetById(long id);
     }
 }
