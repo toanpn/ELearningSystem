@@ -4,6 +4,7 @@ namespace eLearningSystem.Data.Model
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using System.Data.Entity.Core.Metadata.Edm;
 
     public partial class eLearningDataContext : DbContext
     {

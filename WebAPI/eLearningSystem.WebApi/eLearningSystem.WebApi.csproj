@@ -182,6 +182,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIs\CourseController.cs" />
+    <Compile Include="APIs\TestController.cs" />
+    <Compile Include="APIs\UserController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />

@@ -1,4 +1,5 @@
 ﻿using eLearningSystem.Data.Model;
+using eLearningSystem.Repositories.Common;
 using eLearningSystem.Repositories.Repository;
 using eLearningSystem.Repositories.UnitOfWork;
 using eLearningSystem.Services.Base;
@@ -11,17 +12,16 @@ using System.Threading.Tasks;
 
 namespace eLearningSystem.Services.Service
 {
-    public class CourseService : BaseService<Course>, ICourseService
+    class TestService : BaseService<Test>, ITestService
     {
         IUnitOfWork _unitOfWork;
-        ICourseRepository _courseRepository;
+        ITestRepository _testRepository;
 
-        public CourseService(IUnitOfWork unitOfWork, ICourseRepository courseRepository)
+        public TestService(IUnitOfWork unitOfWork, ITestRepository courseRepository)
             : base(unitOfWork, courseRepository)
         {
             _unitOfWork = unitOfWork;
-            _courseRepository = courseRepository;
+            _testRepository = courseRepository;
         }
-
     }
 }

@@ -18,8 +18,8 @@ namespace eLearningSystem.Data.Model
             User_Course = new HashSet<User_Course>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int id { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
+        //public int id { get; set; }
 
         [StringLength(50)]
         public string name { get; set; }
