@@ -6,6 +6,5 @@ namespace eLearningSystem.Services.IService
 {
     public interface ICourseService : IBaseService<Course>
     {
-        Course GetById(int Id);
     }
 }

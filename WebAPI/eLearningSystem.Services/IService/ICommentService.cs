@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eLearningSystem.Services.IService 
+namespace eLearningSystem.Services.IService
 {
-    public interface IUserService : IBaseService<User>
+    public interface ICommentService : IBaseService<Comment>
     {
     }
 }

@@ -20,7 +20,10 @@ namespace eLearningSystem.Services.Base
             _repository = repository;
         }
 
-
+        public virtual T GetById(int id)
+        {
+            return _repository.FindBy(x=>x.id == id).FirstOrDefault();
+        }
         public virtual void Create(T entity)
         {
             if (entity == null)

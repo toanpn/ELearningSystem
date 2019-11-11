@@ -42,6 +42,12 @@ namespace eLearningSystem.WebApi
             // Set the dependency resolver to be Autofac.
             var container = builder.Build();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+
+            HttpConfiguration config2 = GlobalConfiguration.Configuration;
+
+            config2.Formatters.JsonFormatter
+                        .SerializerSettings
+                        .ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
         }
     }
 }
