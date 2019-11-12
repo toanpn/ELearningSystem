@@ -12,7 +12,7 @@ namespace eLearningSystem.Data.Model
     UserLogin, UserRole, UserClaim>
     {
         public eLearningDataContext()
-            : base("name=eLearningDataContext")
+            : base("eLearningDataContext")
         {
         }
 
