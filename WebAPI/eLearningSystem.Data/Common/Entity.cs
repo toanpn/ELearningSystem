@@ -11,7 +11,7 @@ namespace eLearningSystem.Data.Common
     public abstract class BaseEntity    
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
     }
 }

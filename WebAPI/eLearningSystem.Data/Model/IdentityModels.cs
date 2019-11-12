@@ -15,6 +15,10 @@ namespace eLearningSystem.Data.Model
     [Table("User")]
     public class User : IdentityUser<int, UserLogin, UserRole, UserClaim>
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public override int Id { get; set; }
+
         [StringLength(20)]
         public string phone_number { get; set; }
 
@@ -55,6 +59,9 @@ namespace eLearningSystem.Data.Model
 
         public class UserRole : IdentityUserRole<int>
         {
+            public UserRole()
+            {
+            }
         }
 
         public class UserClaim : IdentityUserClaim<int>
