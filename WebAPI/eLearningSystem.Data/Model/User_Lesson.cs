@@ -12,8 +12,10 @@ namespace eLearningSystem.Data.Model
         //[DatabaseGenerated(DatabaseGeneratedOption.None)]
         //public int id { get; set; }
 
+        [ForeignKey("User")]
         public int? user_id { get; set; }
 
+        [ForeignKey("Lesson")]
         public int? lesson_id { get; set; }
 
         public bool? is_complete { get; set; }

@@ -25,6 +25,7 @@ namespace eLearningSystem.Data.Model
 
         public double? paid { get; set; }
 
+        [ForeignKey("User")]
         public int? user_id { get; set; }
 
         public virtual User User { get; set; }

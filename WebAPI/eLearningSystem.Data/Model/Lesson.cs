@@ -27,6 +27,7 @@ namespace eLearningSystem.Data.Model
 
         public string video_url { get; set; }
 
+        [ForeignKey("Chapter")]
         public int? chapter_id { get; set; }
 
         public double? video_time { get; set; }

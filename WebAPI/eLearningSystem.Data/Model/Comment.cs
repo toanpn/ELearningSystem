@@ -28,8 +28,10 @@ namespace eLearningSystem.Data.Model
         [StringLength(10)]
         public string status { get; set; }
 
+        [ForeignKey("User")]
         public int? user_id { get; set; }
 
+        [ForeignKey("Lesson")]
         public int? lesson_id { get; set; }
 
         public int? index_num { get; set; }

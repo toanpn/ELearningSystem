@@ -21,6 +21,7 @@ namespace eLearningSystem.Data.Model
 
         public int? scores { get; set; }
 
+        [ForeignKey("Test")]
         public int? test_id { get; set; }
 
         [StringLength(1)]

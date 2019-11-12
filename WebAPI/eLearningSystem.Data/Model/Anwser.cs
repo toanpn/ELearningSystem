@@ -15,6 +15,7 @@ namespace eLearningSystem.Data.Model
         [StringLength(1)]
         public string type { get; set; }
 
+        [ForeignKey("Question")]
         public int? question_id { get; set; }
 
         public virtual Question Question { get; set; }

@@ -22,8 +22,10 @@ namespace eLearningSystem.Data.Model
 
         public bool? is_visible { get; set; }
 
+        [ForeignKey("Course")]
         public int? course_id { get; set; }
 
+        [ForeignKey("User")]
         public int? user_id { get; set; }
 
         public virtual Course Course { get; set; }
