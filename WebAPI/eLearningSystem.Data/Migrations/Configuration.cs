@@ -30,7 +30,6 @@ namespace eLearningSystem.Data.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-            //AddRole(context);
             addUser(context);
         }
 
@@ -49,9 +48,6 @@ namespace eLearningSystem.Data.Migrations
                 };
                 manager.Create(user, "123456");
                 context.SaveChanges();
-                //var user1 = context.Users.FirstOrDefault(t => t.UserName.Equals(user.UserName));
-                //manager.AddToRole(user1.Id, "Admin");
-                //context.SaveChanges();
             }
             if (!context.Users.Any(t => t.UserName == "student@gmail.com"))
             {
@@ -66,9 +62,6 @@ namespace eLearningSystem.Data.Migrations
                 };
                 manager.Create(user, "123456");
                 context.SaveChanges();
-                //var user1 = context.Users.FirstOrDefault(t => t.UserName.Equals(user.UserName));
-                //manager.AddToRole(user1.Id, "Student");
-                //context.SaveChanges();
             }
             if (!context.Users.Any(t => t.UserName == "teacher@gmail.com"))
             {
@@ -82,27 +75,6 @@ namespace eLearningSystem.Data.Migrations
                     PhoneNumber = "19001001"
                 };
                 manager.Create(user, "123456");
-                context.SaveChanges();
-                //var user1 = context.Users.FirstOrDefault(t => t.UserName.Equals(user.UserName));
-                //manager.AddToRole(user1.Id, "Teacher");
-                //context.SaveChanges();
-            }
-        }
-
-        private void AddRole(eLearningDataContext context)
-        {
-            if (!context.Roles.Any(t => t.Name == "Admin" && t.Name == "Student" && t.Name == "Teacher"))
-            {
-                var store = new RoleStore<IdentityRole>(context);
-                var manager = new RoleManager<IdentityRole>(store);
-                var roleAdmin = new IdentityRole { Name = "Admin" };
-                var roleUse = new IdentityRole { Name = "Student" };
-                var roleTeacher = new IdentityRole { Name = "Teacher" };
-
-                manager.Create(roleAdmin);
-                manager.Create(roleUse);
-                manager.Create(roleTeacher);
-
                 context.SaveChanges();
             }
         }
