@@ -33,6 +33,7 @@ namespace eLearningSystem.Data.Model
 
         public bool? is_visiable { get; set; }
 
+        [ForeignKey("Category")]
         public int? category_id { get; set; }
 
         public virtual Category Category { get; set; }
