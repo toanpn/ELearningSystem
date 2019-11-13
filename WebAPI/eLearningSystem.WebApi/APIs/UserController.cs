@@ -26,6 +26,11 @@ namespace eLearningSystem.WebApi.APIs
         [HttpPost]
         public IHttpActionResult AddUser([FromBody]User user)
         {
+            user.EmailConfirmed = false;
+            user.PhoneNumberConfirmed = false;
+            user.TwoFactorEnabled = false;
+            user.LockoutEnabled = false;
+            user.AccessFailedCount = 10;
             _userService.Create(user);
             return Ok();
         }
