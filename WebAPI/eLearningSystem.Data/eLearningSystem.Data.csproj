@@ -59,10 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Entity.cs" />
-    <Compile Include="Migrations\201911130608200_init.cs" />
-    <Compile Include="Migrations\201911130608200_init.Designer.cs">
-      <DependentUpon>201911130608200_init.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Anwser.cs" />
     <Compile Include="Model\Category.cs" />
@@ -87,11 +83,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201911130608200_init.resx">
-      <DependentUpon>201911130608200_init.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

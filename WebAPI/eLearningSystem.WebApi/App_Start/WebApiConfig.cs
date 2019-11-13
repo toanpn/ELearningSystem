@@ -1,6 +1,7 @@
 ﻿using Microsoft.Owin.Security.OAuth;
 using System.Net.Http.Headers;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace eLearningSystem.WebApi
 {
@@ -8,6 +9,10 @@ namespace eLearningSystem.WebApi
     {
         public static void Register(HttpConfiguration config)
         {
+            // config CORS
+            var cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
+
             // Web API configuration and services
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();
