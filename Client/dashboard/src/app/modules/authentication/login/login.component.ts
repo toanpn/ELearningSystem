@@ -1,8 +1,8 @@
 import { CodeConstant } from './../../../core/constants/code.constant';
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
-import {NotificationService} from '../../../shared/services/notification.service';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NotificationService } from '../../../shared/services/notification.service';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { NotificationConstant } from 'src/app/core/constants/notification.constant';
 import { ResponseModel } from 'src/app/core/models/response.model';
@@ -10,7 +10,8 @@ import { TokenModel } from 'src/app/core/models/token.model';
 
 @Component({
   selector: 'app-login',
-  templateUrl: 'login.component.html'
+  templateUrl: 'login.component.html',
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
   /* Login FormGroup */
@@ -52,16 +53,17 @@ export class LoginComponent implements OnInit {
     const password = this.f.password.value.toString().trim();
     this.authService.login(email, password)
       .subscribe((res: ResponseModel<TokenModel>) => {
-          if (res.code === CodeConstant.SUCCESS) {
-            this.router.navigate(['/dashboard']);
-            this.notificationService.showSuccess(NotificationConstant.LOGIN_SUCCESS, res.message, 3000);
-          } else if (res.code === CodeConstant.FORBIDDEN) {
-            this.notificationService.showError(NotificationConstant.LOGIN_ERROR, res.message, 3000);
-          } else {
-            this.notificationService.showError(NotificationConstant.LOGIN_ERROR, res.message, 3000);
-          }
-        },
+        if (res.code === CodeConstant.SUCCESS) {
+          this.router.navigate(['/dashboard']);
+          this.notificationService.showSuccess(NotificationConstant.LOGIN_SUCCESS, res.message, 3000);
+        } else if (res.code === CodeConstant.FORBIDDEN) {
+          this.notificationService.showError(NotificationConstant.LOGIN_ERROR, res.message, 3000);
+        } else {
+          this.notificationService.showError(NotificationConstant.LOGIN_ERROR, res.message, 3000);
+        }
+      },
         (error) => {
+          alert('Da co loi xay ra!');
           console.log(error);
         }
       );
