@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IRepository\ICourseRepository.cs" />
+    <Compile Include="IRepository\IUserRepository.cs" />
     <Compile Include="IRepository\IUserRoleRepository.cs" />
     <Compile Include="IRepository\IRoleRepository.cs" />
     <Compile Include="IRepository\ITestRepository.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Common\GenericRepository.cs" />
     <Compile Include="Common\IGenericRepository.cs" />
     <Compile Include="Repository\CourseRepository.cs" />
+    <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Repository\UserRoleRepository.cs" />
     <Compile Include="Repository\TestRepository.cs" />
     <Compile Include="Repository\RoleRepository.cs" />
