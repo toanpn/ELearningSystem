@@ -1,14 +1,14 @@
 ﻿using eLearningSystem.Data.Model;
-using eLearningSystem.Services.Base;
+using eLearningSystem.Repositories.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eLearningSystem.Services.IService 
+namespace eLearningSystem.Repositories.Repository
 {
-    public interface IUserService : IBaseService<User>
+    public interface ITestRepository : IGenericRepository<Test>
     {
     }
 }

@@ -12,8 +12,10 @@ namespace eLearningSystem.Data.Model
         //[DatabaseGenerated(DatabaseGeneratedOption.None)]
         //public int id { get; set; }
 
+        [ForeignKey("User")]
         public int? user_id { get; set; }
 
+        [ForeignKey("Test")]
         public int? test_id { get; set; }
 
         public virtual Test Test { get; set; }

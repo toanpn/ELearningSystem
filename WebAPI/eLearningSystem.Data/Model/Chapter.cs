@@ -23,6 +23,7 @@ namespace eLearningSystem.Data.Model
         [StringLength(255)]
         public string name { get; set; }
 
+        [ForeignKey("Course")]
         public int? course_id { get; set; }
 
         public int? index_num { get; set; }

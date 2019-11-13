@@ -1,4 +1,6 @@
-﻿using eLearningSystem.WebApi.Models;
+﻿using eLearningSystem.Data.Model;
+using eLearningSystem.Services.IService;
+using eLearningSystem.WebApi.Models;
 using eLearningSystem.WebApi.Providers;
 using eLearningSystem.WebApi.Results;
 using Microsoft.AspNet.Identity;
@@ -15,6 +17,7 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using static eLearningSystem.Data.Model.User;
 
 namespace eLearningSystem.WebApi.Controllers
 {
@@ -24,16 +27,20 @@ namespace eLearningSystem.WebApi.Controllers
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
+        private IUserRoleService _userRoleService;
 
-        public AccountController()
+        public AccountController(IUserRoleService userRoleService)
         {
+            _userRoleService = userRoleService;
         }
 
         public AccountController(ApplicationUserManager userManager,
-            ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
+            ISecureDataFormat<AuthenticationTicket> accessTokenFormat,
+            IUserRoleService userRoleService)
         {
             UserManager = userManager;
             AccessTokenFormat = accessTokenFormat;
+            _userRoleService = userRoleService;
         }
 
         public ApplicationUserManager UserManager
@@ -77,7 +84,7 @@ namespace eLearningSystem.WebApi.Controllers
         [Route("ManageInfo")]
         public async Task<ManageInfoViewModel> GetManageInfo(string returnUrl, bool generateState = false)
         {
-            IdentityUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            User user = await UserManager.FindByIdAsync(User.Identity.GetUserId<int>());
 
             if (user == null)
             {
@@ -86,7 +93,7 @@ namespace eLearningSystem.WebApi.Controllers
 
             List<UserLoginInfoViewModel> logins = new List<UserLoginInfoViewModel>();
 
-            foreach (IdentityUserLogin linkedAccount in user.Logins)
+            foreach (UserLogin linkedAccount in user.Logins)
             {
                 logins.Add(new UserLoginInfoViewModel
                 {
@@ -122,7 +129,7 @@ namespace eLearningSystem.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
+            IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId<int>(), model.OldPassword,
                 model.NewPassword);
 
             if (!result.Succeeded)
@@ -142,7 +149,7 @@ namespace eLearningSystem.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            IdentityResult result = await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
+            IdentityResult result = await UserManager.AddPasswordAsync(User.Identity.GetUserId<int>(), model.NewPassword);
 
             if (!result.Succeeded)
             {
@@ -179,7 +186,7 @@ namespace eLearningSystem.WebApi.Controllers
                 return BadRequest("The external login is already associated with an account.");
             }
 
-            IdentityResult result = await UserManager.AddLoginAsync(User.Identity.GetUserId(),
+            IdentityResult result = await UserManager.AddLoginAsync(User.Identity.GetUserId<int>(),
                 new UserLoginInfo(externalData.LoginProvider, externalData.ProviderKey));
 
             if (!result.Succeeded)
@@ -203,11 +210,11 @@ namespace eLearningSystem.WebApi.Controllers
 
             if (model.LoginProvider == LocalLoginProvider)
             {
-                result = await UserManager.RemovePasswordAsync(User.Identity.GetUserId());
+                result = await UserManager.RemovePasswordAsync(User.Identity.GetUserId<int>());
             }
             else
             {
-                result = await UserManager.RemoveLoginAsync(User.Identity.GetUserId(),
+                result = await UserManager.RemoveLoginAsync(User.Identity.GetUserId<int>(),
                     new UserLoginInfo(model.LoginProvider, model.ProviderKey));
             }
 
@@ -249,7 +256,7 @@ namespace eLearningSystem.WebApi.Controllers
                 return new ChallengeResult(provider, this);
             }
 
-            ApplicationUser user = await UserManager.FindAsync(new UserLoginInfo(externalLogin.LoginProvider,
+            User user = await UserManager.FindAsync(new UserLoginInfo(externalLogin.LoginProvider,
                 externalLogin.ProviderKey));
 
             bool hasRegistered = user != null;
@@ -327,7 +334,7 @@ namespace eLearningSystem.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new User() { UserName = model.Email, Email = model.Email };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
@@ -335,6 +342,8 @@ namespace eLearningSystem.WebApi.Controllers
             {
                 return GetErrorResult(result);
             }
+
+            _userRoleService.CreateByNameRole(user.Id, "Student");
 
             return Ok();
         }
@@ -356,7 +365,7 @@ namespace eLearningSystem.WebApi.Controllers
                 return InternalServerError();
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new User() { UserName = model.Email, Email = model.Email };
 
             IdentityResult result = await UserManager.CreateAsync(user);
             if (!result.Succeeded)

@@ -8,11 +8,6 @@ using System.Threading.Tasks;
 
 namespace eLearningSystem.Data.Common
 {
-    //public abstract class BaseEntity
-    //{
-
-    //}
-
     public abstract class BaseEntity    
     {
         [Key]

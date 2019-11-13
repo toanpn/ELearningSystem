@@ -1,5 +1,4 @@
-﻿using eLearningSystem.Data.Migrations;
-using eLearningSystem.Data.Model;
+﻿using eLearningSystem.Data.Model;
 using Microsoft.Owin;
 using Owin;
 using System.Data.Entity;
@@ -13,7 +12,7 @@ namespace eLearningSystem.WebApi
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<eLearningDataContext, Configuration>());
+            app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
         }
     }
 }

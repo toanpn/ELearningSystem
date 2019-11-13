@@ -18,8 +18,8 @@ namespace eLearningSystem.Data.Model
             User_Course = new HashSet<User_Course>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int id { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
+        //public int id { get; set; }
 
         [StringLength(50)]
         public string name { get; set; }
@@ -33,6 +33,7 @@ namespace eLearningSystem.Data.Model
 
         public bool? is_visiable { get; set; }
 
+        [ForeignKey("Category")]
         public int? category_id { get; set; }
 
         public virtual Category Category { get; set; }

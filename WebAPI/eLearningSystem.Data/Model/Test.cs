@@ -25,6 +25,7 @@ namespace eLearningSystem.Data.Model
 
         public double? time { get; set; }
 
+        [ForeignKey("Chapter")]
         public int? chapter_id { get; set; }
 
         public virtual Chapter Chapter { get; set; }
