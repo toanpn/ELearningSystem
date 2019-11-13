@@ -1,4 +1,5 @@
 ﻿using eLearningSystem.Data.Model;
+using eLearningSystem.Services.IService;
 using eLearningSystem.WebApi.Models;
 using eLearningSystem.WebApi.Providers;
 using eLearningSystem.WebApi.Results;
@@ -26,16 +27,20 @@ namespace eLearningSystem.WebApi.Controllers
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
+        private IUserRoleService _userRoleService;
 
-        public AccountController()
+        public AccountController(IUserRoleService userRoleService)
         {
+            _userRoleService = userRoleService;
         }
 
         public AccountController(ApplicationUserManager userManager,
-            ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
+            ISecureDataFormat<AuthenticationTicket> accessTokenFormat,
+            IUserRoleService userRoleService)
         {
             UserManager = userManager;
             AccessTokenFormat = accessTokenFormat;
+            _userRoleService = userRoleService;
         }
 
         public ApplicationUserManager UserManager
@@ -337,6 +342,8 @@ namespace eLearningSystem.WebApi.Controllers
             {
                 return GetErrorResult(result);
             }
+
+            _userRoleService.CreateByNameRole(user.Id, "Student");
 
             return Ok();
         }

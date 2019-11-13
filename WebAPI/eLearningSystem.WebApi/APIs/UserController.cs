@@ -9,5 +9,9 @@ namespace eLearningSystem.WebApi.APIs
 {
     public class UserController : ApiController
     {
+        public UserController()
+        {
+
+        }
     }
 }
