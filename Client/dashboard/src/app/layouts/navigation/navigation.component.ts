@@ -1,10 +1,7 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import 'jquery-slimscroll';
-import {ShareService} from '../../shared/services/share.service';
-import {MatDialog} from '@angular/material';
-import {NotificationService} from '../../shared/services/notification.service';
-import { VariablesConstant } from 'src/app/core/constants/variables.constant';
+import { ShareService } from '../../shared/services/share.service';
 
 declare var jQuery: any;
 
@@ -14,32 +11,16 @@ declare var jQuery: any;
   styleUrls: ['navigation.component.scss']
 })
 export class NavigationComponent implements AfterViewInit, OnInit {
-  // currentUser: UserModel;
+  userName: string;
 
-  constructor(
-    private router: Router,
-    private shareService: ShareService,
-    private dialog: MatDialog,
-    private notificationService: NotificationService) {
-  }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.shareService.currentUserStream$
-      .subscribe((user) => {
-        // this.currentUser = user;
-      });
-    this.getCurrentUser();
-  }
-
-  private getCurrentUser() {
-    // this.userService.getCurrentUser()
-    //   .subscribe((user) => {
-    //     this.currentUser = user.data;
-    //   });
+    this.userName = localStorage.getItem('user_name');
   }
 
   ngAfterViewInit() {
-    jQuery('#side-menu').metisMenu({toggle: false});
+    jQuery('#side-menu').metisMenu({ toggle: false });
 
     if (jQuery('body').hasClass('fixed-sidebar')) {
       jQuery('.sidebar-collapse').slimscroll({

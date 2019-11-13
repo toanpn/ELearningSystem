@@ -8,5 +8,5 @@ export class VariablesConstant {
   public static PAGE_NUMBER = 0;
 
   // Authentication
-  public static ACCESS_TOKEN = "access_token"
+  public static ACCESS_TOKEN = 'access_token';
 }

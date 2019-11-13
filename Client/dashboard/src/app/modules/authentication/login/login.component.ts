@@ -1,12 +1,9 @@
-import { CodeConstant } from './../../../core/constants/code.constant';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NotificationService } from '../../../shared/services/notification.service';
-import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { NotificationConstant } from 'src/app/core/constants/notification.constant';
-import { ResponseModel } from 'src/app/core/models/response.model';
-import { TokenModel } from 'src/app/core/models/token.model';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { NotificationService } from '../../../shared/services/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -24,9 +21,8 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
-    private notificationService: NotificationService,
-  ) {
-  }
+    private notificationService: NotificationService
+  ) {}
 
   /**
    * @description: Get controls from formGroup: changePasswordForm
@@ -49,29 +45,44 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    const email = this.f.email.value.toString().trim().toLowerCase();
+    const email = this.f.email.value
+      .toString()
+      .trim()
+      .toLowerCase();
     const password = this.f.password.value.toString().trim();
-    this.authService.login(email, password)
-      .subscribe((res: ResponseModel<TokenModel>) => {
-        if (res.code === CodeConstant.SUCCESS) {
+    this.authService.login(email, password).subscribe(
+      (res: any) => {
+        if (res) {
           this.router.navigate(['/dashboard']);
-          this.notificationService.showSuccess(NotificationConstant.LOGIN_SUCCESS, res.message, 3000);
-        } else if (res.code === CodeConstant.FORBIDDEN) {
-          this.notificationService.showError(NotificationConstant.LOGIN_ERROR, res.message, 3000);
+          this.notificationService.showSuccess(
+            NotificationConstant.LOGIN_SUCCESS,
+            res.message,
+            3000
+          );
         } else {
-          this.notificationService.showError(NotificationConstant.LOGIN_ERROR, res.message, 3000);
+          this.notificationService.showError(
+            NotificationConstant.LOGIN_ERROR,
+            res.message,
+            3000
+          );
         }
       },
-        (error) => {
-          alert('Da co loi xay ra!');
-          console.log(error);
-        }
-      );
+      error => {
+        alert('Da co loi xay ra!');
+        console.log(error);
+      }
+    );
   }
 
   checkValidForm() {
-    return !((this.f.email.value !== null && this.f.email.value !== undefined && this.f.email.value.trim() !== '')
-      && (this.f.password.value !== null && this.f.password.value !== undefined && this.f.password.value.trim() !== ''));
+    return !(
+      this.f.email.value !== null &&
+      this.f.email.value !== undefined &&
+      this.f.email.value.trim() !== '' &&
+      this.f.password.value !== null &&
+      this.f.password.value !== undefined &&
+      this.f.password.value.trim() !== ''
+    );
   }
 
   validSpacePassword(event: any) {

@@ -3,11 +3,10 @@
     <ul class="nav metismenu" id="side-menu">
       <li class="nav-header Tranparent">
         <div class="profile-element">
-          <img alt="image" class="img-circle avatar"
-               src="../../../assets/images/admin.png">
-          <p class="text-info">Admin</p>
+          <img alt="image" class="img-circle avatar" src="../../../assets/images/admin.png">
+          <p class="text-info" *ngIf="userName">{{userName}}</p>
         </div>
-        
+
       </li>
       <li class="Tranparent">
         <a [routerLink]="['/dashboard']">
@@ -16,19 +15,11 @@
         </a>
       </li>
       <li class="Tranparent">
-        <a [routerLink]="['/product']">
-          <i aria-hidden="true" class="fa fa-laptop"></i>
-          <span class="nav-label">Quản lý sản phẩm</span>
+        <a [routerLink]="['/users']">
+          <i aria-hidden="true" class="fa fa-users"></i>
+          <span class="nav-label">Quản lý người dùng</span>
         </a>
       </li>
-      <!-- <li class="Tranparent">
-        <a><i aria-hidden="true" class="fa fa-user"></i> <span class="nav-label">Quản lý sản phẩm</span></a>
-        <ul aria-expanded="true" class="nav nav-second-level collapse in">
-          <li [ngClass]="{active: activeRoute('/list-users')}">
-            <a [routerLink]="['/list-users']">Thông tin chung</a>
-          </li>
-        </ul>
-      </li> -->
     </ul>
   </div>
 </nav>

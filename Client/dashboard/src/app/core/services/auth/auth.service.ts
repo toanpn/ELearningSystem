@@ -1,12 +1,13 @@
-import { TokenModel } from './../../models/token.model';
 import { VariablesConstant } from './../../constants/variables.constant';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
-import { URLConstant } from '../../constants/url.constant';
-import { ResponseModel } from '../../models/response.model';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+const router = {
+  token: `http://localhost:60793/token`
+};
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +16,11 @@ export class AuthService {
   public currentUser: Observable<string>;
   private currentUserSubject: BehaviorSubject<string>;
 
-  constructor(private  http: HttpClient) {
+  constructor(private http: HttpClient) {
     const accessToken = AuthService.getAccessToken();
-    this.currentUserSubject = new BehaviorSubject<string>(JSON.parse(accessToken));
+    this.currentUserSubject = new BehaviorSubject<string>(
+      JSON.parse(accessToken)
+    );
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
@@ -26,18 +29,28 @@ export class AuthService {
   }
 
   login(username: string, password: string) {
-    const json = {
-      username,
-      password
-    };
-    return this.http.post<any>(URLConstant.LOGIN_URL, json)
-      .pipe(map((res: ResponseModel<TokenModel>) => {
-        if (res.code === 200) {
-          localStorage.setItem(VariablesConstant.ACCESS_TOKEN, JSON.stringify(res.data.accessToken));
-          this.currentUserSubject.next(res.data.accessToken);
-        }
-        return res;
-      }));
+    const credentials =
+      `username=${username}` + `&password=${password}` + '&grant_type=password';
+    const reqHeader = new HttpHeaders({
+      'Content-Type': 'application/x-www-urlencoded',
+      'No-Auth': 'True'
+    });
+    return this.http
+      .post<any>(router.token, encodeURI(credentials), {
+        headers: reqHeader
+      })
+      .pipe(
+        map((res: any) => {
+          if (res) {
+            localStorage.setItem(
+              VariablesConstant.ACCESS_TOKEN,
+              JSON.stringify(res.access_token)
+            );
+            localStorage.setItem('user_name', res.userName);
+          }
+          return res;
+        })
+      );
   }
 
   logout() {
