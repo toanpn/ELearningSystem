@@ -1,0 +1,26 @@
+:host {
+  .login-form {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 10px;
+    --webkit-box-shadow: 1px 1px 5px 2px #ddd;
+    -moz-box-shadow: 1px 1px 5px 2px #ddd;
+    -o-box-shadow: 1px 1px 5px 2px #ddd;
+    box-shadow: 1px 1px 5px 2px #ddd;
+    .mat-form-field {
+      width: 100%;
+      padding-bottom: 15px;
+    }
+    .btn-login {
+      width: 100%;
+      border-radius: 20px;
+    }
+    .logo-container {
+      color: #05693f;
+      text-align: center;
+      font-weight: 300;
+      font-size: 1.5em;
+    }
+  }
+}

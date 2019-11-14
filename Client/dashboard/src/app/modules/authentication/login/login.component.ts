@@ -1,55 +1,72 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { NotificationConstant } from 'src/app/core/constants/notification.constant';
+import { NotificationService } from './../../../shared/services/notification.service';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
-import { NotificationService } from '../../../shared/services/notification.service';
+import { NotificationConstant } from 'src/app/core/constants/notification.constant';
+
+declare var particlesJS: any;
 
 @Component({
   selector: 'app-login',
   templateUrl: 'login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
-  /* Login FormGroup */
-  loginForm: FormGroup;
-  /* If login successfully, redirect to returnUrl */
-  returnUrl: string;
+export class LoginComponent implements OnInit, OnDestroy {
+  private subcription: Subscription = new Subscription();
+
+  isMobile$: Observable<boolean> = this.breakpointObserver
+    .observe([Breakpoints.XSmall, Breakpoints.Small])
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    );
+
+  colsLeft = 8;
+  colsRight = 4;
+  cols = 12;
+  rowHeight = '768px';
 
   constructor(
-    private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
     private router: Router,
+    private breakpointObserver: BreakpointObserver,
     private authService: AuthService,
     private notificationService: NotificationService
-  ) {}
-
-  /**
-   * @description: Get controls from formGroup: changePasswordForm
-   * @returns: FormControls
-   */
-  get f() {
-    return this.loginForm.controls;
+  ) {
+    this.isMobile$.subscribe(isMobile => this.setCols(isMobile));
   }
 
-  /**
-   * @description: lifecycle hook OnInit
-   */
-  ngOnInit(): void {
-    // Initial formGroup: loginForm
-    this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required]]
-    });
-    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
+  ngOnInit() {
+    particlesJS.load(
+      'app-left-content',
+      'assets/particles/particles.json',
+      null
+    );
   }
 
-  login() {
-    const email = this.f.email.value
-      .toString()
-      .trim()
-      .toLowerCase();
-    const password = this.f.password.value.toString().trim();
+  ngOnDestroy(): void {
+    if (this.subcription) {
+      this.subcription.unsubscribe();
+    }
+  }
+
+  private setCols(isMobile: boolean) {
+    if (isMobile) {
+      this.cols = this.colsLeft = this.colsRight = 1;
+      this.rowHeight = '100vh';
+    } else {
+      this.colsLeft = 8;
+      this.colsRight = 4;
+      this.cols = 12;
+      this.rowHeight = '768px';
+    }
+  }
+
+  submitLogin(event) {
+    const email = event.formData.username;
+    const password = event.formData.password;
     this.authService.login(email, password).subscribe(
       (res: any) => {
         if (res) {
@@ -72,22 +89,5 @@ export class LoginComponent implements OnInit {
         console.log(error);
       }
     );
-  }
-
-  checkValidForm() {
-    return !(
-      this.f.email.value !== null &&
-      this.f.email.value !== undefined &&
-      this.f.email.value.trim() !== '' &&
-      this.f.password.value !== null &&
-      this.f.password.value !== undefined &&
-      this.f.password.value.trim() !== ''
-    );
-  }
-
-  validSpacePassword(event: any) {
-    if (event.target.value.trim() === '') {
-      event.target.value = event.target.value.replace(event.target.value, '');
-    }
   }
 }

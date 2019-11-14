@@ -24,7 +24,9 @@
               {{user.Email}}
             </td>
             <td>
-              {{user.gender}}
+              <p *ngIf="user.gender === true">Nam</p>
+              <p *ngIf="user.gender === false">Nữ</p>
+              <p *ngIf="user.gender === null || user.gender === undefined">Không xác định</p>
             </td>
             <td>
               {{user.address}}

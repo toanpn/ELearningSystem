@@ -21,7 +21,8 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatGridListModule
 } from '@angular/material';
 
 @NgModule({
@@ -71,7 +72,8 @@ import {
     MatDatepickerModule,
     MatNativeDateModule,
     MatAutocompleteModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatGridListModule
   ]
 })
 export class MaterialModule {}
