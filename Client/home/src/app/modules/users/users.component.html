@@ -1,0 +1,64 @@
+<div class="table-data">
+  <a [routerLink]="['/user-business']" class="btn btn-primary pull-right">Thêm mới người dùng
+  </a>
+  <div class="column">
+    <div class="table-container">
+      <table class="table">
+        <thead class="table-header">
+          <tr>
+            <th>Tài khoản</th>
+            <th>Email</th>
+            <th>Giới tính</th>
+            <th>Địa chỉ</th>
+            <th>Số điện thoại</th>
+            <th style="min-width: 100px">Thao tác</th>
+            <th>Phân quyền</th>
+          </tr>
+        </thead>
+        <tbody class="table-body" *ngIf="users$">
+          <tr *ngFor="let user of (users$ | async)?.results; let i = index;" class="cursor-pointer">
+            <td>
+              {{user.UserName}}
+            </td>
+            <td>
+              {{user.Email}}
+            </td>
+            <td>
+              <p *ngIf="user.gender === true">Nam</p>
+              <p *ngIf="user.gender === false">Nữ</p>
+              <p *ngIf="user.gender === null || user.gender === undefined">Không xác định</p>
+            </td>
+            <td>
+              {{user.address}}
+            </td>
+            <td>
+              {{user.PhoneNumber}}
+            </td>
+            <td>
+              <mat-icon (click)="editUser(user)" class="mat-18" title="Sửa thông tin nguời dùng" titlePosition="below"
+                style="cursor: pointer;">
+                edit
+              </mat-icon>
+            </td>
+            <td>
+              <mat-menu #appMenu="matMenu">
+                <ng-template matMenuContent matMenuContent let-name="name">
+                  <button mat-menu-item (click)="setRole(user, 1)">Quản trị viên</button>
+                  <button mat-menu-item (click)="setRole(user, 2)">Người dùng</button>
+                  <button mat-menu-item (click)="setRole(user, 3)">Giáo viên</button>
+                </ng-template>
+              </mat-menu>
+
+              <button mat-button [matMenuTriggerFor]="appMenu" [matMenuTriggerData]="{ name: userName }">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- <mat-paginator (page)="pageSizeChange($event)" *ngIf="totalItems > 0" [length]="totalItems" [pageIndex]="page"
+    [pageSizeOptions]="[10, 25, 50, 100]" [pageSize]="size" class="paginator"></mat-paginator> -->
+
+</div>
