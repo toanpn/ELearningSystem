@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { AuthModule } from './modules/authentication/auth.module';
 import { LayoutModule } from './layouts/layout/layout.module';
 import { MaterialModule } from './shared/material.module';
@@ -16,11 +15,9 @@ import { ComponentModule } from './core/components/component.module';
 import { MatPaginatorIntl } from '@angular/material';
 import { MatPaginatorIntlVN } from './core/extends/vietnamese-paginator-intl';
 import { CoreModule } from './core/core.module';
-import { UsersComponent } from './modules/users/users.component';
-import { UserBusinessComponent } from './modules/users/pages/user-business/user-business.component';
 
 @NgModule({
-  declarations: [AppComponent, UsersComponent, UserBusinessComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -35,7 +32,6 @@ import { UserBusinessComponent } from './modules/users/pages/user-business/user-
     MaterialModule,
     // Main Module
     LayoutModule,
-    DashboardModule,
     AuthModule,
     ComponentModule,
     CoreModule

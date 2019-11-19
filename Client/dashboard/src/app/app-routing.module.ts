@@ -1,7 +1,7 @@
 import { UserBusinessComponent } from './modules/users/pages/user-business/user-business.component';
 import { UsersComponent } from './modules/users/users.component';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, OutletContext } from '@angular/router';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { LoginComponent } from './modules/authentication/login/login.component';
 import { LayoutComponent } from './layouts/layout/layout.component';
@@ -24,12 +24,14 @@ const ROUTES: Routes = [
         component: UsersComponent
       },
       {
-        path: 'user-business',
+        path: 'user-business',/
+        doity/ them 1 router
         canActivate: [AuthGuard],
         component: UserBusinessComponent
-      }
+      },
     ]
   },
+  //hỏi hăng ;), sẵn sàng fb ,
   {
     path: 'login',
     component: LoginComponent
@@ -42,4 +44,8 @@ const ROUTES: Routes = [
   imports: [RouterModule.forRoot(ROUTES)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
+//hiểu r, đù má, ngoài 2 cái này thì ông làm những cái t học được trong tuần này r :)), có gì khó nữa ko chỉ phát nữa
+// ông giỏi thì cái gì xung dẽ
+// như cái view dùng chung tìm hoài méo thấy đâu, ban đầu thấy trong này có layoutcompo... tưởng là view mặc định của angular
+// đọc về router route-outlet

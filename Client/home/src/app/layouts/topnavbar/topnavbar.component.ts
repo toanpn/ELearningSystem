@@ -3,7 +3,6 @@ import {smoothlyMenu} from '../../core/helper/app.helpers';
 import {AuthService} from '../../core/services/auth/auth.service';
 import {Router} from '@angular/router';
 
-declare var jQuery: any;
 
 @Component({
   selector: 'app-topnavbar',
@@ -13,9 +12,8 @@ declare var jQuery: any;
 export class TopnavbarComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
-    private authService: AuthService,
-  ) {
-  }
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
   }
@@ -23,13 +21,6 @@ export class TopnavbarComponent implements OnInit, OnDestroy {
   logout() {
     this.authService.logout();
     return this.router.navigate(['/login']);
-  }
-
-  
-
-  toggleNavigation(): void {
-    jQuery('body').toggleClass('mini-navbar');
-    smoothlyMenu();
   }
 
   ngOnDestroy(): void {

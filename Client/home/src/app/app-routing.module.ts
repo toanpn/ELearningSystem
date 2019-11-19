@@ -1,8 +1,5 @@
-import { UserBusinessComponent } from './modules/users/pages/user-business/user-business.component';
-import { UsersComponent } from './modules/users/users.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { LoginComponent } from './modules/authentication/login/login.component';
 import { LayoutComponent } from './layouts/layout/layout.component';
 import { AuthGuard } from './core/guards/auth.guard';
@@ -13,21 +10,7 @@ const ROUTES: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
-      {
-        path: 'dashboard',
-        component: DashboardComponent,
-        canActivate: [AuthGuard]
-      },
-      {
-        path: 'users',
-        canActivate: [AuthGuard],
-        component: UsersComponent
-      },
-      {
-        path: 'user-business',
-        canActivate: [AuthGuard],
-        component: UserBusinessComponent
-      }
+      
     ]
   },
   {

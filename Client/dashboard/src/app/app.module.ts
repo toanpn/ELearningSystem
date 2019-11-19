@@ -45,6 +45,7 @@ import { UserBusinessComponent } from './modules/users/pages/user-business/user-
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     { provide: MatPaginatorIntl, useClass: MatPaginatorIntlVN }
   ],
+  exports: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
