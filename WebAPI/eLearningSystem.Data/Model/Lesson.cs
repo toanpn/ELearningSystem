@@ -1,11 +1,9 @@
 namespace eLearningSystem.Data.Model
 {
     using eLearningSystem.Data.Common;
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("Lesson")]
     public partial class Lesson : BaseEntity
@@ -14,23 +12,23 @@ namespace eLearningSystem.Data.Model
         public Lesson()
         {
             Comments = new HashSet<Comment>();
-            User_Lesson = new HashSet<User_Lesson>();
+            UserLessons = new HashSet<UserLesson>();
         }
 
         //[DatabaseGenerated(DatabaseGeneratedOption.None)]
         //public int id { get; set; }
 
         [StringLength(100)]
-        public string name { get; set; }
+        public string Name { get; set; }
 
-        public string description { get; set; }
+        public string Description { get; set; }
 
-        public string video_url { get; set; }
+        public string VideoUrl { get; set; }
 
         [ForeignKey("Chapter")]
-        public int? chapter_id { get; set; }
+        public int? ChapterId { get; set; }
 
-        public double? video_time { get; set; }
+        public double? VideoTime { get; set; }
 
         public virtual Chapter Chapter { get; set; }
 
@@ -40,6 +38,6 @@ namespace eLearningSystem.Data.Model
         //public virtual Video Video { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User_Lesson> User_Lesson { get; set; }
+        public virtual ICollection<UserLesson> UserLessons { get; set; }
     }
 }

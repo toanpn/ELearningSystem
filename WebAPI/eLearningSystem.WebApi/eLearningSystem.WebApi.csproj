@@ -195,11 +195,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="APIs\CourseController.cs" />
-    <Compile Include="APIs\UserRoleController.cs" />
-    <Compile Include="APIs\RoleController.cs" />
-    <Compile Include="APIs\TestController.cs" />
-    <Compile Include="APIs\UserController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -312,6 +307,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="APIs\" />
     <Folder Include="App_Data\" />
     <Folder Include="Views\Course\" />
     <Folder Include="Views\User\" />

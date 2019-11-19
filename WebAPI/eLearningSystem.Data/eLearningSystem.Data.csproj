@@ -65,16 +65,16 @@
     <Compile Include="Model\Chapter.cs" />
     <Compile Include="Model\Comment.cs" />
     <Compile Include="Model\Course.cs" />
-    <Compile Include="Model\eLearningDataContext.cs" />
-    <Compile Include="Model\IdentityModels.cs" />
+    <Compile Include="DataContext\eLearningDataContext.cs" />
+    <Compile Include="IdentityModel\IdentityModels.cs" />
     <Compile Include="Model\Lesson.cs" />
     <Compile Include="Model\Question.cs" />
     <Compile Include="Model\Rating.cs" />
     <Compile Include="Model\Test.cs" />
     <Compile Include="Model\Transaction.cs" />
-    <Compile Include="Model\User_Course.cs" />
-    <Compile Include="Model\User_Lesson.cs" />
-    <Compile Include="Model\User_Test.cs" />
+    <Compile Include="Model\UserCourse.cs" />
+    <Compile Include="Model\UserLesson.cs" />
+    <Compile Include="Model\UserTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -5,7 +5,6 @@ namespace eLearningSystem.Data.Model
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("Comment")]
     public partial class Comment : BaseEntity
@@ -19,22 +18,22 @@ namespace eLearningSystem.Data.Model
         //[DatabaseGenerated(DatabaseGeneratedOption.None)]
         //public int id { get; set; }
 
-        public int? comment_parrent { get; set; }
+        public int? CommentParent { get; set; }
 
-        public string content { get; set; }
+        public string Content { get; set; }
 
-        public DateTime? time { get; set; }
+        public DateTime? Time { get; set; }
 
         [StringLength(10)]
-        public string status { get; set; }
+        public string Stastus { get; set; }
 
         [ForeignKey("User")]
-        public int? user_id { get; set; }
+        public int? UserId { get; set; }
 
         [ForeignKey("Lesson")]
-        public int? lesson_id { get; set; }
+        public int? LessonId { get; set; }
 
-        public int? index_num { get; set; }
+        public int? IndexNumber { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comment1 { get; set; }

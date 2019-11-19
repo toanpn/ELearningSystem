@@ -1,12 +1,11 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using static eLearningSystem.Data.Model.User;
 
 namespace eLearningSystem.Data.Model
@@ -19,17 +18,16 @@ namespace eLearningSystem.Data.Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public override int Id { get; set; }
 
-        [StringLength(20)]
-        public string phone_number { get; set; }
-
         [StringLength(50)]
-        public string address { get; set; }
+        public string Address { get; set; }
 
-        public bool? gender { get; set; }
+        public bool? Gender { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime? birth_day { get; set; }
-        public int? scores { get; set; }
+        
+        public DateTime? DateOfBirth { get; set; }
+
+        public int? Score { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }
@@ -41,13 +39,13 @@ namespace eLearningSystem.Data.Model
         public virtual ICollection<Transaction> Transactions { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User_Course> User_Course { get; set; }
+        public virtual ICollection<UserCourse> UserCourses { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User_Lesson> User_Lesson { get; set; }
+        public virtual ICollection<UserLesson> UserLessons { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User_Test> User_Test { get; set; }
+        public virtual ICollection<UserTest> UserTests { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User, int> manager, string authenticationType)
         {
@@ -74,8 +72,14 @@ namespace eLearningSystem.Data.Model
 
         public class Role : IdentityRole<int, UserRole>
         {
-            public Role() { }
-            public Role(string name) { Name = name; }
+            public Role()
+            {
+            }
+
+            public Role(string name)
+            {
+                Name = name;
+            }
         }
 
         public class RoleStore : RoleStore<Role, int, UserRole>
@@ -93,5 +97,4 @@ namespace eLearningSystem.Data.Model
             }
         }
     }
-
 }

@@ -1,11 +1,9 @@
 namespace eLearningSystem.Data.Model
 {
     using eLearningSystem.Data.Common;
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("Test")]
     public partial class Test : BaseEntity
@@ -14,19 +12,19 @@ namespace eLearningSystem.Data.Model
         public Test()
         {
             Questions = new HashSet<Question>();
-            User_Test = new HashSet<User_Test>();
+            UserTests = new HashSet<UserTest>();
         }
 
         //[DatabaseGenerated(DatabaseGeneratedOption.None)]
         //public int id { get; set; }
 
         [StringLength(255)]
-        public string name { get; set; }
+        public string Name { get; set; }
 
-        public double? time { get; set; }
+        public double? Time { get; set; }
 
         [ForeignKey("Chapter")]
-        public int? chapter_id { get; set; }
+        public int? ChapterId { get; set; }
 
         public virtual Chapter Chapter { get; set; }
 
@@ -34,6 +32,6 @@ namespace eLearningSystem.Data.Model
         public virtual ICollection<Question> Questions { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User_Test> User_Test { get; set; }
+        public virtual ICollection<UserTest> UserTests { get; set; }
     }
 }

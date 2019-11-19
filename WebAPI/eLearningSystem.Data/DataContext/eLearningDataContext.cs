@@ -1,11 +1,8 @@
 namespace eLearningSystem.Data.Model
 {
-    using System;
-    using System.Data.Entity;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
-    using System.Data.Entity.Core.Metadata.Edm;
     using Microsoft.AspNet.Identity.EntityFramework;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity;
     using static eLearningSystem.Data.Model.User;
 
     public partial class eLearningDataContext : IdentityDbContext<User, Role, int,
@@ -31,9 +28,9 @@ namespace eLearningSystem.Data.Model
         public virtual DbSet<Rating> Ratings { get; set; }
         public virtual DbSet<Test> Tests { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
-        public virtual DbSet<User_Course> User_Course { get; set; }
-        public virtual DbSet<User_Lesson> User_Lesson { get; set; }
-        public virtual DbSet<User_Test> User_Test { get; set; }
+        public virtual DbSet<UserCourse> User_Course { get; set; }
+        public virtual DbSet<UserLesson> User_Lesson { get; set; }
+        public virtual DbSet<UserTest> User_Test { get; set; }
         //public virtual DbSet<Video> Videos { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -136,7 +133,6 @@ namespace eLearningSystem.Data.Model
             //modelBuilder.Entity<User>()
             //   .HasKey(e => e.Id);
             ////.Property(e => e.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
-
 
             //modelBuilder.Entity<User>()
             //    .HasMany(e => e.Ratings)
