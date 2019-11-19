@@ -31,7 +31,6 @@ namespace eLearningSystem.Data.Model
         public virtual DbSet<Rating> Ratings { get; set; }
         public virtual DbSet<Test> Tests { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
-        //public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<User_Course> User_Course { get; set; }
         public virtual DbSet<User_Lesson> User_Lesson { get; set; }
         public virtual DbSet<User_Test> User_Test { get; set; }

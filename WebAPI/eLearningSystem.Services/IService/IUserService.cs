@@ -8,7 +8,13 @@ using System.Threading.Tasks;
 
 namespace eLearningSystem.Services.IService 
 {
-    public interface IUserService : IBaseService<User>
+    public interface IUserService 
     {
+        void Create(User entity);
+        void Delete(int id);
+        IEnumerable<User> GetAll();
+        User GetById(int id);
+        void Update(User entity);
+        IEnumerable<User> GetByRole(int idRole);
     }
 }
