@@ -7,7 +7,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { NotificationConstant } from 'src/app/core/constants/notification.constant';
 
-declare var particlesJS: any;
+// declare var particlesJS: any;
 
 @Component({
   selector: 'app-login',
@@ -39,11 +39,11 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    particlesJS.load(
-      'app-left-content',
-      'assets/particles/particles.json',
-      null
-    );
+    // particlesJS.load(
+    //   'app-left-content',
+    //   'assets/particles/particles.json',
+    //   null
+    // );
   }
 
   ngOnDestroy(): void {

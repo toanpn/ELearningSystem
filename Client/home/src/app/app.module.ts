@@ -15,6 +15,9 @@ import { ComponentModule } from './core/components/component.module';
 import { MatPaginatorIntl } from '@angular/material';
 import { MatPaginatorIntlVN } from './core/extends/vietnamese-paginator-intl';
 import { CoreModule } from './core/core.module';
+import { CourseModule } from './modules/courses/courses.module';
+import { HomeModule } from './modules/home/home.module';
+import { BreadcrumComponent } from './layouts/breadcrum/breadcrum.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,7 +37,9 @@ import { CoreModule } from './core/core.module';
     LayoutModule,
     AuthModule,
     ComponentModule,
-    CoreModule
+    CoreModule,
+    CourseModule,
+    HomeModule
   ],
   providers: [
     ShareService,

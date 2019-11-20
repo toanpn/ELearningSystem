@@ -24,14 +24,12 @@ const ROUTES: Routes = [
         component: UsersComponent
       },
       {
-        path: 'user-business',/
-        doity/ them 1 router
+        path: 'user-business',
         canActivate: [AuthGuard],
         component: UserBusinessComponent
       },
     ]
   },
-  //hỏi hăng ;), sẵn sàng fb ,
   {
     path: 'login',
     component: LoginComponent
@@ -45,7 +43,3 @@ const ROUTES: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-//hiểu r, đù má, ngoài 2 cái này thì ông làm những cái t học được trong tuần này r :)), có gì khó nữa ko chỉ phát nữa
-// ông giỏi thì cái gì xung dẽ
-// như cái view dùng chung tìm hoài méo thấy đâu, ban đầu thấy trong này có layoutcompo... tưởng là view mặc định của angular
-// đọc về router route-outlet

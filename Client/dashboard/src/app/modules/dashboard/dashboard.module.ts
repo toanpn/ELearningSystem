@@ -5,11 +5,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { MaterialModule } from 'src/app/shared/material.module';
-import { TestPageComponent } from '../test-page/test-page.component';
 @NgModule({
   declarations: [
-    DashboardComponent,
-    TestPageComponent
+    DashboardComponent
   ],
   imports: [
     // Core Module
@@ -21,8 +19,7 @@ import { TestPageComponent } from '../test-page/test-page.component';
     MaterialModule
   ],
   exports: [
-    DashboardComponent,
-    TestPageComponent
+    DashboardComponent
   ],
   providers: [
     DatePipe
@@ -30,6 +27,3 @@ import { TestPageComponent } from '../test-page/test-page.component';
 })
 export class DashboardModule {
 }
-//từ từ., như login thì làm thế nào để hủy bỏ top với foooter
-// cha biet
-// tu nhien bi mat y', thế à, còn mấy cái ông làm rât

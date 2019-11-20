@@ -30,7 +30,13 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./src/js/jquery.js",
+              "./src/js/swiper.min.js",
+              "./src/js/masonry.pkgd.min.js",
+              "./src/js/jquery.collapsible.min.js",
+              "./src/js/custom.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -95,7 +101,13 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./src/js/jquery.js",
+              "./src/js/swiper.min.js",
+              "./src/js/masonry.pkgd.min.js",
+              "./src/js/jquery.collapsible.min.js",
+              "./src/js/custom.js"
+            ]
           }
         },
         "lint": {
