@@ -18,9 +18,17 @@ import { MatPaginatorIntlVN } from './core/extends/vietnamese-paginator-intl';
 import { CoreModule } from './core/core.module';
 import { UsersComponent } from './modules/users/users.component';
 import { UserBusinessComponent } from './modules/users/pages/user-business/user-business.component';
+import { CategoryComponent } from './modules/category/category.component';
+import { CategoryBusinessComponent } from './modules/category/pages/category-business/category-business.component';
 
 @NgModule({
-  declarations: [AppComponent, UsersComponent, UserBusinessComponent],
+  declarations: [
+    AppComponent,
+    UsersComponent,
+    UserBusinessComponent,
+    CategoryComponent,
+    CategoryBusinessComponent,
+  ],
   imports: [
     BrowserModule,
     FormsModule,

@@ -7,7 +7,8 @@ const router = {
   createUser: `http://localhost:60793/api/User/AddUser`,
   getUser: `http://localhost:60793/api/User?idUser=`,
   updateUser: `http://localhost:60793/api/User/UpdateUser`,
-  addRole: `http://localhost:60793/api/UserRole/AddUserRole`
+  addRole: `http://localhost:60793/api/UserRole/AddUserRole`,
+  userLogin: `http://localhost:60793/api/Value/GetUserLogin`
 };
 
 @Injectable({
@@ -49,5 +50,9 @@ export class UserService {
 
   addRole(data: { UserId: number; RoleId: number }): Observable<any> {
     return this.http.post(router.addRole, data);
+  }
+
+  getCurrentUser(): Observable<any> {
+    return this.http.get(router.userLogin);
   }
 }

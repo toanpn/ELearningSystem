@@ -67,5 +67,10 @@ namespace eLearningSystem.Services.Service
             return _repository.FindBy(x => x.Roles == role);
 
         }
+
+        public User GetUserByUserName(string userName)
+        {
+            return _repository.GetUserByUserName(userName);
+        }
     }
 }

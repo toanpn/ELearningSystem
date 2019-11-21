@@ -40,9 +40,9 @@
                         <div class="header-bar-menu">
                             <ul class="flex justify-content-center align-items-center py-2 pt-md-0">
                                 
-                                <li><a href="#" [routerLink]="['/home']">Đăng Ký</a></li>
-                                <li><a href="#" [routerLink]="['/login']">Đăng Nhập</a></li>
-                                <!-- <li *ngIf="[AuthGuard]"><a (click)="logout()">{{currentUser?.userName}} Đăng xuất</a></li> -->
+                                <li *ngIf="!currentUser"><a href="#" [routerLink]="['/home']">Đăng Ký</a></li>
+                                <li *ngIf="!currentUser"><a href="#" [routerLink]="['/login']">Đăng Nhập</a></li>
+                                <li *ngIf="currentUser">{{currentUser?.UserName}} <a (click)="logout()" style="display: inline;">Đăng xuất</a></li>
                             </ul>
                         </div><!-- .header-bar-menu -->
                     </div><!-- .col -->

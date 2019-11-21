@@ -43,6 +43,15 @@ namespace eLearningSystem.Repositories.Common
             return _dbset.Remove(entity);
         }
 
+        public virtual void DeleteById(int Id)
+        {
+            var item = _dbset.Find(Id);
+            if(item != null)
+            {
+                _dbset.Remove(item);
+            }
+        }
+
         public virtual void Edit(T entity)
         {
             _entities.Entry(entity).State = System.Data.Entity.EntityState.Modified;

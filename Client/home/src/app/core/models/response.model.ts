@@ -1,5 +1,5 @@
 export interface ResponseModel<T> {
-    code: number;
-    message: string;
-    data: T;
+    StatusCode: number;
+    ResponseMessage: string;
+    Data: T;
 }

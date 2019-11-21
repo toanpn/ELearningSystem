@@ -1,9 +1,10 @@
 export interface UserModel{
-    userid: number;
-    userName: string;
+    Id: number;
+    UserName: string;
     address: string;
-    phone: string;
+    phone_number: string;
     gender: boolean;
     scores: number;
-    email: string;
+    Email: string;
+    birth_day: string;
 }

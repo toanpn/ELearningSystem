@@ -52,6 +52,11 @@ namespace eLearningSystem.Repositories.Repository
             return _dbset.Find(id);
         }
 
+        public User GetUserByUserName(string userName)
+        {
+            return _dbset.FirstOrDefault(t => t.UserName.Equals(userName));
+        }
+
         public void Save()
         {
             _context.SaveChanges();

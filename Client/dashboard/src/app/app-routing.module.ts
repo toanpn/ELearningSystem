@@ -6,6 +6,8 @@ import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { LoginComponent } from './modules/authentication/login/login.component';
 import { LayoutComponent } from './layouts/layout/layout.component';
 import { AuthGuard } from './core/guards/auth.guard';
+import { CategoryComponent } from './modules/category/category.component';
+import { CategoryBusinessComponent } from './modules/category/pages/category-business/category-business.component';
 
 const ROUTES: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -27,6 +29,16 @@ const ROUTES: Routes = [
         path: 'user-business',
         canActivate: [AuthGuard],
         component: UserBusinessComponent
+      },
+      {
+        path: 'categories',
+        canActivate: [AuthGuard],
+        component: CategoryComponent
+      },
+      {
+        path: 'category-business',
+        canActivate: [AuthGuard],
+        component: CategoryBusinessComponent
       },
     ]
   },
