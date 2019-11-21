@@ -59,6 +59,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Entity.cs" />
+    <Compile Include="Constants\DateTimeParse.cs" />
+    <Compile Include="Constants\HttpCode.cs" />
+    <Compile Include="Constants\MessageResponse.cs" />
+    <Compile Include="DTO\ResponseDataDTO.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Anwser.cs" />
     <Compile Include="Model\Category.cs" />
