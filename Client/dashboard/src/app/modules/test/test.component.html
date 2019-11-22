@@ -1,0 +1,36 @@
+<div class="table-data">
+  <a [routerLink]="['/category-business']" class="btn btn-primary pull-right">Thêm mới bài kiểm tra
+  </a>
+  <div class="column">
+    <div class="table-container">
+      <table class="table">
+        <thead class="table-header">
+          <tr>
+            <th>Bài kiểm tra</th>
+            <th style="min-width: 100px">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody class="table-body" *ngIf="category$">
+          <tr *ngFor="let category of (category$ | async); let i = index;" class="cursor-pointer">
+            <td>
+              {{category.name}}
+            </td>
+            <td>
+              <mat-icon (click)="editCategory(category)" style="cursor: pointer;color: #2f4050;" class="mat-18"
+                title="Sửa thể loại" titlePosition="below">
+                edit
+              </mat-icon>
+              <mat-icon (click)="deleteCategory(category)" class="mat-18" title="Xóa thể loại" titlePosition="below"
+                style="margin-left: 14px;color: #fb4b4b;cursor: pointer;">
+                delete
+              </mat-icon>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- <mat-paginator (page)="pageSizeChange($event)" *ngIf="totalItems > 0" [length]="totalItems" [pageIndex]="page"
+    [pageSizeOptions]="[10, 25, 50, 100]" [pageSize]="size" class="paginator"></mat-paginator> -->
+
+</div>

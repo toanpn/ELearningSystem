@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ShareService } from 'src/app/shared/services/share.service';
 
 @Component({
   selector: 'app-courses',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoursesComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _shareService:ShareService
+  ) { }
 
   ngOnInit() {
+    this._shareService.broadcastTitle('Course List');
   }
-
 }

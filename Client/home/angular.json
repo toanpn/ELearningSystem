@@ -99,6 +99,10 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/animate.css/animate.min.css",
+              "node_modules/ngx-toastr/toastr.css",
               "src/styles.scss"
             ],
             "scripts": [
@@ -106,7 +110,9 @@
               "./src/js/swiper.min.js",
               "./src/js/masonry.pkgd.min.js",
               "./src/js/jquery.collapsible.min.js",
-              "./src/js/custom.js"
+              "./src/js/custom.js",
+              "node_modules/metismenu/dist/metisMenu.js",
+              "node_modules/jquery-sparkline/jquery.sparkline.js"
             ]
           }
         },

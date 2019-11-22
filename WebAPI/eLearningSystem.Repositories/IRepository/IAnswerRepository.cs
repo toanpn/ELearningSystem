@@ -6,10 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eLearningSystem.Repositories.Repository
+namespace eLearningSystem.Repositories.IRepository
 {
-    public interface ITestRepository : IGenericRepository<Test>
+    public interface IAnswerRepository: IGenericRepository<Anwser>
     {
-        ICollection<Test> GetListTestByLesson(int id);
+        ICollection<Anwser> GetListAnswerByQuestion(int id);
     }
 }

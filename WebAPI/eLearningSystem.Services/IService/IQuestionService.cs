@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace eLearningSystem.Services.IService
 {
-    public interface ITestService : IBaseService<Test>
+    public interface IQuestionService : IBaseService<Question>
     {
-        ICollection<Test> GetListTestByChapter(int id);
+        ICollection<Question> GetListQuestionByTest(int id);
     }
 }

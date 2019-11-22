@@ -38,8 +38,6 @@ export class CategoryService {
   }
 
   deleteCategory(filter: { id: number }): Observable<any> {
-    console.log(filter.id);
-    console.log(`${router.deleteCategory}` + `${filter.id}`);
     return this.http.get(`${router.deleteCategory}` + `${filter.id}`);
   }
 }

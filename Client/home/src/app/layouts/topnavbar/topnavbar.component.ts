@@ -17,6 +17,7 @@ import { NotificationConstant } from 'src/app/core/constants/notification.consta
 })
 export class TopnavbarComponent implements OnInit, OnDestroy {
   currentUser: UserModel;
+  myTitle: string;
 
   constructor(
     private router: Router,
@@ -34,12 +35,15 @@ export class TopnavbarComponent implements OnInit, OnDestroy {
     this._shareService.currentUserStream$.subscribe((user: UserModel) => {
       if (this.currentUser === undefined) {
         this.currentUser = user;
-        console.log(this.currentUser.Id);
       }
       if (user === undefined) {
         this.currentUser = undefined;
       }
     });
+
+    this._shareService.myTitleStream$.subscribe( (t: string) =>{
+      this.myTitle = t;
+    })
   }
 
   checkToken() {
@@ -63,7 +67,7 @@ export class TopnavbarComponent implements OnInit, OnDestroy {
     this._shareService.broadcastCurrentUserChange(undefined);
     this._notificationService.showSuccess(
       NotificationConstant.LOGOUT_SUCCESS,
-      NotificationConstant.LOGOUT_SUCCESS,
+      "Thành công",
       3000
     );
     return this.router.navigate(['/']);

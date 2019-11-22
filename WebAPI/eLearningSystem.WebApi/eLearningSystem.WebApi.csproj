@@ -195,8 +195,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APIs\AnswerController.cs" />
     <Compile Include="APIs\CategoryController.cs" />
     <Compile Include="APIs\CourseController.cs" />
+    <Compile Include="APIs\QuestionController.cs" />
     <Compile Include="APIs\UserRoleController.cs" />
     <Compile Include="APIs\RoleController.cs" />
     <Compile Include="APIs\TestController.cs" />

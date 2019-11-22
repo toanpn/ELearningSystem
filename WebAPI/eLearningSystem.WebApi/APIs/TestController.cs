@@ -14,77 +14,67 @@ using eLearningSystem.Services.IService;
 
 namespace eLearningSystem.WebApi.APIs
 {
+    [RoutePrefix("api/Test")]
     public class TestController : ApiController
     {
-        ITestService service;
+        private readonly ITestService service;
 
         public TestController(ITestService TestService) => service = TestService;
 
-        // GET: api/Test
-        public IQueryable<Test> GetTests()
+        [HttpGet]
+        [Route("GetAllTest")]
+        public ICollection<Test> GetAllTest()
         {
-            return service.GetAll().AsQueryable();
+            return service.GetAll().ToList();
         }
 
-        // GET: api/Test/5
-        [ResponseType(typeof(Test))]
-        public IHttpActionResult GetTest(int id)
+        [HttpGet]
+        [Route("GetAllTestByChapter")]
+        public ICollection<Test> GetAllTestByChapter([FromUri]int id)
         {
-            Test test = service.GetById(id);
-            if (test == null)
+            return service.GetListTestByChapter(id);
+        }
+
+        [HttpGet]
+        [Route("GetTest")]
+        public Test GetTest([FromUri]int id)
+        {
+            return service.GetById(id);
+        }
+
+        [HttpPost]
+        [Route("AddTest")]
+        public IHttpActionResult AddTest([FromBody]Test test)
+        {
+            if (test != null)
+            {
+                service.Create(test);
+            }
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("UpdateTest")]
+        public IHttpActionResult UpdateTest([FromBody]Test test)
+        {
+            if (test != null)
+            {
+                service.Update(test);
+            }
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("DeleteTest")]
+        public IHttpActionResult DeleteTest([FromUri]int id)
+        {
+            var test = service.GetById(id);
+            if( test == null)
             {
                 return NotFound();
             }
-
-            return Ok(test);
-        }
-
-        // PUT: api/Test/5x`
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutTest(int id, Test test)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != test.id)
-            {
-                return BadRequest();
-            }
-
-            service.Create(test);
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        // POST: api/Test
-        [ResponseType(typeof(Test))]
-        public IHttpActionResult PostTest(Test test)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            service.Create(test);
-
-            return CreatedAtRoute("DefaultApi", new { id = test.id }, test);
-        }
-
-        // DELETE: api/Test/5
-        [ResponseType(typeof(Test))]
-        public IHttpActionResult DeleteTest(int id)
-        {
-            Test test = service.GetById(id);
-            if (test == null)
-            {
-                return NotFound();
-            }
-
             service.Delete(test);
-            return Ok(test);
+            return Ok();
         }
-
     }
 }

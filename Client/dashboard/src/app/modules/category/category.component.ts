@@ -44,13 +44,13 @@ export class CategoryComponent implements OnInit {
   deleteCategory(category) {
     this._categoryService
       .deleteCategory({ id: category.id })
-      .subscribe(res => {
+      .subscribe(() => {
+        this.loadListCategory();
         this._notificationService.showSuccess(
           "Xóa thể loại thành công",
           "Thành Công",
           3000
         );
-        this.loadListCategory();
       });
   }
 

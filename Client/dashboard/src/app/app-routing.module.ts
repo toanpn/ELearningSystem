@@ -8,6 +8,8 @@ import { LayoutComponent } from './layouts/layout/layout.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { CategoryComponent } from './modules/category/category.component';
 import { CategoryBusinessComponent } from './modules/category/pages/category-business/category-business.component';
+import { TestComponent } from './modules/test/test.component';
+import { TestCreateComponent } from './modules/test/pages/test-create/test-create.component';
 
 const ROUTES: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -39,6 +41,16 @@ const ROUTES: Routes = [
         path: 'category-business',
         canActivate: [AuthGuard],
         component: CategoryBusinessComponent
+      },
+      {
+        path: 'test/:id',
+        canActivate: [AuthGuard],
+        component: TestComponent
+      },
+      {
+        path: 'test-create/:id',
+        canActivate: [AuthGuard],
+        component: TestCreateComponent
       },
     ]
   },

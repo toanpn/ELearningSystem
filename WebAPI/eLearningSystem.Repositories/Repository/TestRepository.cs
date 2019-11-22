@@ -21,6 +21,10 @@ namespace eLearningSystem.Repositories.Repository
         {
             return _entities.Set<Test>().AsEnumerable();
         }
-    
+
+        public ICollection<Test> GetListTestByLesson(int id)
+        {
+            return _dbset.Where(t => t.chapter_id == id).ToList();
+        }
     }
 }

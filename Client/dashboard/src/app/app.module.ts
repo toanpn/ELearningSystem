@@ -20,6 +20,7 @@ import { UsersComponent } from './modules/users/users.component';
 import { UserBusinessComponent } from './modules/users/pages/user-business/user-business.component';
 import { CategoryComponent } from './modules/category/category.component';
 import { CategoryBusinessComponent } from './modules/category/pages/category-business/category-business.component';
+import { TestComponent } from './modules/test/test.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { CategoryBusinessComponent } from './modules/category/pages/category-bus
     UserBusinessComponent,
     CategoryComponent,
     CategoryBusinessComponent,
+    TestComponent,
   ],
   imports: [
     BrowserModule,
