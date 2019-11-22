@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 const router = {
-  getAllByChapter: 'http://localhost:60793/api/Test/GetAllTestByChapter?id=',
+  getAllByChapter: 'http://localhost:60793/api/Test/GetTestByChapter?id=',
   createTest: `http://localhost:60793/api/Test/AddTest`,
   getTest: `http://localhost:60793/api/Test/GetTest?Id=`,
   updateTest: `http://localhost:60793/api/Test/UpdateTest`,
@@ -24,6 +24,8 @@ export class TestService {
 
   createTest(test?: {
     name: string;
+    time: number;
+    chapter_id: any;
   }): Observable<any> {
     return this.http.post(router.createTest, test);
   }

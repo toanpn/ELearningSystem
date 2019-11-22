@@ -10,6 +10,6 @@ namespace eLearningSystem.Repositories.Repository
 {
     public interface ITestRepository : IGenericRepository<Test>
     {
-        ICollection<Test> GetListTestByLesson(int id);
+        Test GetTestByChapter(int id);
     }
 }
