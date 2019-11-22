@@ -1,0 +1,36 @@
+<form [formGroup]="formData" class="login-form" novalidate (ngSubmit)="onSubmitLogin()">
+  <mat-form-field>
+    <input matInput placeholder="Tài khoản đăng nhập" formControlName="username" required />
+    <button mat-button matPrefix mat-icon-button>
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-error *ngIf="
+        formData.controls['username'].errors?.required ||
+        formData.get('username').dirty
+      ">Vui lòng nhập tên tài khoản</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Mật khẩu đăng nhập" [type]="hide ? 'password' : 'text'" formControlName="password"
+      required />
+    <mat-error *ngIf="
+        formData.controls['password'].errors?.required ||
+        formData.get('password').dirty
+      ">Vui lòng nhập vào mật khẩu.</mat-error>
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Ẩn mật khẩu'"
+      [attr.aria-pressed]="hide">
+      <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+    </button>
+    <button mat-button matPrefix mat-icon-button>
+      <mat-icon>lock</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <div class="mat-form-field">
+    <mat-checkbox color="primary" formControlName="remember">Giữ đăng nhập lần sau.</mat-checkbox>
+  </div>
+
+  <button mat-flat-button color="primary" class="btn-login" [disabled]="formData.invalid">
+    Đăng Nhập
+  </button>
+</form>

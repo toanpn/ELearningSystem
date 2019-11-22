@@ -20,9 +20,21 @@ import { UsersComponent } from './modules/users/users.component';
 import { UserBusinessComponent } from './modules/users/pages/user-business/user-business.component';
 import { CoursesComponent } from './modules/courses/courses.component';
 import { CourseBusinessComponent } from './modules/courses/course-business/course-business.component';
+import { CategoryComponent } from './modules/category/category.component';
+import { CategoryBusinessComponent } from './modules/category/pages/category-business/category-business.component';
+import { TestComponent } from './modules/test/test.component';
 
 @NgModule({
-  declarations: [AppComponent, UsersComponent, UserBusinessComponent, CoursesComponent, CourseBusinessComponent],
+  declarations: [
+    AppComponent,
+    UsersComponent,
+    UserBusinessComponent,
+    CategoryComponent,
+    CategoryBusinessComponent,
+    TestComponent,
+	CoursesComponent,
+	CourseBusinessComponent
+  ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -47,6 +59,7 @@ import { CourseBusinessComponent } from './modules/courses/course-business/cours
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     { provide: MatPaginatorIntl, useClass: MatPaginatorIntlVN }
   ],
+  exports: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

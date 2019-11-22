@@ -1,0 +1,15 @@
+<div class="mybackground">
+  <div class="container" [ngClass]="{ 'is-desktop': !(isMobile$ | async) }">
+    <div class="container-content">
+      <mat-grid-list [cols]="cols" [rowHeight]="rowHeight" [ngClass]="{ 'is-desktop': !(isMobile$ | async) }">
+        <mat-grid-tile [colspan]="colsLeft" *ngIf="!(isMobile$ | async)" class="left-container">
+          <div id="app-left-content">
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="colsRight" class="right-container">
+          <app-login-form (submitForm)="submitLogin($event)"></app-login-form>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </div>
+</div>

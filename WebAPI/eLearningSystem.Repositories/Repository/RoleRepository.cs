@@ -49,6 +49,15 @@ namespace eLearningSystem.Repositories.Repository
             return entity;
         }
 
+        public void DeleteById(int id)
+        {
+            var item = _dbset.Find(id);
+            if(item != null)
+            {
+                _dbset.Remove(item);
+            }
+        }
+
         public void DeleteRoleByName(string nameRole)
         {
             var role = _dbset.FirstOrDefault(t => t.Name.Equals(nameRole));

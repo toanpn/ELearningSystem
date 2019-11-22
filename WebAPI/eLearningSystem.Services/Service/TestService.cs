@@ -23,5 +23,10 @@ namespace eLearningSystem.Services.Service
             _unitOfWork = unitOfWork;
             _testRepository = courseRepository;
         }
+
+        public ICollection<Test> GetListTestByChapter(int id)
+        {
+            return _testRepository.GetListTestByLesson(id);
+        }
     }
 }

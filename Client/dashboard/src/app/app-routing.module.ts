@@ -1,13 +1,17 @@
 import { UserBusinessComponent } from './modules/users/pages/user-business/user-business.component';
 import { UsersComponent } from './modules/users/users.component';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, OutletContext } from '@angular/router';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { LoginComponent } from './modules/authentication/login/login.component';
 import { LayoutComponent } from './layouts/layout/layout.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { CoursesComponent } from './modules/courses/courses.component';
+import { CategoryComponent } from './modules/category/category.component';
 import { CourseBusinessComponent } from './modules/courses/course-business/course-business.component';
+import { CategoryBusinessComponent } from './modules/category/pages/category-business/category-business.component';
+import { TestComponent } from './modules/test/test.component';
+import { TestCreateComponent } from './modules/test/pages/test-create/test-create.component';
 
 const ROUTES: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -39,6 +43,26 @@ const ROUTES: Routes = [
         path: 'course-business',
         canActivate: [AuthGuard],
         component: CourseBusinessComponent
+      },
+      {
+        path: 'categories',
+        canActivate: [AuthGuard],
+        component: CategoryComponent
+      },
+      {
+        path: 'category-business',
+        canActivate: [AuthGuard],
+        component: CategoryBusinessComponent
+      },
+      {
+        path: 'test/:id',
+        canActivate: [AuthGuard],
+        component: TestComponent
+      },
+      {
+        path: 'test-create/:id',
+        canActivate: [AuthGuard],
+        component: TestCreateComponent
       }
     ]
   },
@@ -54,4 +78,4 @@ const ROUTES: Routes = [
   imports: [RouterModule.forRoot(ROUTES)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

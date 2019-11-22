@@ -49,6 +49,12 @@ namespace eLearningSystem.Services.Base
             _unitOfWork.Commit();
         }
 
+        public virtual void DeleteById(int Id)
+        {
+            _repository.DeleteById(Id);
+            _unitOfWork.Commit();
+        }
+
         public virtual IEnumerable<T> GetAll()
         {
             return _repository.GetAll();

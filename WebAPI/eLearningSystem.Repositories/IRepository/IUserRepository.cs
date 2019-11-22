@@ -16,5 +16,6 @@ namespace eLearningSystem.Repositories.IRepository
         User GetById(int id);
         IEnumerable<User> FindBy(System.Linq.Expressions.Expression<Func<User, bool>> predicate);
         void Save();
+        User GetUserByUserName(string userName);
     }
 }

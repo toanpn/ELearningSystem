@@ -1,0 +1,26 @@
+<div class="container" style="padding-bottom: 100px;">
+  <div>
+    <h1 class="text-center" *ngIf="isUpdate===false">
+      Thêm thể loại
+    </h1>
+    <h1 class="text-center" *ngIf="isUpdate===true">
+      Sửa thể loại
+    </h1>
+  </div>
+  <div>
+    <form [formGroup]="formData">
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label>Tên thể loại</label>
+          <input class="form-control" formControlName="name" id="name" placeholder="name" required="" type="text">
+        </div>
+
+      </div>
+    </form>
+  </div>
+  <div>
+    <button (click)="cancel()" class="btn btn-danger btn-cancel">Hủy</button>
+    <button (click)="onCreate()" class="btn btn-success btn-create" *ngIf="isUpdate===false">Thêm mới</button>
+    <button (click)="onUpdate()" class="btn btn-success btn-create" *ngIf="isUpdate===true">Cập nhập</button>
+  </div>
+</div>
