@@ -25,8 +25,7 @@ export class TestComponent implements OnInit {
     private _activatedRouter: ActivatedRoute,
     private _questionService: QuestionService,
     private _answerService: AnswerService
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     this._activatedRouter.params.subscribe(par => {
@@ -43,7 +42,7 @@ export class TestComponent implements OnInit {
       if (value == null || value == undefined) {
         this._router.navigate(['/test-create', this.id]);
       }
-    })
+    });
   }
 
   ngOnDestroy() {
@@ -65,16 +64,14 @@ export class TestComponent implements OnInit {
   }
 
   deleteTest(test) {
-    this._testService
-      .deleteTest({ id: test.id })
-      .subscribe(res => {
-        this._notificationService.showSuccess(
-          "Xóa bài kiểm tra thành công",
-          "Thành Công",
-          3000
-        );
-        this.loadListTest(this.id);
-      });
+    this._testService.deleteTest({ id: test.id }).subscribe(res => {
+      this._notificationService.showSuccess(
+        'Xóa bài kiểm tra thành công',
+        'Thành Công',
+        3000
+      );
+      this.loadListTest(this.id);
+    });
   }
 
   catchError(err: any) {

@@ -6,9 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { MaterialModule } from 'src/app/shared/material.module';
 @NgModule({
-  declarations: [
-    DashboardComponent
-  ],
+  declarations: [DashboardComponent],
   imports: [
     // Core Module
     BrowserModule,
@@ -18,12 +16,7 @@ import { MaterialModule } from 'src/app/shared/material.module';
     // Mat Module
     MaterialModule
   ],
-  exports: [
-    DashboardComponent
-  ],
-  providers: [
-    DatePipe
-  ]
+  exports: [DashboardComponent],
+  providers: [DatePipe]
 })
-export class DashboardModule {
-}
+export class DashboardModule {}

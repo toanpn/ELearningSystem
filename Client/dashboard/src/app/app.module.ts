@@ -23,6 +23,7 @@ import { CourseBusinessComponent } from './modules/courses/course-business/cours
 import { CategoryComponent } from './modules/category/category.component';
 import { CategoryBusinessComponent } from './modules/category/pages/category-business/category-business.component';
 import { TestComponent } from './modules/test/test.component';
+import { TestCreateComponent } from './modules/test/pages/test-create/test-create.component';
 
 @NgModule({
   declarations: [
@@ -32,8 +33,9 @@ import { TestComponent } from './modules/test/test.component';
     CategoryComponent,
     CategoryBusinessComponent,
     TestComponent,
-	CoursesComponent,
-	CourseBusinessComponent
+    TestCreateComponent,
+    CoursesComponent,
+    CourseBusinessComponent
   ],
   imports: [
     BrowserModule,
