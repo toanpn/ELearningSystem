@@ -1,46 +1,70 @@
-﻿using eLearningSystem.Repositories.UnitOfWork;
+﻿using eLearningSystem.Data.Model;
 using eLearningSystem.Services.IService;
-using eLearningSystem.Services.Service;
+using eLearningSystem.WebApi.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
+using static eLearningSystem.Data.Model.User;
 
 namespace eLearningSystem.WebApi.APIs
 {
+    [RoutePrefix("api/Course")]
+    [Authorize]
     public class CourseController : ApiController
     {
-        ICourseService service;
-   
-        public CourseController(ICourseService CourseService)
+        private readonly ICourseService _courseService;
+
+        public CourseController(ICourseService courseService)
         {
-            service = CourseService;
+            _courseService = courseService;
         }
 
-        public IHttpActionResult Get()
+        //Post: api/Course/AddCourse
+        [Route("AddCourse")]
+        [HttpPost]
+        public IHttpActionResult AddCourse([FromBody]Course course)
         {
-            //if (service.GetCourses().Count() == 0)
-            //    return Ok(new { results = "" });
-            return Ok(new { results = service.GetAll() });
+            _courseService.Create(course);
+            return Ok();
         }
 
-        // GET: api/Course/5
-        public IHttpActionResult Get(int id)
+        //Get: api/Course/GetAllCourse
+        [Route("GetAllCourse")]
+        [HttpGet]
+        public IHttpActionResult GetAllCourse()
         {
-            return Ok(new { results = service.GetById(id) });
+            return Ok(new { results = _courseService.GetAll() });
         }
 
-        // POST: api/Course
-        public void Post([FromBody]string value)
+        //Get: api/Course/DeleteCourse
+        [Route("DeleteCourse")]
+        [HttpGet]
+        public IHttpActionResult DeleteCourse(int idCourse)
         {
+            _courseService.Delete(_courseService.GetById(idCourse));
+            return Ok();
         }
 
-        // PUT: api/Course/5
-        public void Put(int id, [FromBody]string value)
+        //Post: api/Course/DeleteCourse
+        [Route("DeleteCourse")]
+        [HttpPost]
+        public IHttpActionResult DeleteCourse([FromBody]Course course)
         {
+            _courseService.Delete(course);
+            return Ok();
         }
 
-        // DELETE: api/Course/5
-        public void Delete(int id)
+        //Post: api/Course/UpdateCourse
+        [Route("UpdateCourse")]
+        [HttpPost]
+        public IHttpActionResult UpdateCourse([FromBody]Course course)
         {
-            service.Delete(service.GetById(id));
+            _courseService.Update(course);
+            return Ok();
         }
+
     }
 }

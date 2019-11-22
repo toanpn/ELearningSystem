@@ -1,5 +1,5 @@
 {
-  "workbench.iconTheme": "material-icon-theme",
+  "workbench.iconTheme": "vscode-icons",
   "peacock.favoriteColors": [
     {
       "name": "Angular Red",
@@ -132,7 +132,7 @@
     "editor.defaultFormatter": "vscode.json-language-features"
   },
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "Visual Studio Dark",
+  "workbench.colorTheme": "One Monokai",
   "[html]": {
     "editor.defaultFormatter": "vscode.html-language-features",
     "editor.formatOnSave": true,
