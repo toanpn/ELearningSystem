@@ -3,11 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 const router = {
-  getAllByQuestion: 'http://localhost:60793/api/Answer/GetAllQuestionByTest?id=',
-  createAnswer: `http://localhost:60793/api/Answer/AddQuestion`,
-  getAnswer: `http://localhost:60793/api/Answer/GetQuestion?Id=`,
-  updateAnswer: `http://localhost:60793/api/Answer/UpdateQuestion`,
-  deleteAnswer: `http://localhost:60793/api/Answer/DeleteQuestion?Id=`,
+  getAllAnswer: 'http://localhost:60793/api/Answer/GetAllAnswerByQuestion?id=',
+  createAnswer: `http://localhost:60793/api/Answer/AddAnswer`,
+  getAnswer: `http://localhost:60793/api/Answer/GetAnswer?Id=`,
+  updateAnswer: `http://localhost:60793/api/Answer/UpdateAnswer`,
+  deleteAnswer: `http://localhost:60793/api/Answer/DeleteAnswer?Id=`,
 };
 
 @Injectable({
@@ -19,18 +19,22 @@ export class AnswerService {
   loadListAnswers(filter: {
     id: string
   }): Observable<any> {
-    return this.http.get(`${router.getAllByQuestion}` + `${filter.id}`);
+    return this.http.get(`${router.getAllAnswer}` + `${filter.id}`);
   }
 
   createAnswer(value?: {
-    name: string;
+    content: string;
+    type: string;
+    question_id: number;
   }): Observable<any> {
     return this.http.post(router.createAnswer, value);
   }
 
   updateAnswer(value?: {
-    name: string;
-    Id: number;
+    content: string;
+    type: string;
+    question_id: number;
+    id: number;
   }): Observable<any> {
     return this.http.post(router.updateAnswer, value);
   }

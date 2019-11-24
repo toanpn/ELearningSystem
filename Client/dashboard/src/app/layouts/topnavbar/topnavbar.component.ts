@@ -26,8 +26,6 @@ export class TopnavbarComponent implements OnInit, OnDestroy {
     return this.router.navigate(['/login']);
   }
 
-  
-
   toggleNavigation(): void {
     jQuery('body').toggleClass('mini-navbar');
     smoothlyMenu();

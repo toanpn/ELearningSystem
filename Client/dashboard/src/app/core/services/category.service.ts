@@ -7,29 +7,24 @@ const router = {
   createCategory: `http://localhost:60793/api/Category/AddCategory`,
   getCategory: `http://localhost:60793/api/Category/GetCategory?Id=`,
   updateCategory: `http://localhost:60793/api/Category/UpdateCategory`,
-  deleteCategory: `http://localhost:60793/api/Category/DeleteCategory?Id=`,
+  deleteCategory: `http://localhost:60793/api/Category/DeleteCategory?Id=`
 };
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   loadListCategories(): Observable<any> {
     return this.http.get(router.getAll);
   }
 
-  createCategory(category?: {
-    name: string;
-  }): Observable<any> {
+  createCategory(category?: { name: string }): Observable<any> {
     return this.http.post(router.createCategory, category);
   }
 
-  updateCategory(category?: {
-    name: string;
-    Id: number;
-  }): Observable<any> {
+  updateCategory(category?: { name: string; Id: number }): Observable<any> {
     return this.http.post(router.updateCategory, category);
   }
 

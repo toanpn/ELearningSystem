@@ -19,7 +19,7 @@ export class UsersComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private router: Router,
     private notificationService: NotificationService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.loadListUsers();

@@ -19,8 +19,6 @@ namespace eLearningSystem.Data.Model
         //[DatabaseGenerated(DatabaseGeneratedOption.None)]
         //public int id { get; set; }
 
-        public int? scores { get; set; }
-
         [ForeignKey("Test")]
         public int? test_id { get; set; }
 
@@ -28,9 +26,12 @@ namespace eLearningSystem.Data.Model
         public string correct_answer { get; set; }
 
         public int? index_num { get; set; }
+        public string content { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Anwser> Anwsers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User_Question> User_Questions { get; set; }
 
         public virtual Test Test { get; set; }
     }

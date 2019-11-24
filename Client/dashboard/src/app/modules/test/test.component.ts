@@ -6,6 +6,8 @@ import { takeUntil, catchError } from 'rxjs/operators';
 import { TestService } from 'src/app/core/services/test.service';
 import { QuestionService } from 'src/app/core/services/question.service';
 import { AnswerService } from 'src/app/core/services/answer.service';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { Test } from 'src/app/core/models/test.model';
 
 @Component({
   selector: 'app-test',
@@ -15,12 +17,13 @@ import { AnswerService } from 'src/app/core/services/answer.service';
 export class TestComponent implements OnInit {
   private destroyed$ = new Subject();
   // id chapter
-  private id: any;
+  private id: number;
 
   private idTest: any;
+  formData: FormGroup;
 
-  test$: Observable<any>;
-  questions$: Observable<any>;
+  // tu sau lam the nay cho do mat cong nhe, ko ép kiểu à
+  test: Test;
 
   constructor(
     // tslint:disable-next-line:variable-name
@@ -34,43 +37,52 @@ export class TestComponent implements OnInit {
     // tslint:disable-next-line:variable-name
     private _questionService: QuestionService,
     // tslint:disable-next-line:variable-name
-    private _answerService: AnswerService
+    private _answerService: AnswerService,
+    // tslint:disable-next-line:variable-name
+    private _formBuilder: FormBuilder
   ) {
+    this.initForm();
+  }
+
+  initForm() {
+    this.formData = this._formBuilder.group({
+      name: '',
+      time: '0'
+    });
+  }
+
+  get form() {
+    return this.formData.controls;
   }
 
   ngOnInit() {
     this._activatedRouter.params.subscribe(par => {
       const id = par.id;
-      console.log(id);
-      if (id) {
+      if (id !== undefined) {
         this.id = id;
         this.loadTest(id);
       } else {
-        this._router.navigate(['/chapter']);
+        this._router.navigate(['/chapter', this.id]);
       }
     });
+  }
 
-    this.test$.subscribe(value => {
-      console.log(value);
-      if (value == null || value === undefined) {
-        this.createTest();
-      }
+  setValueToForm(test: any) {
+    this.idTest = test.id;
+
+    this.formData.patchValue({
+      name: test.name,
+      time: test.time
     });
   }
 
   createTest() {
     this._testService.createTest({ name: 'Bài kiểm tra', time: 45, chapter_id: this.id })
-      .subscribe(res => {
-
-      });
-  }
-
-  loadAllQuestion() {
-    console.log('load question');
-    // tslint:disable-next-line:max-line-length
-    this.questions$ = this._questionService
-      .loadListQuestions({ id: this.idTest })
-      .pipe(takeUntil(this.destroyed$), catchError(this.catchError));
+      .subscribe(o => {
+      }, () => { },
+        () => {
+          this.loadTest(this.id);
+        });
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
@@ -81,32 +93,68 @@ export class TestComponent implements OnInit {
   }
 
   loadTest(id: any) {
-    this.test$ = this._testService
+    this._testService
       .loadListTests({
         id
-      })
-      .pipe(takeUntil(this.destroyed$), catchError(this.catchError));
-  }
-
-  editTest(test) {
-    this._router.navigateByUrl(`/test-create?id=${test.id}`);
-  }
-
-  deleteTest(test) {
-    this._testService
-      .deleteTest({ id: test.id })
-      .subscribe(res => {
-        this._notificationService.showSuccess(
-          'Xóa bài kiểm tra thành công',
-          'Thành Công',
-          3000
-        );
-        this.loadTest(this.id);
+      }).pipe(takeUntil(this.destroyed$), catchError(this.catchError))
+      .subscribe(value => {
+        if (value == null || value === undefined) {
+          this.createTest();
+        } else {
+          this.setValueToForm(value);
+          this.test = value;
+        }
       });
   }
 
+  editMyTest() {
+    this._testService.updateTest({
+      Id: this.idTest,
+      name: this.form.name.value,
+      time: this.form.time.value,
+      chapter_id: this.test.chapter_id
+    }).subscribe(() => {
+      this._notificationService.showSuccess(
+        'Cập nhật thành công',
+        'Thành Công',
+        3000
+      );
+    });
+  }
+
+  deleteTest(test) {
+    this._testService.deleteTest({ id: test.id }).subscribe(res => {
+      this._notificationService.showSuccess(
+        'Xóa bài kiểm tra thành công',
+        'Thành Công',
+        3000
+      );
+      this.loadTest(this.id);
+    });
+  }
+
+  removeQuestion(question: any) {
+    this._questionService.deleteQuestion({
+      id: question.id
+    }).subscribe(res => {
+      this.loadTest(this.id);
+      this._notificationService.showSuccess(
+        'Xóa thành công',
+        'Thành công',
+        3000
+      );
+    });
+  }
+
+  editQuestion(question: any) {
+    this._router.navigateByUrl(`/question-business?id=${question.id}&idTest=${this.test.id}&idChapter=${this.id}`);
+  }
+
+  addQuestion() {
+    this._router.navigateByUrl(`/question-business?idTest=${this.test.id}&idChapter=${this.id}`);
+  }
+
   catchError(err: any) {
-    console.log(err);
     return of(null);
   }
 }

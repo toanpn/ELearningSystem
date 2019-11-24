@@ -11,5 +11,6 @@ namespace eLearningSystem.Services.IService
     public interface ITestService : IBaseService<Test>
     {
         Test GetTestByChapter(int id);
+        int GetLastIndex();
     }
 }

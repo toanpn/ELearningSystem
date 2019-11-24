@@ -1,0 +1,74 @@
+<div class="table-data">
+  <!-- <a [routerLink]="['/course-business']" class="btn btn-primary pull-right"><i class="fa fa-bars"></i>Thêm mới khoá học
+    <caption></caption>
+  </a> -->
+  <button [routerLink]="['/course-business']" class="btn btn-primary pull-right"><i class="fa fa-plus-circle"></i> Thêm
+    mới khoá học</button>
+  <div class="column">
+    <div class="table-container">
+      <table class="table">
+        <thead class="table-header">
+          <tr>
+            <th style="width: 3.33%">ID</th>
+            <th style="width: 6.66%">Avatar</th>
+            <th>Tên khoá học</th>
+            <th>Category</th>
+            <th style="width: 25.66%">Mô tả</th>
+            <th style="width: 6.66%">Giá tiền</th>
+            <th style="width: 6.66%">Trạng thái</th>
+            <th style="width: 7.66%">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody class="table-body" *ngIf="courses$">
+          <!-- <tr style="height: 100px;" *ngFor="let course of (courses$ | async)?.results;" class="cursor-pointer"> -->
+          <tr style="height: 100px;" *ngFor="let course of courses$" class="cursor-pointer">
+            <td>
+              {{course.id}}
+            </td>
+            <td>
+              <img [src]="course.image_url" alt="ảnh khoá học">
+              <!-- {{course.image_url}} -->
+            </td>
+            <td>
+              {{course.name}}
+            </td>
+            <td>
+              <a>{{course.Category.name}}</a>
+            </td>
+            <td style="max-height:100px">
+              {{course.description}}
+            </td>
+            <td style="text-align: center;">
+              {{course.price | currency : "VND"  }}
+            </td>
+            <td style="text-align: center;">
+              <div *ngIf="course.is_visiable else invisiable">
+                <i class="fas fa-eye text-success"></i>
+              </div>
+              <ng-template #invisiable>
+                <i class="fas fa-eye-slash"></i>
+              </ng-template>
+            </td>
+            <td style="text-align: center;">
+              <mat-icon color="primary" [routerLink]="['/users']" class="mat-18" title="Xem chi tiết khoá học"
+                titlePosition="below" style="cursor: pointer;">
+                open_in_new
+              </mat-icon>
+              <mat-icon color="warn" (click)="editUser(course)" class="mat-18" title="Sửa thông tin khoá học"
+                titlePosition="below" style="cursor: pointer;">
+                edit
+              </mat-icon>
+              <mat-icon color="error" (click)="delete(course)" class="mat-18" title="Xoá khoá học" titlePosition="below"
+                style="cursor: pointer;">
+                delete
+              </mat-icon>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- <mat-paginator (page)="pageSizeChange($event)" *ngIf="totalItems > 0" [length]="totalItems" [pageIndex]="page"
+    [pageSizeOptions]="[10, 25, 50, 100]" [pageSize]="size" class="paginator"></mat-paginator> -->
+
+</div>

@@ -22,5 +22,11 @@ namespace eLearningSystem.Services.Service
             _unitOfWork = unitOfWork;
             _categoryRepository = categoryRepository;
         }
+
+
+        public Category GetById(int Id)
+        {
+            return _categoryRepository.FindBy(x=>x.id == Id).FirstOrDefault();
+        }
     }
 }

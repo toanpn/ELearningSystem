@@ -1,0 +1,52 @@
+<div class="container" style="padding-bottom: 100px; margin-right: 40px;">
+  <div>
+    <h1 class="text-center" *ngIf="isUpdate===false">
+      Thêm câu hỏi
+    </h1>
+    <h1 class="text-center" *ngIf="isUpdate===true">
+      Sửa câu hỏi
+    </h1>
+  </div>
+  <div>
+    <div class="row" style="margin-right: 30px; ">
+      <div class="col-md-10">
+        <label>Nội dung câu hỏi</label>
+        <ckeditor [editor]="Editor" [(ngModel)]="content" (ngModelChange)="content = $event"></ckeditor>
+      </div>
+      <div class="col-md-10">
+        <label>Đáp án đúng</label>
+        <br>
+        <select [(ngModel)]="correctAnswer" style="width: 100%;" (ngModelChange)="correctAnswer = $event">
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+        </select>
+      </div>
+      <div class="col-md-10" style="margin-top: 24px;">
+        <label>Đáp án</label>
+      </div>
+      <div class="col-md-5">
+        <label>A.</label>
+        <ckeditor [editor]="Editor" [(ngModel)]="ansA" (ngModelChange)="ansA = $event"></ckeditor>
+      </div>
+      <div class="col-md-5">
+        <label>B.</label>
+        <ckeditor [editor]="Editor" [(ngModel)]="ansB" (ngModelChange)="ansB = $event"></ckeditor>
+      </div>
+      <div class="col-md-5">
+        <label>C.</label>
+        <ckeditor [editor]="Editor" [(ngModel)]="ansC" (ngModelChange)="ansC = $event"></ckeditor>
+      </div>
+      <div class="col-md-5">
+        <label>D.</label>
+        <ckeditor [editor]="Editor" [(ngModel)]="ansD" (ngModelChange)="ansD = $event"></ckeditor>
+      </div>
+      <div class="col-md-10" style="margin-top: 30px;">
+        <button (click)="cancel()" class="btn btn-danger btn-cancel">Hủy</button>
+        <button (click)="onCreate()" class="btn btn-success btn-create" *ngIf="isUpdate===false">Thêm mới</button>
+        <button (click)="onUpdate()" class="btn btn-success btn-create" *ngIf="isUpdate===true">Cập nhập</button>
+      </div>
+    </div>
+  </div>
+</div>

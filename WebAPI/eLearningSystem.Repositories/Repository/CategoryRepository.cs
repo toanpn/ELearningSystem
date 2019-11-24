@@ -14,5 +14,11 @@ namespace eLearningSystem.Repositories.Repository
         {
 
         }
+
+        public override IEnumerable<Category> GetAll()
+        {
+            return _entities.Set<Category>().AsEnumerable();
+        }
+
     }
 }

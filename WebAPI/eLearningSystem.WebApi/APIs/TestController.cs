@@ -42,6 +42,13 @@ namespace eLearningSystem.WebApi.APIs
             return service.GetById(id);
         }
 
+        [HttpGet]
+        [Route("GetLastIndex")]
+        public int GetLastIndex()
+        {
+            return service.GetLastIndex();
+        }
+
         [HttpPost]
         [Route("AddTest")]
         public IHttpActionResult AddTest([FromBody]Test test)

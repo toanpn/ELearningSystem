@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subject, Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/shared/services/notification.service';
@@ -10,17 +10,16 @@ import { takeUntil, catchError } from 'rxjs/operators';
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.scss']
 })
-export class CategoryComponent implements OnInit {
+export class CategoryComponent implements OnInit, OnDestroy {
   private destroyed$ = new Subject();
 
   category$: Observable<any>;
 
   constructor(
-    private _router: Router,
-    private _notificationService: NotificationService,
-    private _categoryService: CategoryService
-  ) {
-  }
+    private router: Router,
+    private notificationService: NotificationService,
+    private categoryService: CategoryService
+  ) {}
 
   ngOnInit() {
     this.loadListCategory();
@@ -32,26 +31,24 @@ export class CategoryComponent implements OnInit {
   }
 
   loadListCategory() {
-    this.category$ = this._categoryService
+    this.category$ = this.categoryService
       .loadListCategories()
       .pipe(takeUntil(this.destroyed$), catchError(this.catchError));
   }
 
   editCategory(category) {
-    this._router.navigateByUrl(`/category-business?id=${category.id}`);
+    this.router.navigateByUrl(`/category-business?id=${category.id}`);
   }
 
   deleteCategory(category) {
-    this._categoryService
-      .deleteCategory({ id: category.id })
-      .subscribe(() => {
-        this.loadListCategory();
-        this._notificationService.showSuccess(
-          "Xóa thể loại thành công",
-          "Thành Công",
-          3000
-        );
-      });
+    this.categoryService.deleteCategory({ id: category.id }).subscribe(() => {
+      this.loadListCategory();
+      this.notificationService.showSuccess(
+        'Xóa thể loại thành công',
+        'Thành Công',
+        3000
+      );
+    });
   }
 
   catchError(err: any) {

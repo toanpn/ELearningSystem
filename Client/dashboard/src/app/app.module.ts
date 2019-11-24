@@ -18,9 +18,14 @@ import { MatPaginatorIntlVN } from './core/extends/vietnamese-paginator-intl';
 import { CoreModule } from './core/core.module';
 import { UsersComponent } from './modules/users/users.component';
 import { UserBusinessComponent } from './modules/users/pages/user-business/user-business.component';
+import { CoursesComponent } from './modules/courses/courses.component';
+import { CourseBusinessComponent } from './modules/courses/course-business/course-business.component';
 import { CategoryComponent } from './modules/category/category.component';
 import { CategoryBusinessComponent } from './modules/category/pages/category-business/category-business.component';
 import { TestComponent } from './modules/test/test.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { from } from 'rxjs';
+import { QuestionBusinessComponent } from './modules/test/pages/question-business/question-business.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +35,9 @@ import { TestComponent } from './modules/test/test.component';
     CategoryComponent,
     CategoryBusinessComponent,
     TestComponent,
+    CoursesComponent,
+    CourseBusinessComponent,
+    QuestionBusinessComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +56,9 @@ import { TestComponent } from './modules/test/test.component';
     DashboardModule,
     AuthModule,
     ComponentModule,
-    CoreModule
+    CoreModule,
+    // ckeditor
+    CKEditorModule,
   ],
   providers: [
     ShareService,

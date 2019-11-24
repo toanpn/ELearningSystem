@@ -11,5 +11,6 @@ namespace eLearningSystem.Repositories.Repository
     public interface ITestRepository : IGenericRepository<Test>
     {
         Test GetTestByChapter(int id);
+        int GetLastIndex();
     }
 }

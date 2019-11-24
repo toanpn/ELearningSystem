@@ -1,20 +1,21 @@
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClientHelper } from '../../shared/HttpClientHelper';
 
 const router = {
-  getAll: 'http://localhost:60793/api/User/GetAllUser',
-  createUser: `http://localhost:60793/api/User/AddUser`,
-  getUser: `http://localhost:60793/api/User?idUser=`,
-  updateUser: `http://localhost:60793/api/User/UpdateUser`,
-  addRole: `http://localhost:60793/api/UserRole/AddUserRole`
+  getAll: `${HttpClientHelper.baseURL}/api/User/GetAllUser`,
+  createUser: `${HttpClientHelper.baseURL}/api/User/AddUser`,
+  getUser: `${HttpClientHelper.baseURL}/api/User?idUser=`,
+  updateUser: `${HttpClientHelper.baseURL}/api/User/UpdateUser`,
+  addRole: `${HttpClientHelper.baseURL}/api/UserRole/AddUserRole`
 };
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   loadListUsers(): Observable<any> {
     return this.http.get(router.getAll);

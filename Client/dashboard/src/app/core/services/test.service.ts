@@ -8,6 +8,7 @@ const router = {
   getTest: `http://localhost:60793/api/Test/GetTest?Id=`,
   updateTest: `http://localhost:60793/api/Test/UpdateTest`,
   deleteTest: `http://localhost:60793/api/Test/DeleteTest?Id=`,
+  lastIndex: `http://localhost:60793/api/Test/GetLastIndex`
 };
 
 @Injectable({
@@ -33,6 +34,8 @@ export class TestService {
   updateTest(test?: {
     name: string;
     Id: number;
+    time: any;
+    chapter_id: any;
   }): Observable<any> {
     return this.http.post(router.updateTest, test);
   }
@@ -43,5 +46,9 @@ export class TestService {
 
   deleteTest(filter: { id: number }): Observable<any> {
     return this.http.get(`${router.deleteTest}` + `${filter.id}`);
+  }
+
+  lastIndex(): Observable<any> {
+    return this.http.get(`${router.lastIndex}`);
   }
 }

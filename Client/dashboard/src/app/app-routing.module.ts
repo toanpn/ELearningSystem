@@ -6,9 +6,12 @@ import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { LoginComponent } from './modules/authentication/login/login.component';
 import { LayoutComponent } from './layouts/layout/layout.component';
 import { AuthGuard } from './core/guards/auth.guard';
+import { CoursesComponent } from './modules/courses/courses.component';
 import { CategoryComponent } from './modules/category/category.component';
+import { CourseBusinessComponent } from './modules/courses/course-business/course-business.component';
 import { CategoryBusinessComponent } from './modules/category/pages/category-business/category-business.component';
 import { TestComponent } from './modules/test/test.component';
+import { QuestionBusinessComponent } from './modules/test/pages/question-business/question-business.component';
 
 const ROUTES: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -32,6 +35,16 @@ const ROUTES: Routes = [
         component: UserBusinessComponent
       },
       {
+        path: 'courses',
+        canActivate: [AuthGuard],
+        component: CoursesComponent
+      },
+      {
+        path: 'course-business',
+        canActivate: [AuthGuard],
+        component: CourseBusinessComponent
+      },
+      {
         path: 'categories',
         canActivate: [AuthGuard],
         component: CategoryComponent
@@ -45,6 +58,11 @@ const ROUTES: Routes = [
         path: 'test/:id',
         canActivate: [AuthGuard],
         component: TestComponent
+      },
+      {
+        path: 'question-business',
+        canActivate: [AuthGuard],
+        component: QuestionBusinessComponent
       },
     ]
   },
