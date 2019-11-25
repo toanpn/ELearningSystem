@@ -18,9 +18,10 @@ import { CoreModule } from './core/core.module';
 import { CourseModule } from './modules/courses/courses.module';
 import { HomeModule } from './modules/home/home.module';
 import { BreadcrumComponent } from './layouts/breadcrum/breadcrum.component';
+import { ItemCourserComponent } from './layouts/item-courser/item-courser.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ItemCourserComponent],
   imports: [
     BrowserModule,
     FormsModule,

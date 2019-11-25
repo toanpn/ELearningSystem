@@ -9,11 +9,12 @@ import { ShareService } from 'src/app/shared/services/share.service';
 export class HomeComponent implements OnInit {
 
   constructor(
-    private _shareService:ShareService
+    // tslint:disable-next-line:variable-name
+    private _shareService: ShareService
   ) { }
 
   ngOnInit() {
-    this._shareService.broadcastTitle('Home');
+    this._shareService.broadcastTitle(`BEST ONLINE\n LEARNING SYSTEM`);
   }
 
 }
