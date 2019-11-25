@@ -11,5 +11,7 @@ namespace eLearningSystem.Repositories.IRepository
     public interface IQuestionRepository : IGenericRepository<Question>
     {
         ICollection<Question> GetListQuestionByTest(int id);
+        int GetLastIndex(int id);
+        int GetLastId();
     }
 }

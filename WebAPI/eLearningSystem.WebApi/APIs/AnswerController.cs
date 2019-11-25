@@ -29,7 +29,7 @@ namespace eLearningSystem.WebApi.APIs
         [Route("GetAllAnswerByQuestion")]
         public ICollection<Anwser> GetAllAnswerByQuestion([FromUri]int id)
         {
-            return _answerService.GetListAnswerByQuestion(id);
+            return _answerService.GetListAnswerByQuestion(id).OrderBy(t => t.type).ToList();
         }
 
         [HttpGet]
@@ -53,7 +53,7 @@ namespace eLearningSystem.WebApi.APIs
         public IHttpActionResult UpdateAnswer([FromBody] Anwser anwser)
         {
             if (anwser != null)
-                _answerService.Create(anwser);
+                _answerService.Update(anwser);
             return Ok();
         }
 

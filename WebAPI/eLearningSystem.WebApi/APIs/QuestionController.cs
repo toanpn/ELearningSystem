@@ -32,7 +32,7 @@ namespace eLearningSystem.WebApi.APIs
         [Route("GetAllQuestionByTest")]
         public ICollection<Question> GetAllQuestionByTest([FromUri]int id)
         {
-            return _questionService.GetListQuestionByTest(id);
+            return _questionService.GetListQuestionByTest(id).OrderBy(t => t.index_num).ToList();
         }
 
         [HttpGet]
@@ -74,6 +74,20 @@ namespace eLearningSystem.WebApi.APIs
                 _questionService.Update(question);
             }
             return Ok();
+        }
+
+        [HttpGet]
+        [Route("GetLastIndexTest")]
+        public int GetLastIndexTest([FromUri] int id)
+        {
+            return _questionService.GetLastIndex(id);
+        }
+
+        [HttpGet]
+        [Route("GetLastId")]
+        public int GetLastId()
+        {
+            return _questionService.GetLastId();
         }
     }
 }

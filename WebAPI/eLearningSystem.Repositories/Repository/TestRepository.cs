@@ -22,9 +22,14 @@ namespace eLearningSystem.Repositories.Repository
             return _entities.Set<Test>().AsEnumerable();
         }
 
-        public ICollection<Test> GetListTestByLesson(int id)
+        public int GetLastIndex()
         {
-            return _dbset.Where(t => t.chapter_id == id).ToList();
+            return _dbset.Max(t => t.id);
+        }
+
+        public Test GetTestByChapter(int id)
+        {
+            return _dbset.FirstOrDefault(t => t.chapter_id == id);
         }
     }
 }

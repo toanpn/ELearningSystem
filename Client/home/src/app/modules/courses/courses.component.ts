@@ -9,7 +9,8 @@ import { ShareService } from 'src/app/shared/services/share.service';
 export class CoursesComponent implements OnInit {
 
   constructor(
-    private _shareService:ShareService
+    // tslint:disable-next-line:variable-name
+    private _shareService: ShareService
   ) { }
 
   ngOnInit() {

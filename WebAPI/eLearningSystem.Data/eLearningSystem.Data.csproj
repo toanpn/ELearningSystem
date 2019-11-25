@@ -74,6 +74,7 @@
     <Compile Include="Model\Transaction.cs" />
     <Compile Include="Model\User_Course.cs" />
     <Compile Include="Model\User_Lesson.cs" />
+    <Compile Include="Model\User_Question.cs" />
     <Compile Include="Model\User_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

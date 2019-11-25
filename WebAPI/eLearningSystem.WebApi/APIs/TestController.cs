@@ -29,10 +29,10 @@ namespace eLearningSystem.WebApi.APIs
         }
 
         [HttpGet]
-        [Route("GetAllTestByChapter")]
-        public ICollection<Test> GetAllTestByChapter([FromUri]int id)
+        [Route("GetTestByChapter")]
+        public Test GetTestByChapter([FromUri]int id)
         {
-            return service.GetListTestByChapter(id);
+            return service.GetTestByChapter(id);
         }
 
         [HttpGet]
@@ -40,6 +40,13 @@ namespace eLearningSystem.WebApi.APIs
         public Test GetTest([FromUri]int id)
         {
             return service.GetById(id);
+        }
+
+        [HttpGet]
+        [Route("GetLastIndex")]
+        public int GetLastIndex()
+        {
+            return service.GetLastIndex();
         }
 
         [HttpPost]

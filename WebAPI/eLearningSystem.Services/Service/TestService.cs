@@ -24,9 +24,14 @@ namespace eLearningSystem.Services.Service
             _testRepository = courseRepository;
         }
 
-        public ICollection<Test> GetListTestByChapter(int id)
+        public int GetLastIndex()
         {
-            return _testRepository.GetListTestByLesson(id);
+            return _testRepository.GetLastIndex();
+        }
+
+        public Test GetTestByChapter(int id)
+        {
+            return _testRepository.GetTestByChapter(id);
         }
     }
 }

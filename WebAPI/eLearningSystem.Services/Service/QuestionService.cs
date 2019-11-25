@@ -23,6 +23,16 @@ namespace eLearningSystem.Services.Service
             _questionRepository = repository;
         }
 
+        public int GetLastId()
+        {
+            return _questionRepository.GetLastId();
+        }
+
+        public int GetLastIndex(int id)
+        {
+            return _questionRepository.GetLastIndex(id);
+        }
+
         public ICollection<Question> GetListQuestionByTest(int id)
         {
             return _questionRepository.GetListQuestionByTest(id);

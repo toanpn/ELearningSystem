@@ -10,6 +10,7 @@ namespace eLearningSystem.Services.IService
 {
     public interface ITestService : IBaseService<Test>
     {
-        ICollection<Test> GetListTestByChapter(int id);
+        Test GetTestByChapter(int id);
+        int GetLastIndex();
     }
 }

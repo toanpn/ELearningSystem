@@ -34,6 +34,7 @@ namespace eLearningSystem.Data.Model
         public virtual DbSet<User_Course> User_Course { get; set; }
         public virtual DbSet<User_Lesson> User_Lesson { get; set; }
         public virtual DbSet<User_Test> User_Test { get; set; }
+        public virtual DbSet<User_Question> User_Questions { get; set; }
         //public virtual DbSet<Video> Videos { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

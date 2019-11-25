@@ -17,9 +17,11 @@ namespace eLearningSystem.Data.Model
 
         [ForeignKey("Test")]
         public int? test_id { get; set; }
+        public int? scores { get; set; }
 
         public virtual Test Test { get; set; }
 
         public virtual User User { get; set; }
+        public virtual ICollection<User_Question> User_Questions { get; set; }
     }
 }

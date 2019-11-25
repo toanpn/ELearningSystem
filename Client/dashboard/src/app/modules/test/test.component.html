@@ -1,33 +1,43 @@
 <div class="table-data">
-  <a [routerLink]="['/category-business']" class="btn btn-primary pull-right">Thêm mới bài kiểm tra
-  </a>
-  <div class="column">
-    <div class="table-container">
-      <table class="table">
-        <thead class="table-header">
-          <tr>
-            <th>Bài kiểm tra</th>
-            <th style="min-width: 100px">Thao tác</th>
-          </tr>
-        </thead>
-        <tbody class="table-body" *ngIf="category$">
-          <tr *ngFor="let category of (category$ | async); let i = index;" class="cursor-pointer">
-            <td>
-              {{category.name}}
-            </td>
-            <td>
-              <mat-icon (click)="editCategory(category)" style="cursor: pointer;color: #2f4050;" class="mat-18"
-                title="Sửa thể loại" titlePosition="below">
-                edit
-              </mat-icon>
-              <mat-icon (click)="deleteCategory(category)" class="mat-18" title="Xóa thể loại" titlePosition="below"
-                style="margin-left: 14px;color: #fb4b4b;cursor: pointer;">
-                delete
-              </mat-icon>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+  <div class="row">
+    <button (click)="editMyTest()" class="btn btn-primary btn-cancel">Cập nhật</button>
+  </div>
+  <form [formGroup]="formData">
+    <div class="row">
+      <div class="form-group col-md-8">
+        <label>Tên bài kiểm tra</label>
+        <input class="form-control" id="name" formControlName="name" placeholder="Tên bài kiểm tra" required="true"
+          type="text">
+      </div>
+      <div class="form-group col-md-4">
+        <label>Thời gian</label>
+        <input class="form-control" id="time" formControlName="time" placeholder="Thời gian" required="true"
+          type="number">
+      </div>
+    </div>
+  </form>
+
+  <br />
+  <div class="mt-5">
+    <label>Danh sách câu hỏi</label>
+    <button (click)="addQuestion()" class="btn btn-primary btn-cancel">Thêm câu hỏi</button>
+  </div>
+  <div *ngFor="let question of test?.Questions, let i = index">
+    <hr />
+    <div class="row remove-margin">
+      <div class="question" style="font-weight: 700;"></div>{{ i + 1 }}. {{ question.content }}
+      <br />
+      <div class="form-group col-md-10" *ngFor="let answer of question?.Anwsers">
+        <input type="radio" name=`{{question.id}}` value="{{ answer.id }}"
+          *ngIf="question.correct_answer === answer.type" checked disabled>
+        <input type="radio" name=`{{question.id}}` value="{{ answer.id }}"
+          *ngIf="question.correct_answer != answer.type" disabled>
+        {{ answer.type }}. {{ answer.content }}</div>
+    </div>
+    <div class="row remove-margin">
+      <button (click)="editQuestion(question)" class="btn btn-warning btn-cancel">Sửa</button>
+      <button (click)="removeQuestion(question)" class="btn btn-danger btn-cancel"
+        style="margin-right: 8px;">Xóa</button>
     </div>
   </div>
   <!-- <mat-paginator (page)="pageSizeChange($event)" *ngIf="totalItems > 0" [length]="totalItems" [pageIndex]="page"

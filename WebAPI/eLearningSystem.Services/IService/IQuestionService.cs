@@ -11,5 +11,7 @@ namespace eLearningSystem.Services.IService
     public interface IQuestionService : IBaseService<Question>
     {
         ICollection<Question> GetListQuestionByTest(int id);
+        int GetLastIndex(int id);
+        int GetLastId();
     }
 }

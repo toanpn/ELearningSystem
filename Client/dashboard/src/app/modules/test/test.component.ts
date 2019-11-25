@@ -6,6 +6,8 @@ import { takeUntil, catchError } from 'rxjs/operators';
 import { TestService } from 'src/app/core/services/test.service';
 import { QuestionService } from 'src/app/core/services/question.service';
 import { AnswerService } from 'src/app/core/services/answer.service';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { Test } from 'src/app/core/models/test.model';
 
 @Component({
   selector: 'app-test',
@@ -14,53 +16,110 @@ import { AnswerService } from 'src/app/core/services/answer.service';
 })
 export class TestComponent implements OnInit {
   private destroyed$ = new Subject();
-  private id: any;
+  // id chapter
+  private id: number;
 
-  test$: Observable<any>;
+  private idTest: any;
+  formData: FormGroup;
+
+  // tu sau lam the nay cho do mat cong nhe, ko ép kiểu à
+  test: Test;
 
   constructor(
+    // tslint:disable-next-line:variable-name
     private _router: Router,
+    // tslint:disable-next-line:variable-name
     private _notificationService: NotificationService,
+    // tslint:disable-next-line:variable-name
     private _testService: TestService,
+    // tslint:disable-next-line:variable-name
     private _activatedRouter: ActivatedRoute,
+    // tslint:disable-next-line:variable-name
     private _questionService: QuestionService,
-    private _answerService: AnswerService
-  ) {}
+    // tslint:disable-next-line:variable-name
+    private _answerService: AnswerService,
+    // tslint:disable-next-line:variable-name
+    private _formBuilder: FormBuilder
+  ) {
+    this.initForm();
+  }
+
+  initForm() {
+    this.formData = this._formBuilder.group({
+      name: '',
+      time: '0'
+    });
+  }
+
+  get form() {
+    return this.formData.controls;
+  }
 
   ngOnInit() {
     this._activatedRouter.params.subscribe(par => {
-      let id = par['id'];
-      if (id) {
+      const id = par.id;
+      if (id !== undefined) {
         this.id = id;
-        this.loadListTest(id);
+        this.loadTest(id);
       } else {
-        this._router.navigate(['/chapter']);
-      }
-    });
-
-    this.test$.subscribe(value => {
-      if (value == null || value == undefined) {
-        this._router.navigate(['/test-create', this.id]);
+        this._router.navigate(['/chapter', this.id]);
       }
     });
   }
 
+  setValueToForm(test: any) {
+    this.idTest = test.id;
+
+    this.formData.patchValue({
+      name: test.name,
+      time: test.time
+    });
+  }
+
+  createTest() {
+    this._testService.createTest({ name: 'Bài kiểm tra', time: 45, chapter_id: this.id })
+      .subscribe(o => {
+      }, () => { },
+        () => {
+          this.loadTest(this.id);
+        });
+  }
+
+  // tslint:disable-next-line:use-life-cycle-interface
   ngOnDestroy() {
     this.destroyed$.next();
     this.destroyed$.complete();
     this.destroyed$.unsubscribe();
   }
 
-  loadListTest(id: any) {
-    this.test$ = this._testService
+  loadTest(id: any) {
+    this._testService
       .loadListTests({
-        id: id
-      })
-      .pipe(takeUntil(this.destroyed$), catchError(this.catchError));
+        id
+      }).pipe(takeUntil(this.destroyed$), catchError(this.catchError))
+      .subscribe(value => {
+        if (value == null || value === undefined) {
+          this.createTest();
+        } else {
+          this.setValueToForm(value);
+          this.test = value;
+        }
+      });
   }
 
-  editTest(test) {
-    this._router.navigateByUrl(`/category-business?id=${test.id}`);
+  editMyTest() {
+    this._testService.updateTest({
+      Id: this.idTest,
+      name: this.form.name.value,
+      time: this.form.time.value,
+      chapter_id: this.test.chapter_id
+    }).subscribe(() => {
+      this._notificationService.showSuccess(
+        'Cập nhật thành công',
+        'Thành Công',
+        3000
+      );
+    });
   }
 
   deleteTest(test) {
@@ -70,12 +129,32 @@ export class TestComponent implements OnInit {
         'Thành Công',
         3000
       );
-      this.loadListTest(this.id);
+      this.loadTest(this.id);
     });
   }
 
+  removeQuestion(question: any) {
+    this._questionService.deleteQuestion({
+      id: question.id
+    }).subscribe(res => {
+      this.loadTest(this.id);
+      this._notificationService.showSuccess(
+        'Xóa thành công',
+        'Thành công',
+        3000
+      );
+    });
+  }
+
+  editQuestion(question: any) {
+    this._router.navigateByUrl(`/question-business?id=${question.id}&idTest=${this.test.id}&idChapter=${this.id}`);
+  }
+
+  addQuestion() {
+    this._router.navigateByUrl(`/question-business?idTest=${this.test.id}&idChapter=${this.id}`);
+  }
+
   catchError(err: any) {
-    console.log(err);
     return of(null);
   }
 }
