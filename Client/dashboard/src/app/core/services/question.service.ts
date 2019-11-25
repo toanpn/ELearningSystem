@@ -8,6 +8,8 @@ const router = {
   getQuestion: `http://localhost:60793/api/Question/GetQuestion?Id=`,
   updateQuestion: `http://localhost:60793/api/Question/UpdateQuestion`,
   deleteQuestion: `http://localhost:60793/api/Question/DeleteQuestion?Id=`,
+  lastIndex: `http://localhost:60793/api/Question/GetLastIndexTest?Id=`,
+  lastId: `http://localhost:60793/api/Question/GetLastId`
 };
 
 @Injectable({
@@ -23,14 +25,20 @@ export class QuestionService {
   }
 
   createQuestion(value?: {
-    name: string;
+    test_id: number,
+    correct_answer: string,
+    index_num: number,
+    content: string,
   }): Observable<any> {
     return this.http.post(router.createQuestion, value);
   }
 
   updateQuestion(value?: {
-    name: string;
-    Id: number;
+    test_id: number,
+    correct_answer: string,
+    index_num: number,
+    content: string,
+    id: number;
   }): Observable<any> {
     return this.http.post(router.updateQuestion, value);
   }
@@ -41,5 +49,13 @@ export class QuestionService {
 
   deleteQuestion(filter: { id: number }): Observable<any> {
     return this.http.get(`${router.deleteQuestion}` + `${filter.id}`);
+  }
+
+  getLastIndexQuestion(filter: { id: number }): Observable<any> {
+    return this.http.get(`${router.lastIndex}` + `${filter.id}`);
+  }
+
+  getLastIdQuestion(): Observable<any> {
+    return this.http.get(`${router.lastId}`);
   }
 }

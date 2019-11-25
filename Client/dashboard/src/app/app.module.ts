@@ -23,7 +23,9 @@ import { CourseBusinessComponent } from './modules/courses/course-business/cours
 import { CategoryComponent } from './modules/category/category.component';
 import { CategoryBusinessComponent } from './modules/category/pages/category-business/category-business.component';
 import { TestComponent } from './modules/test/test.component';
-import { TestCreateComponent } from './modules/test/pages/test-create/test-create.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { from } from 'rxjs';
+import { QuestionBusinessComponent } from './modules/test/pages/question-business/question-business.component';
 
 @NgModule({
   declarations: [
@@ -33,9 +35,9 @@ import { TestCreateComponent } from './modules/test/pages/test-create/test-creat
     CategoryComponent,
     CategoryBusinessComponent,
     TestComponent,
-    TestCreateComponent,
     CoursesComponent,
-    CourseBusinessComponent
+    CourseBusinessComponent,
+    QuestionBusinessComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,9 @@ import { TestCreateComponent } from './modules/test/pages/test-create/test-creat
     DashboardModule,
     AuthModule,
     ComponentModule,
-    CoreModule
+    CoreModule,
+    // ckeditor
+    CKEditorModule,
   ],
   providers: [
     ShareService,
@@ -64,4 +68,4 @@ import { TestCreateComponent } from './modules/test/pages/test-create/test-creat
   exports: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

@@ -18,7 +18,6 @@ export class CourseService {
   constructor(private http: HttpClient) { }
 
   loadListCourses(): Observable<any> {
-    console.log(router.getAll);
     return this.http.get(router.getAll);
   }
 
@@ -49,7 +48,6 @@ export class CourseService {
   }
 
   deleteCourse(id: number): Observable<any> {
-    console.log(id);
     return this.http.get(`${router.deleteCourse}?idCourse=${id}`);
   }
 }
