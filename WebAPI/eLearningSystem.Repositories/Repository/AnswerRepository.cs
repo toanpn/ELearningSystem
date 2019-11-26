@@ -18,7 +18,7 @@ namespace eLearningSystem.Repositories.Repository
 
         public ICollection<Anwser> GetListAnswerByQuestion(int id)
         {
-            return _dbset.Where(t => t.question_id == id).ToList();
+            return _dbset.Where(t => t.QuestionId == id).ToList();
         }
     }
 }

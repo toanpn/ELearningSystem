@@ -1,4 +1,4 @@
-namespace eLearningSystem.Data.Model
+﻿namespace eLearningSystem.Data.Model
 {
     using eLearningSystem.Data.Common;
     using Newtonsoft.Json;
@@ -8,22 +8,18 @@ namespace eLearningSystem.Data.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class UserLesson : BaseEntity
+    public partial class Cart : BaseEntity
     {
-        public UserLesson() : base() { }
+        public Cart() : base() { }
 
         [ForeignKey("User")]
         public int? UserId { get; set; }
 
-        [ForeignKey("Lesson")]
-        public int? LessonId { get; set; }
-
-        public bool? IsComplete { get; set; }
-
-        public int? Time { get; set; }
+        [ForeignKey("Course")]
+        public int? CourseId { get; set; }
 
         [JsonIgnore]
-        public virtual Lesson Lesson { get; set; }
+        public virtual Course Course { get; set; }
 
         [JsonIgnore]
         public virtual User User { get; set; }

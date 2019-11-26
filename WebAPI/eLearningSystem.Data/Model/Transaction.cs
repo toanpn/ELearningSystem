@@ -1,6 +1,7 @@
 namespace eLearningSystem.Data.Model
 {
     using eLearningSystem.Data.Common;
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -10,24 +11,21 @@ namespace eLearningSystem.Data.Model
     [Table("Transaction")]
     public partial class Transaction : BaseEntity
     {
-        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
-        //public int id { get; set; }
+        public Transaction() : base() { }
 
         [StringLength(50)]
-        public string name { get; set; }
+        public string Name { get; set; }
 
-        [Column(TypeName = "date")]
-        public DateTime? date { get; set; }
+        public TimeSpan? Time { get; set; }
 
-        public TimeSpan? time { get; set; }
+        public double? TotalPrice { get; set; }
 
-        public double? total_price { get; set; }
-
-        public double? paid { get; set; }
+        public double? Paid { get; set; }
 
         [ForeignKey("User")]
-        public int? user_id { get; set; }
+        public int? UserId { get; set; }
 
+        [JsonIgnore]
         public virtual User User { get; set; }
     }
 }

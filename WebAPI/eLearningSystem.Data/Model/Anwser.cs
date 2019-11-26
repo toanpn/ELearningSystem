@@ -1,6 +1,7 @@
 namespace eLearningSystem.Data.Model
 {
     using eLearningSystem.Data.Common;
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -10,14 +11,16 @@ namespace eLearningSystem.Data.Model
     [Table("Anwser")]
     public partial class Anwser : BaseEntity
     {
-        public string content { get; set; }
+        public Anwser() : base() { }
+        public string Content { get; set; }
 
         [StringLength(1)]
-        public string type { get; set; }
+        public string Type { get; set; }
 
         [ForeignKey("Question")]
-        public int? question_id { get; set; }
+        public int? QuestionId { get; set; }
 
+        [JsonIgnore]
         public virtual Question Question { get; set; }
     }
 }

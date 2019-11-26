@@ -29,7 +29,7 @@ namespace eLearningSystem.WebApi.APIs
         [Route("GetAllAnswerByQuestion")]
         public ICollection<Anwser> GetAllAnswerByQuestion([FromUri]int id)
         {
-            return _answerService.GetListAnswerByQuestion(id).OrderBy(t => t.type).ToList();
+            return _answerService.GetListAnswerByQuestion(id).OrderBy(t => t.Type).ToList();
         }
 
         [HttpGet]

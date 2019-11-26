@@ -1,4 +1,5 @@
 ﻿using eLearningSystem.Data.Common;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,21 +10,27 @@ using System.Threading.Tasks;
 
 namespace eLearningSystem.Data.Model
 {
-    public class User_Question : BaseEntity
+    public class UserQuestion : BaseEntity
     {
+        public UserQuestion() : base() { }
+
         [ForeignKey("User")]
-        public int user_id { get; set; }
+        public int UserId { get; set; }
 
         [ForeignKey("Question")]
-        public int question_id { get; set; }
-        [ForeignKey("User_Test")]
-        public int user_test_id { get; set; }
+        public int QuestionId { get; set; }
 
-        public string answer { get; set; }
+        [ForeignKey("UserTest")]
+        public int UserTestId { get; set; }
 
+        public string Answer { get; set; }
+
+        [JsonIgnore]
         public virtual Question Question { get; set; }
 
+        [JsonIgnore]
         public virtual User User { get; set; }
-        public virtual User_Test User_Test { get; set; }
+        [JsonIgnore]
+        public virtual UserTest UserTest { get; set; }
     }
 }

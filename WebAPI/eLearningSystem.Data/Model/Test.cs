@@ -1,6 +1,7 @@
 namespace eLearningSystem.Data.Model
 {
     using eLearningSystem.Data.Common;
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -11,29 +12,29 @@ namespace eLearningSystem.Data.Model
     public partial class Test : BaseEntity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Test()
+        public Test() : base()
         {
             Questions = new HashSet<Question>();
-            User_Test = new HashSet<User_Test>();
+            UserTest = new HashSet<UserTest>();
         }
 
-        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
-        //public int id { get; set; }
-
         [StringLength(255)]
-        public string name { get; set; }
+        public string Name { get; set; }
 
-        public double? time { get; set; }
+        public double? Time { get; set; }
 
         [ForeignKey("Chapter")]
-        public int? chapter_id { get; set; }
+        public int? ChapterId { get; set; }
 
+        [JsonIgnore]
         public virtual Chapter Chapter { get; set; }
 
+        [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Question> Questions { get; set; }
 
+        [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User_Test> User_Test { get; set; }
+        public virtual ICollection<UserTest> UserTest { get; set; }
     }
 }

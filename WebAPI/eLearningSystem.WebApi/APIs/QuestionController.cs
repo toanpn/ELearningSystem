@@ -32,7 +32,7 @@ namespace eLearningSystem.WebApi.APIs
         [Route("GetAllQuestionByTest")]
         public ICollection<Question> GetAllQuestionByTest([FromUri]int id)
         {
-            return _questionService.GetListQuestionByTest(id).OrderBy(t => t.index_num).ToList();
+            return _questionService.GetListQuestionByTest(id).OrderBy(t => t.IndexNum).ToList();
         }
 
         [HttpGet]

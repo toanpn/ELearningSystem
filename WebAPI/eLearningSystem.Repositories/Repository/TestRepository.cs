@@ -24,12 +24,12 @@ namespace eLearningSystem.Repositories.Repository
 
         public int GetLastIndex()
         {
-            return _dbset.Max(t => t.id);
+            return _dbset.Max(t => t.Id);
         }
 
         public Test GetTestByChapter(int id)
         {
-            return _dbset.FirstOrDefault(t => t.chapter_id == id);
+            return _dbset.FirstOrDefault(t => t.ChapterId == id);
         }
     }
 }

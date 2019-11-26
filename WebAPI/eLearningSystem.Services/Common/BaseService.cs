@@ -22,7 +22,7 @@ namespace eLearningSystem.Services.Base
 
         public virtual T GetById(int id)
         {
-            return _repository.FindBy(x=>x.id == id).FirstOrDefault();
+            return _repository.FindBy(x=>x.Id == id).FirstOrDefault();
         }
         public virtual void Create(T entity)
         {
