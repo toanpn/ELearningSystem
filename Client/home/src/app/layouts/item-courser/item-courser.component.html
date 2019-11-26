@@ -1,35 +1,36 @@
-<div class="col-12 col-md-6 px-25">
-    <div class="course-content">
-        <figure class="course-thumbnail">
-            <a href="#"><img src="images/2.jpg" alt=""></a>
-        </figure><!-- .course-thumbnail -->
+<div class="course-content">
+    <figure class="course-thumbnail">
+        <a href="/course/{{course.id}}"><img src={{course.image_url}} alt=""></a>
+    </figure><!-- .course-thumbnail -->
 
-        <div class="course-content-wrap">
-            <header class="entry-header">
-                <h2 class="entry-title"><a href="#">The Ultimate Drawing Course Beginner to Advanced</a></h2>
+    <div class="course-content-wrap">
+        <header class="entry-header">
+            <h2 class="entry-title"><a href="/course/{{course.id}}">{{course.name}}</a></h2>
 
-                <div class="entry-meta flex flex-wrap align-items-center">
-                    <div class="course-author"><a href="#">Michelle Golden</a></div>
+            <div class="entry-meta flex flex-wrap align-items-center">
+                <div class="course-author"><a href="#">Michelle Golden</a></div>
 
-                    <div class="course-date">Mar 14, 2018</div>
-                </div><!-- .course-date -->
-            </header><!-- .entry-header -->
+                <div class="course-date">Mar 14, 2018</div>
+            </div><!-- .course-date -->
+        </header><!-- .entry-header -->
 
-            <footer class="entry-footer flex flex-wrap justify-content-between align-items-center">
-                <div class="course-cost">
-                    <span class="free-cost">Free</span>
-                </div><!-- .price-drop -->
+        <footer class="entry-footer flex flex-wrap justify-content-between align-items-center">
+            <div class="course-cost" *ngIf="course.price === 0">
+                <span class="free-cost">FREE</span>
+            </div><!-- .price-drop -->
+            <div class="course-cost" *ngIf="course.price !== 0">
+                ${{course.price}}
+            </div><!-- .price-drop -->
 
-                <div class="course-ratings flex justify-content-end align-items-center">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star-o"></span>
+            <div class="course-ratings flex justify-content-end align-items-center">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star-o"></span>
 
-                    <span class="course-ratings-count">(4 votes)</span>
-                </div><!-- .course-ratings -->
-            </footer><!-- .entry-footer -->
-        </div><!-- .course-content-wrap -->
-    </div><!-- .course-content -->
-</div><!-- .col -->
+                <span class="course-ratings-count">(4 votes)</span>
+            </div><!-- .course-ratings -->
+        </footer><!-- .entry-footer -->
+    </div><!-- .course-content-wrap -->
+</div><!-- .course-content -->

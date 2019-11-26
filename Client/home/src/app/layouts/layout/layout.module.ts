@@ -9,6 +9,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MaterialModule} from '../../shared/material.module';
 import { BreadcrumComponent } from '../breadcrum/breadcrum.component';
 import { RightmenuComponent } from '../rightmenu/rightmenu.component';
+import { ItemCourserComponent } from '../item-courser/item-courser.component';
 
 @NgModule({
   imports: [
@@ -24,14 +25,16 @@ import { RightmenuComponent } from '../rightmenu/rightmenu.component';
     TopnavbarComponent,
     LayoutComponent,
     BreadcrumComponent,
-    RightmenuComponent
+    RightmenuComponent,
+    ItemCourserComponent
   ],
   exports: [
     FooterComponent,
     LayoutComponent,
     TopnavbarComponent,
     BreadcrumComponent,
-    RightmenuComponent
+    RightmenuComponent,
+    ItemCourserComponent
   ]
 })
 export class LayoutModule {

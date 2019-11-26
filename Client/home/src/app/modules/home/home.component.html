@@ -342,54 +342,20 @@
 
                     <nav class="courses-menu mt-3 mt-lg-0">
                         <ul class="flex flex-wrap justify-content-md-end align-items-center">
-                            <li class="active"><a href="#">All</a></li>
-                            <li><a href="#">Business</a></li>
-                            <li><a href="#">Design</a></li>
-                            <li><a href="#">Web Development</a></li>
-                            <li><a href="#">Photography</a></li>
+                            <li [class.active]="typeGetAll === 0"><a (click)="clickCourseType(0)">Các Khóa Học</a></li>
+                            <li [class.active]="typeGetAll === 1"><a (click)="clickCourseType(1)">Khóa Học Mới Nhất</a></li>
+                            <li [class.active]="typeGetAll === 2"><a (click)="clickCourseType(2)">Khóa Học Hot Nhất</a></li>
                         </ul>
                     </nav><!-- .courses-menu -->
                 </header><!-- .heading -->
             </div><!-- .col -->
 
-            <div class="col-12 col-md-6 col-lg-4 px-25">
-                <div class="course-content">
-                    <figure class="course-thumbnail">
-                        <a href="#"><img src="../../../assets/images/1.jpg" alt=""></a>
-                    </figure><!-- .course-thumbnail -->
-
-                    <div class="course-content-wrap">
-                        <header class="entry-header">
-                            <h2 class="entry-title"><a href="#">The Complete Android Developer Course</a></h2>
-
-                            <div class="entry-meta flex align-items-center">
-                                <div class="course-author"><a href="#">Ms. Lara Croft </a></div>
-
-                                <div class="course-date">July 21, 2018</div>
-                            </div><!-- .course-date -->
-                        </header><!-- .entry-header -->
-
-                        <footer class="entry-footer flex justify-content-between align-items-center">
-                            <div class="course-cost">
-                                $45 <span class="price-drop">$68</span>
-                            </div><!-- .course-cost -->
-
-                            <div class="course-ratings flex justify-content-end align-items-center">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star-o"></span>
-
-                                <span class="course-ratings-count">(4 votes)</span>
-                            </div><!-- .course-ratings -->
-                        </footer><!-- .entry-footer -->
-                    </div><!-- .course-content-wrap -->
-                </div><!-- .course-content -->
+            <div class="col-12 col-md-6 col-lg-4 px-25" *ngFor="let course of listCourse">
+                <app-item-courser [course]="course"></app-item-courser>
             </div><!-- .col -->
 
             <div class="col-12 px-25 flex justify-content-center">
-                <a class="btn" href="#">view all courses</a>
+                <a class="btn" href="#/courses">view all courses</a>
             </div><!-- .col -->
         </div><!-- .row -->
     </div><!-- .container -->

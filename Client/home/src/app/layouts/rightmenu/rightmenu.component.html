@@ -7,80 +7,38 @@
     </div><!-- .search-widget -->
 
     <div class="cat-links">
-        <h2>Categories</h2>
+        <h2>Thể Loại</h2>
 
         <ul class="p-0 m-0">
-            <li><a href="#">Business</a></li>
-            <li><a href="#">Design</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">MBA Courses</a></li>
-            <li><a href="#">Technology</a></li>
-            <li><a href="#">Web Development</a></li>
+            <li><a (click)="getCourseByCategory(undefined)">Tất Cả</a></li>
+            <li *ngFor="let category of listCategory"><a (click)="getCourseByCategory(category)">{{ category.name }}</a></li>
         </ul>
     </div><!-- .cat-links -->
 
     <div class="latest-courses">
-        <h2>Latest Courses</h2>
+        <h2>Khóa Học Mới Nhất</h2>
 
-        <ul class="p-0 m-0">
+        <ul class="p-0 m-0" *ngFor="let course of listCourseNew">
             <li class="flex flex-wrap justify-content-between align-items-center">
-                <img src="../../../assets/images/t-1.jpg" alt="">
+                <img src="{{course.image_url}}" alt="">
 
                 <div class="content-wrap">
-                    <h3><a href="#">The Complete Financial Analyst Training</a></h3>
+                    <h3><a href="/course/{{course.id}}">{{ course.name }}</a></h3>
 
-                    <div class="course-cost free-cost">Free</div>
-                </div><!-- .content-wrap -->
-            </li>
-
-            <li class="flex flex-wrap justify-content-between align-items-center">
-                <img src="../../../assets/images/t-2.jpg" alt="">
-
-                <div class="content-wrap">
-                    <h3><a href="#">Complete Java
-                        Masterclass</a></h3>
-
-                    <div class="course-cost free-cost">Free</div>
-                </div><!-- .content-wrap -->
-            </li>
-
-            <li class="flex flex-wrap justify-content-between align-items-center">
-                <img src="../../../assets/images/t-3.jpg" alt="">
-
-                <div class="content-wrap">
-                    <h3><a href="#">The Complete Digital Marketing Course</a></h3>
-
-                    <div class="course-cost">$24</div>
-                </div><!-- .content-wrap -->
-            </li>
-
-            <li class="flex flex-wrap justify-content-between align-items-center">
-                <img src="../../../assets/images/t-4.jpg" alt="">
-
-                <div class="content-wrap">
-                    <h3><a href="#">Photoshop CC 2018
-                        MasterClass</a></h3>
-
-                    <div class="course-cost">$18</div>
+                    
+                    <div class="course-cos free-costt" *ngIf="course.price === 0">
+                        <div class="course-cost free-cost">Free</div>
+                    </div><!-- .price-drop -->
+                    <div class="course-cost" *ngIf="course.price !== 0">
+                        ${{course.price}}
+                    </div><!-- .price-drop -->
                 </div><!-- .content-wrap -->
             </li>
         </ul>
     </div><!-- .latest-courses -->
 
     <div class="ads">
-        <img src="images/ads.jpg" alt="">
+        <img src="../../../assets/images/ads.jpg" alt="">
     </div><!-- .ads -->
-
-    <div class="popular-tags">
-        <h2>Popular Tags</h2>
-
-        <ul class="flex flex-wrap align-items-center p-0 m-0">
-            <li><a href="#">Creative</a></li>
-            <li><a href="#">Unique</a></li>
-            <li><a href="#">Photography</a></li>
-            <li><a href="#">ideas</a></li>
-            <li><a href="#">Wordpress Template</a></li>
-            <li><a href="#">startup</a></li>
-        </ul>
-    </div><!-- .popular-tags -->
+    
 </div><!-- .sidebar -->

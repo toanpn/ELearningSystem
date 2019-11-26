@@ -1,6 +1,17 @@
 import { Chapter } from './chapter.model';
 
 export class Course {
+
+    constructor(id: number, name: string, des: string, price: number, imageUrl: string, isVisiable: boolean, categoryId: number){
+        this.id = id;
+        this.name = name;
+        this.description = des;
+        this.price = price;
+        this.image_url = imageUrl;
+        this.is_visiable = isVisiable;
+        this.category_id = categoryId;
+    }
+
     id: number;
     name: string;
     description: string;

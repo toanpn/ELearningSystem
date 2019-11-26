@@ -17,7 +17,7 @@ const ROUTES: Routes = [
         component: HomeComponent
       },
       {
-        path: 'course',
+        path: 'courses',
         component: CoursesComponent
       },
       {
