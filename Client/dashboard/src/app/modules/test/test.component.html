@@ -25,14 +25,14 @@
   <div *ngFor="let question of test?.Questions, let i = index">
     <hr />
     <div class="row remove-margin">
-      <div class="question" style="font-weight: 700;"></div>{{ i + 1 }}. {{ question.content }}
+      <div class="question" style="font-weight: 700;"></div>{{ i + 1 }}. {{ question.Content }}
       <br />
       <div class="form-group col-md-10" *ngFor="let answer of question?.Anwsers">
-        <input type="radio" name=`{{question.id}}` value="{{ answer.id }}"
-          *ngIf="question.correct_answer === answer.type" checked disabled>
-        <input type="radio" name=`{{question.id}}` value="{{ answer.id }}"
-          *ngIf="question.correct_answer != answer.type" disabled>
-        {{ answer.type }}. {{ answer.content }}</div>
+        <input type="radio" name=`{{question.Id}}` value="{{ answer.Id }}"
+          *ngIf="question.CorrectAnswer === answer.Type" checked disabled>
+        <input type="radio" name=`{{question.Id}}` value="{{ answer.Id }}" *ngIf="question.CorrectAnswer != answer.Type"
+          disabled>
+        {{ answer.Type }}. {{ answer.Content }}</div>
     </div>
     <div class="row remove-margin">
       <button (click)="editQuestion(question)" class="btn btn-warning btn-cancel">Sửa</button>

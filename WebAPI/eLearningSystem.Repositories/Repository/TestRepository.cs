@@ -31,5 +31,15 @@ namespace eLearningSystem.Repositories.Repository
         {
             return _dbset.FirstOrDefault(t => t.ChapterId == id);
         }
+
+        public override Test Add(Test entity)
+        {
+            var c = _dbset.Any(t => t.ChapterId == entity.ChapterId);
+            if (c)
+            {
+                return null;
+            }
+            return base.Add(entity);
+        }
     }
 }

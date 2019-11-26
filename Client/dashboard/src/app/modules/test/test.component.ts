@@ -8,6 +8,7 @@ import { QuestionService } from 'src/app/core/services/question.service';
 import { AnswerService } from 'src/app/core/services/answer.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Test } from 'src/app/core/models/test.model';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-test',
@@ -17,12 +18,11 @@ import { Test } from 'src/app/core/models/test.model';
 export class TestComponent implements OnInit {
   private destroyed$ = new Subject();
   // id chapter
-  private id: number;
+  private idChapter: number;
 
   private idTest: any;
   formData: FormGroup;
 
-  // tu sau lam the nay cho do mat cong nhe, ko ép kiểu à
   test: Test;
 
   constructor(
@@ -59,30 +59,29 @@ export class TestComponent implements OnInit {
     this._activatedRouter.params.subscribe(par => {
       const id = par.id;
       if (id !== undefined) {
-        this.id = id;
+        this.idChapter = id;
         this.loadTest(id);
       } else {
-        this._router.navigate(['/chapter', this.id]);
+        this._router.navigate(['/chapter', this.idChapter]);
       }
     });
   }
 
   setValueToForm(test: any) {
-    this.idTest = test.id;
-
+    this.idTest = test.Id;
     this.formData.patchValue({
-      name: test.name,
-      time: test.time
+      name: test.Name,
+      time: test.Time
     });
   }
 
   createTest() {
-    this._testService.createTest({ name: 'Bài kiểm tra', time: 45, chapter_id: this.id })
-      .subscribe(o => {
-      }, () => { },
-        () => {
-          this.loadTest(this.id);
-        });
+    this._testService.createTest({ Name: 'Bài kiểm tra', Time: 45, ChapterId: this.idChapter })
+      .subscribe(test => {
+        if (test !== undefined) {
+          this.loadTest(this.idChapter);
+        }
+      });
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
@@ -95,7 +94,7 @@ export class TestComponent implements OnInit {
   loadTest(id: any) {
     this._testService
       .loadListTests({
-        id
+        Id: id
       }).pipe(takeUntil(this.destroyed$), catchError(this.catchError))
       .subscribe(value => {
         if (value == null || value === undefined) {
@@ -103,6 +102,17 @@ export class TestComponent implements OnInit {
         } else {
           this.setValueToForm(value);
           this.test = value;
+          this.loadQuestion(this.test.Id);
+        }
+      });
+  }
+
+  loadQuestion(id: any) {
+    this._questionService.loadListQuestions({ Id: id })
+      .subscribe(res => {
+        this.test.Questions = res;
+        for (const item of this.test.Questions) {
+          item.Anwsers.sort((a, b) => a.Type.localeCompare(b.Type));
         }
       });
   }
@@ -110,9 +120,9 @@ export class TestComponent implements OnInit {
   editMyTest() {
     this._testService.updateTest({
       Id: this.idTest,
-      name: this.form.name.value,
-      time: this.form.time.value,
-      chapter_id: this.test.chapter_id
+      Name: this.form.name.value,
+      Time: this.form.time.value,
+      ChapterId: this.idChapter
     }).subscribe(() => {
       this._notificationService.showSuccess(
         'Cập nhật thành công',
@@ -123,21 +133,21 @@ export class TestComponent implements OnInit {
   }
 
   deleteTest(test) {
-    this._testService.deleteTest({ id: test.id }).subscribe(res => {
+    this._testService.deleteTest({ Id: test.Id }).subscribe(res => {
       this._notificationService.showSuccess(
         'Xóa bài kiểm tra thành công',
         'Thành Công',
         3000
       );
-      this.loadTest(this.id);
+      this.loadTest(this.idChapter);
     });
   }
 
   removeQuestion(question: any) {
     this._questionService.deleteQuestion({
-      id: question.id
+      Id: question.id
     }).subscribe(res => {
-      this.loadTest(this.id);
+      this.loadTest(this.idChapter);
       this._notificationService.showSuccess(
         'Xóa thành công',
         'Thành công',
@@ -147,11 +157,11 @@ export class TestComponent implements OnInit {
   }
 
   editQuestion(question: any) {
-    this._router.navigateByUrl(`/question-business?id=${question.id}&idTest=${this.test.id}&idChapter=${this.id}`);
+    this._router.navigateByUrl(`/question-business?id=${question.Id}&idTest=${this.test.Id}&idChapter=${this.idChapter}`);
   }
 
   addQuestion() {
-    this._router.navigateByUrl(`/question-business?idTest=${this.test.id}&idChapter=${this.id}`);
+    this._router.navigateByUrl(`/question-business?idTest=${this.test.Id}&idChapter=${this.idChapter}`);
   }
 
   catchError(err: any) {

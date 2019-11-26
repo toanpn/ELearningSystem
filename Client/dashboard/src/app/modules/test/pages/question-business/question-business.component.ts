@@ -73,33 +73,40 @@ export class QuestionBusinessComponent implements OnInit {
 
   getQuestion(id: any) {
     const filter = {
-      id
+      Id: id
     };
     this.questionService.loadQuestion(filter).subscribe(res => {
       this.question = res;
-      console.log(res);
-      this.content = this.question.content;
-      this.correctAnswer = this.question.correct_answer;
+      this.content = this.question.Content;
+      this.correctAnswer = this.question.CorrectAnswer;
       this.isUpdate = true;
-      this.a = this.question.Anwsers.filter(t => t.type === 'A')[0];
-      this.b = this.question.Anwsers.filter(t => t.type === 'B')[0];
-      this.c = this.question.Anwsers.filter(t => t.type === 'C')[0];
-      this.d = this.question.Anwsers.filter(t => t.type === 'D')[0];
-      this.ansA = this.a.content;
-      this.ansB = this.b.content;
-      this.ansC = this.c.content;
-      this.ansD = this.d.content;
-      console.log(this.a);
-      console.log(this.b);
-      console.log(this.c);
+      this.getAnswers(id);
     });
+  }
+
+  getAnswers(id: any) {
+    this.answerService.loadListAnswers({ Id: id })
+      .subscribe(res => {
+        this.question.Anwsers = res;
+        this.a = this.question.Anwsers.filter(t => t.Type === 'A')[0];
+        this.b = this.question.Anwsers.filter(t => t.Type === 'B')[0];
+        this.c = this.question.Anwsers.filter(t => t.Type === 'C')[0];
+        this.d = this.question.Anwsers.filter(t => t.Type === 'D')[0];
+        this.ansA = this.a.Content;
+        this.ansB = this.b.Content;
+        this.ansC = this.c.Content;
+        this.ansD = this.d.Content;
+      });
   }
 
   onCreate() {
     this.question = new Question(1, this.idTest, this.correctAnswer, this.content);
     this.questionService.createQuestion(this.question).subscribe(
-      () => {
-        this.getLastId();
+      q => {
+        if (q !== undefined) {
+          this.question.Id = q.Id;
+          this.createAnswer();
+        }
       },
       () => {
         this.notificationService.showError(
@@ -112,23 +119,20 @@ export class QuestionBusinessComponent implements OnInit {
     );
   }
 
-  getLastId() {
-    this.questionService.getLastIdQuestion().subscribe(id => {
-      if (id !== undefined) {
-        this.question.id = id;
-        this.createAnswer();
-      }
-    }, error => console.log(error));
-  }
-
   createAnswer() {
     // tslint:disable-next-line:prefer-const
     const observable = Observable.create((observer: Answer) => {
-      observer.next(new Answer(1, this.ansA, 'A', this.question.id));
-      observer.next(new Answer(2, this.ansB, 'B', this.question.id));
-      observer.next(new Answer(3, this.ansC, 'C', this.question.id));
-      observer.next(new Answer(4, this.ansD, 'D', this.question.id));
+      observer.next(new Answer(1, this.ansA, 'A', this.question.Id));
+      observer.next(new Answer(2, this.ansB, 'B', this.question.Id));
+      observer.next(new Answer(3, this.ansC, 'C', this.question.Id));
+      observer.next(new Answer(4, this.ansD, 'D', this.question.Id));
       observer.complete();
+      this.notificationService.showSuccess(
+        'Thêm thành công',
+        'Thành công',
+        3000
+      );
+      this.router.navigateByUrl(`/test/${this.idChapter}`);
     });
 
     observable.subscribe((ans: Answer) => {
@@ -140,20 +144,13 @@ export class QuestionBusinessComponent implements OnInit {
           3000
         );
         this.router.navigateByUrl(`/test/${this.idChapter}`);
-      }, () => {
-        this.notificationService.showSuccess(
-          'Thêm thành công',
-          'Thành công',
-          3000
-        );
-        this.router.navigateByUrl(`/test/${this.idChapter}`);
       });
     });
   }
 
   onUpdate() {
-    this.question.content = this.content;
-    this.question.correct_answer = this.correctAnswer;
+    this.question.Content = this.content;
+    this.question.CorrectAnswer = this.correctAnswer;
     this.questionService.updateQuestion(this.question).subscribe(
       () => {
         this.updateAnswer();
@@ -170,10 +167,10 @@ export class QuestionBusinessComponent implements OnInit {
   }
 
   updateAnswer() {
-    this.a.content = this.ansA;
-    this.b.content = this.ansB;
-    this.c.content = this.ansC;
-    this.d.content = this.ansD;
+    this.a.Content = this.ansA;
+    this.b.Content = this.ansB;
+    this.c.Content = this.ansC;
+    this.d.Content = this.ansD;
     // tslint:disable-next-line:prefer-const
     const o = Observable.create((observer: Answer) => {
       observer.next(this.a);
@@ -181,11 +178,16 @@ export class QuestionBusinessComponent implements OnInit {
       observer.next(this.c);
       observer.next(this.d);
       observer.complete();
+      this.notificationService.showSuccess(
+        'Cập nhật công',
+        'Thành công',
+        3000
+      );
+      this.router.navigateByUrl(`/test/${this.idChapter}`);
     });
 
     o.subscribe((ans: Answer) => {
       this.answerService.updateAnswer(ans).subscribe(() => {
-        console.log(ans);
       }, () => {
         this.notificationService.showError(
           'Cập nhật thất bại',
@@ -194,12 +196,7 @@ export class QuestionBusinessComponent implements OnInit {
         );
         this.router.navigateByUrl(`/test/${this.idChapter}`);
       }, () => {
-        this.notificationService.showSuccess(
-          'Cập nhật công',
-          'Thành công',
-          3000
-        );
-        this.router.navigateByUrl(`/test/${this.idChapter}`);
+
       });
     });
   }

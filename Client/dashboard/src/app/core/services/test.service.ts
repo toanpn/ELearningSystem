@@ -7,8 +7,7 @@ const router = {
   createTest: `http://localhost:60793/api/Test/AddTest`,
   getTest: `http://localhost:60793/api/Test/GetTest?Id=`,
   updateTest: `http://localhost:60793/api/Test/UpdateTest`,
-  deleteTest: `http://localhost:60793/api/Test/DeleteTest?Id=`,
-  lastIndex: `http://localhost:60793/api/Test/GetLastIndex`
+  deleteTest: `http://localhost:60793/api/Test/DeleteTest?Id=`
 };
 
 @Injectable({
@@ -18,37 +17,33 @@ export class TestService {
   constructor(private http: HttpClient) { }
 
   loadListTests(filter: {
-    id: string
+    Id: string
   }): Observable<any> {
-    return this.http.get(`${router.getAllByChapter}` + `${filter.id}`);
+    return this.http.get(`${router.getAllByChapter}` + `${filter.Id}`);
   }
 
   createTest(test?: {
-    name: string;
-    time: number;
-    chapter_id: any;
+    Name: string;
+    Time: number;
+    ChapterId: any;
   }): Observable<any> {
     return this.http.post(router.createTest, test);
   }
 
   updateTest(test?: {
-    name: string;
+    Name: string;
     Id: number;
-    time: any;
-    chapter_id: any;
+    Time: any;
+    ChapterId: any;
   }): Observable<any> {
     return this.http.post(router.updateTest, test);
   }
 
-  loadTest(filter: { id: string }): Observable<any> {
-    return this.http.get(`${router.getTest}` + `${filter.id}`);
+  loadTest(filter: { Id: string }): Observable<any> {
+    return this.http.get(`${router.getTest}` + `${filter.Id}`);
   }
 
-  deleteTest(filter: { id: number }): Observable<any> {
-    return this.http.get(`${router.deleteTest}` + `${filter.id}`);
-  }
-
-  lastIndex(): Observable<any> {
-    return this.http.get(`${router.lastIndex}`);
+  deleteTest(filter: { Id: number }): Observable<any> {
+    return this.http.get(`${router.deleteTest}` + `${filter.Id}`);
   }
 }

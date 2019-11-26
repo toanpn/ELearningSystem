@@ -1,5 +1,6 @@
 ﻿using eLearningSystem.Data.Common;
 using eLearningSystem.Repositories.Common;
+using eLearningSystem.Repositories.Models;
 using eLearningSystem.Repositories.UnitOfWork;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace eLearningSystem.Services.Base
         {
             return _repository.FindBy(x=>x.Id == id).FirstOrDefault();
         }
-        public virtual void Create(T entity)
+        public virtual T Create(T entity)
         {
             if (entity == null)
             {
@@ -32,6 +33,7 @@ namespace eLearningSystem.Services.Base
             }
             _repository.Add(entity);
             _unitOfWork.Commit();
+            return entity;
         }
 
 
@@ -58,6 +60,11 @@ namespace eLearningSystem.Services.Base
         public virtual IEnumerable<T> GetAll()
         {
             return _repository.GetAll();
+        }
+
+        public PagedResults<T> CreatePagedResults(int pageNumber, int pageSize)
+        {
+            return _repository.CreatePagedResults(pageNumber, pageSize);
         }
     }
 }

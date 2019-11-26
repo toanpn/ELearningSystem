@@ -72,10 +72,10 @@ export class UserBusinessComponent implements OnInit {
     const user = {
       Email: this.form.email.value.toString().trim(),
       PhoneNumber: this.form.phone.value.toString().trim(),
-      address: this.form.address.value.toString().trim(),
-      gender: this.form.gender.value,
+      Address: this.form.address.value.toString().trim(),
+      Gender: this.form.gender.value,
       UserName: this.form.userName.value.toString().trim(),
-      birth_day: this.form.dateOfBirth.value.toString().trim()
+      BirthDay: this.form.dateOfBirth.value.toString().trim()
     };
     this.userService.createUser(user).subscribe(
       () => {
@@ -102,10 +102,10 @@ export class UserBusinessComponent implements OnInit {
       Id: this.user.Id,
       Email: this.form.email.value.toString().trim(),
       PhoneNumber: this.form.phone.value.toString().trim(),
-      address: this.form.address.value.toString().trim(),
-      gender: this.form.gender.value,
+      Address: this.form.address.value.toString().trim(),
+      Gender: this.form.gender.value,
       UserName: this.form.userName.value.toString().trim(),
-      birth_day: this.form.dateOfBirth.value.toString().trim()
+      BirthDay: this.form.dateOfBirth.value.toString().trim()
     };
     this.userService.updateUser(user).subscribe(
       () => {

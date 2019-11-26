@@ -6,4 +6,5 @@ export class Question {
     CorrectAnswer: string;
     TestId: number;
     Anwsers: Answer[];
+    IndexNum: number;
 }

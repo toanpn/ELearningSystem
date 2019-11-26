@@ -44,13 +44,14 @@ namespace eLearningSystem.WebApi.APIs
 
         [HttpPost]
         [Route("AddQuestion")]
-        public IHttpActionResult AddQuestion([FromBody]Question question)
+        public Question AddQuestion([FromBody]Question question)
         {
             if(question != null)
             {
-                _questionService.Create(question);
+                var q = _questionService.Create(question);
+                return q;
             }
-            return Ok();
+            return null;
         }
 
         [HttpGet]

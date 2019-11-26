@@ -1,4 +1,5 @@
 ﻿using eLearningSystem.Data.Model;
+using eLearningSystem.Repositories.Models;
 using eLearningSystem.Services.IService;
 using eLearningSystem.WebApi.Models;
 using System;
@@ -66,5 +67,25 @@ namespace eLearningSystem.WebApi.APIs
             return Ok();
         }
 
+        [Route("GetCoursesHot")]
+        [HttpGet]
+        public ICollection<Course> GetCoursesHot()
+        {
+            return _courseService.GetListCourseHot();
+        }
+
+        [Route("GetCoursesNew")]
+        [HttpGet]
+        public ICollection<Course> GetCoursesNew()
+        {
+            return _courseService.GetListCourseNew();
+        }
+
+        [Route("GetPageResult")]
+        [HttpGet]
+        public PagedResults<Course> GetPageResult(int pageSize, int pageNumber)
+        {
+            return _courseService.CreatePagedResults(pageSize, pageNumber);
+        }
     }
 }
