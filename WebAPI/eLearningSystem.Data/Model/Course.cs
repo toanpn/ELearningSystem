@@ -28,6 +28,8 @@ namespace eLearningSystem.Data.Model
 
         public double? price { get; set; }
 
+        public double? discount { get; set; }
+
         [StringLength(255)]
         public string image_url { get; set; }
 
