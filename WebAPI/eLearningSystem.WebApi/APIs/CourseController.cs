@@ -39,6 +39,12 @@ namespace eLearningSystem.WebApi.APIs
             return Ok(new { results = _courseService.GetAll() });
         }
 
+        [HttpGet]
+        public IHttpActionResult GetCourse(int idCourse)
+        {
+            return Ok(new { results = _courseService.GetById(idCourse) });
+        }
+
         //Get: api/Course/DeleteCourse
         [Route("DeleteCourse")]
         [HttpGet]

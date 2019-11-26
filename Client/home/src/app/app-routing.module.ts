@@ -5,6 +5,7 @@ import { LayoutComponent } from './layouts/layout/layout.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { HomeComponent } from './modules/home/home.component';
 import { CoursesComponent } from './modules/courses/courses.component';
+import { SingleCourseComponent } from './modules/single-course/single-course.component';
 
 const ROUTES: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -20,10 +21,14 @@ const ROUTES: Routes = [
         path: 'course',
         component: CoursesComponent
       },
+      // {
+      //   path: 'course/:id',
+      //   component: CoursesComponent
+      // },
       {
         path: 'course/:id',
-        component: CoursesComponent
-      },
+        component: SingleCourseComponent
+      }
     ]
   },
   {
