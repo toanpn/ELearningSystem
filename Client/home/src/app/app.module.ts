@@ -17,9 +17,11 @@ import { MatPaginatorIntlVN } from './core/extends/vietnamese-paginator-intl';
 import { CoreModule } from './core/core.module';
 import { CourseModule } from './modules/courses/courses.module';
 import { HomeModule } from './modules/home/home.module';
+import { SingleCourseComponent } from './modules/single-course/single-course.component';
+// import {ItemCourserComponent} from './layouts/item-courser/item-courser.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SingleCourseComponent],
   imports: [
     BrowserModule,
     FormsModule,

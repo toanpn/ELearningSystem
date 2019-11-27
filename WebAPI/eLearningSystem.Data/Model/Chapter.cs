@@ -32,7 +32,7 @@ namespace eLearningSystem.Data.Model
         [JsonIgnore]
         public virtual Course Course { get; set; }
 
-        [JsonIgnore]
+        //[JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Lesson> Lessons { get; set; }
 

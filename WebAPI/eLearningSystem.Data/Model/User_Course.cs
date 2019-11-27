@@ -20,10 +20,10 @@ namespace eLearningSystem.Data.Model
 
         public bool? IsOwner { get; set; }
 
-        [JsonIgnore]
+        //[JsonIgnore]
         public virtual Course Course { get; set; }
 
-        [JsonIgnore]
+        //[JsonIgnore]
         public virtual User User { get; set; }
     }
 }

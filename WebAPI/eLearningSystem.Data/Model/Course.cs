@@ -39,14 +39,14 @@ namespace eLearningSystem.Data.Model
         [ForeignKey("Category")]
         public int? CategoryId { get; set; }
 
-        [JsonIgnore]
+        //[JsonIgnore]
         public virtual Category Category { get; set; }
 
-        [JsonIgnore]
+        //[JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Chapter> Chapters { get; set; }
 
-        [JsonIgnore]
+        //[JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Rating> Ratings { get; set; }
 

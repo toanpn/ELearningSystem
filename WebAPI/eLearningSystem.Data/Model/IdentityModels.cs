@@ -21,6 +21,12 @@ namespace eLearningSystem.Data.Model
         public override int Id { get; set; }
 
         [StringLength(50)]
+        public string Name { get; set; }
+
+        [StringLength(255)]
+        public string Image { get; set; }
+
+        [StringLength(50)]
         public string Address { get; set; }
 
         public bool? Gender { get; set; }

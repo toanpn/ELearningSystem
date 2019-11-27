@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+// import { relative } from 'path';
 
 const router = {
     getAll: 'http://localhost:60793/api/Course/GetAllCourse',
