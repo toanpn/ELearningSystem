@@ -14,5 +14,7 @@ namespace eLearningSystem.Repositories.Repository
         PagedResults<Course> SearchPageResults(string keyword, int pageNumber, int pageSize);
         ICollection<Course> GetListCourseNew();
         ICollection<Course> GetListCourseByListId(ICollection<int?> listId);
+        ICollection<Course> GetListCourseFree();
+        ICollection<Course> GetListCourseByCategory(int id);
     }
 }

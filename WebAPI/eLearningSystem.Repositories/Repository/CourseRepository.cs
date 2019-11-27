@@ -16,10 +16,20 @@ namespace eLearningSystem.Repositories.Repository
 
         }
 
+        public ICollection<Course> GetListCourseByCategory(int id)
+        {
+            return _dbset.Where(t => t.CategoryId == id).ToList();
+        }
+
         public ICollection<Course> GetListCourseByListId(ICollection<int?> listId)
         {
             if (listId != null)
                 return _dbset.Where(t => listId.Contains(t.Id)).OrderBy(t => t.Id).ToList();
+            return null;
+        }
+
+        public ICollection<Course> GetListCourseFree()
+        {
             return null;
         }
 
@@ -30,32 +40,25 @@ namespace eLearningSystem.Repositories.Repository
 
         public ICollection<Course> GetListCourseNew()
         {
-            return _dbset.OrderBy(t => t.CreateDate).Take(6).ToList();
+            return _dbset.OrderBy(t => t.CreateDate).ToList();
         }
 
         public PagedResults<Course> SearchPageResults(string keyword, int pageNumber, int pageSize)
         {
-            var listSearch = _dbset.Where(t => t.Name.ToLower().Contains(keyword.ToLower())).OrderBy(t => t.Id).ToList();
-
-            var skipAmount = pageSize * pageNumber;
-
-            var list = listSearch.Skip(skipAmount).Take(pageSize);
-
-            var totalNumberOfRecords = list.Count();
-
-            var results = list.ToList();
-
-            var mod = totalNumberOfRecords % pageSize;
-
-            var totalPageCount = (totalNumberOfRecords / pageSize) + (mod == 0 ? 0 : 1);
+            
+            var list = _dbset.Where(t => t.Name.ToLower().Contains(keyword.ToLower())).OrderBy(t => t.Id).ToList();
+            int count = list.Count();
+            int CurrentPage = pageNumber;
+            int TotalPages = (int)Math.Ceiling(count / (double)pageSize);
+            var items = list.Skip((CurrentPage - 1) * pageSize).Take(pageSize).ToList();
 
             return new PagedResults<Course>
             {
-                Results = results,
+                Results = items,
                 PageNumber = pageNumber,
                 PageSize = pageSize,
-                TotalNumberOfPages = totalPageCount,
-                TotalNumberOfRecords = totalNumberOfRecords
+                TotalNumberOfPages = TotalPages,
+                TotalNumberOfRecords = count
             };
         }
     }

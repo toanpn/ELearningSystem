@@ -81,9 +81,9 @@
         <div class="row">
             <div class="col-12">
                 <header class="heading flex justify-content-between align-items-center">
-                    <h2 class="entry-title">Featured Courses</h2>
+                    <h2 class="entry-title">Khóa Học Miễn Phí</h2>
 
-                    <a class="btn mt-4 mt-sm-0" href="#">view all</a>
+                    <a class="btn mt-4 mt-sm-0" href="#">xem tất cả</a>
                 </header><!-- .heading -->
             </div><!-- .col -->
 
@@ -162,7 +162,7 @@
     </div><!-- .container -->
 </section><!-- .courses-wrap -->
 
-<section class="about-section">
+<section class="about-section" *ngIf="!currentUser">
     <div class="container">
         <div class="row">
             <div class="col-12 col-lg-6 align-content-lg-stretch">
@@ -210,8 +210,7 @@
     </div><!-- .container -->
 </section><!-- .about-section -->
 
-
-<section class="testimonial-section">
+<section class="testimonial-section" *ngIf="!currentUser">
     <!-- Swiper -->
     <div class="swiper-container testimonial-slider swiper-container-fade swiper-container-horizontal swiper-container-wp8-horizontal">
         <div class="swiper-wrapper" style="transition-duration: 0ms;"><div class="swiper-slide swiper-slide-duplicate swiper-slide-prev" data-swiper-slide-index="2" style="width: 1903px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
@@ -332,13 +331,12 @@
     </div><!-- .testimonial-slider -->
 </section><!-- .testimonial-section -->
 
-
 <section class="featured-courses vertical-column courses-wrap">
     <div class="container">
         <div class="row mx-m-25">
             <div class="col-12 px-25">
                 <header class="heading flex flex-wrap justify-content-between align-items-center">
-                    <h2 class="entry-title">Featured Courses</h2>
+                    <h2 class="entry-title">Danh Sách Khóa Học</h2>
 
                     <nav class="courses-menu mt-3 mt-lg-0">
                         <ul class="flex flex-wrap justify-content-md-end align-items-center">
@@ -355,12 +353,11 @@
             </div><!-- .col -->
 
             <div class="col-12 px-25 flex justify-content-center">
-                <a class="btn" href="#/courses">view all courses</a>
+                <a class="btn" href="#/courses">xem tất cả</a>
             </div><!-- .col -->
         </div><!-- .row -->
     </div><!-- .container -->
 </section><!-- .courses-wrap -->
-
 
 <section class="home-gallery">
     <div class="gallery-wrap flex flex-wrap" style="position: relative; height: 721.875px;">

@@ -38,7 +38,7 @@ import { HomeModule } from './modules/home/home.module';
     ComponentModule,
     CoreModule,
     CourseModule,
-    HomeModule
+    HomeModule,
   ],
   providers: [
     ShareService,

@@ -65,25 +65,19 @@ namespace eLearningSystem.Repositories.Common
 
         public PagedResults<T> CreatePagedResults(int pageNumber, int pageSize)
         {
-            var skipAmount = pageSize * pageNumber;
-
-            var list = _dbset.OrderBy(t => t.Id).Skip(skipAmount).Take(pageSize);
-
-            var totalNumberOfRecords = list.Count();
-
-            var results = list.ToList();
-
-            var mod = totalNumberOfRecords % pageSize;
-
-            var totalPageCount = (totalNumberOfRecords / pageSize) + (mod == 0 ? 0 : 1);
+            var list = GetAll();
+            int count = list.Count();
+            int CurrentPage = pageNumber;
+            int TotalPages = (int)Math.Ceiling(count / (double)pageSize);
+            var items = list.Skip((CurrentPage - 1) * pageSize).Take(pageSize).ToList();
 
             return new PagedResults<T>
             {
-                Results = results,
+                Results = items,
                 PageNumber = pageNumber,
                 PageSize = pageSize,
-                TotalNumberOfPages = totalPageCount,
-                TotalNumberOfRecords = totalNumberOfRecords
+                TotalNumberOfPages = TotalPages,
+                TotalNumberOfRecords = count
             };
         }
     }

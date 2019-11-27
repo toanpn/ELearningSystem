@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-breadcrum',
@@ -6,9 +6,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BreadcrumComponent implements OnInit {
 
+  @Input() titlebreadcrum: string;
+
   constructor() { }
 
   ngOnInit() {
   }
-
 }

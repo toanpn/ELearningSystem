@@ -1,42 +1,72 @@
 <div class="sidebar">
     <div class="search-widget">
-        <form class="flex flex-wrap align-items-center">
-            <input type="search" placeholder="Search...">
-            <button type="submit" class="flex justify-content-center align-items-center"><i class="fa fa-search"></i></button>
-        </form><!-- .flex -->
+        <div class="flex flex-wrap align-items-center">
+            <input type="search" placeholder="Khóa học..." [(ngModel)]="myKeyword" name="myKeyword" (keyup.enter)="searchCourse()">
+            <button type="button" class="flex justify-content-center align-items-center" (click)="searchCourse()"><i class="fa fa-search"></i></button>
+        </div><!-- .flex -->
     </div><!-- .search-widget -->
 
     <div class="cat-links">
-        <h2>Thể Loại</h2>
-
+        <h2 style="font-weight: 800;">Danh Mục</h2>
         <ul class="p-0 m-0">
             <li><a (click)="getCourseByCategory(undefined)">Tất Cả</a></li>
-            <li *ngFor="let category of listCategory"><a (click)="getCourseByCategory(category)">{{ category.name }}</a></li>
+        </ul>
+
+        <h2>Thể Loại</h2>
+        <ul class="p-0 m-0">
+            <li *ngFor="let category of listCategory"><a (click)="getCourseByCategory(category)">{{ category.Name }}</a></li>
+        </ul>
+    
+        <h2>Phân Loại</h2>
+        <ul class="p-0 m-0">
+            <li><a (click)="getCourseByType(1)">Khóa học mới nhất</a></li>
+            <li><a (click)="getCourseByType(2)">Khóa học hot nhất</a></li>
+            <li><a (click)="getCourseByType(3)">Khóa học miễn phí</a></li>
         </ul>
     </div><!-- .cat-links -->
 
     <div class="latest-courses">
-        <h2>Khóa Học Mới Nhất</h2>
+            <h2>Khóa Học Mới Nhất</h2>
+    
+            <ul class="p-0 m-0" *ngFor="let course of listCourseNew">
+                <li class="flex flex-wrap justify-content-between align-items-center">
+                    <img src="{{course.ImageUrl}}" alt="">
+    
+                    <div class="content-wrap">
+                        <h3><a href="#/course/{{course.Id}}">{{ course.Name }}</a></h3>
+    
+                        <div class="course-cos free-costt" *ngIf="course.Price === 0">
+                            <div class="course-cost free-cost">Free</div>
+                        </div><!-- .price-drop -->
+                        <div class="course-cost" *ngIf="course.Price !== 0">
+                            ${{course.Price}}
+                        </div><!-- .price-drop -->
+                    </div><!-- .content-wrap -->
+                </li>
+            </ul>
+    </div><!-- .latest-courses -->
 
-        <ul class="p-0 m-0" *ngFor="let course of listCourseNew">
+    <div class="latest-courses">
+        <h2>Khóa Học HOT Nhất</h2>
+
+        <ul class="p-0 m-0" *ngFor="let course of listCourseHot">
             <li class="flex flex-wrap justify-content-between align-items-center">
-                <img src="{{course.image_url}}" alt="">
+                <img src="{{course.ImageUrl}}" alt="">
 
                 <div class="content-wrap">
-                    <h3><a href="/course/{{course.id}}">{{ course.name }}</a></h3>
+                    <h3><a href="#/course/{{course.Id}}">{{ course.Name }}</a></h3>
 
-                    
-                    <div class="course-cos free-costt" *ngIf="course.price === 0">
+                    <div class="course-cos free-costt" *ngIf="course.Price === 0">
                         <div class="course-cost free-cost">Free</div>
                     </div><!-- .price-drop -->
-                    <div class="course-cost" *ngIf="course.price !== 0">
-                        ${{course.price}}
+                    <div class="course-cost" *ngIf="course.Price !== 0">
+                        ${{course.Price}}
                     </div><!-- .price-drop -->
                 </div><!-- .content-wrap -->
             </li>
         </ul>
     </div><!-- .latest-courses -->
-
+            
     <div class="ads">
         <img src="../../../assets/images/ads.jpg" alt="">
     </div><!-- .ads -->
