@@ -1,7 +1,7 @@
 import { Course } from './course.model';
 
 export class Category {
-    id: number;
-    name: string;
-    courses: Course[];
+    Id: number;
+    Name: string;
+    Courses: Course[];
 }

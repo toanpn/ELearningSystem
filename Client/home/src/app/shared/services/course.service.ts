@@ -7,6 +7,8 @@ const router = {
   getAll: `${HttpClientHelper.baseURL}/api/Course/GetAllCourse`,
   createCourse: `${HttpClientHelper.baseURL}/api/Course/AddCourse`,
   getCourse: `${HttpClientHelper.baseURL}/api/Course?idCourse=`,
+  GetStudentsByCourseId: `${HttpClientHelper.baseURL}/api/Course/GetStudentsByCourseId?idCourse=`,
+  GetTeacherByCourseId: `${HttpClientHelper.baseURL}/api/Course/GetTeacherByCourseId?idCourse=`,
   updateCourse: `${HttpClientHelper.baseURL}/api/Course/UpdateCourse`,
   deleteCourse: `${HttpClientHelper.baseURL}/api/Course/DeleteCourse`
 };
@@ -44,7 +46,15 @@ export class CourseService {
   }
 
   loadCourse(filter: { id: string }): Observable<any> {
-    return this.http.get(`${router.getCourse} + ${filter.id}`);
+    return this.http.get(`${router.getCourse}${filter.id}`);
+  }
+
+  getTeacherByCourseId(filter: { id: string }): Observable<any> {
+    return this.http.get(`${router.GetTeacherByCourseId}${filter.id}`);
+  }
+
+  getStudentsByCourseId(filter: { id: string }): Observable<any> {
+    return this.http.get(`${router.GetStudentsByCourseId}${filter.id}`);
   }
 
   deleteCourse(id: number): Observable<any> {

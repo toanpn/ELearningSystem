@@ -1,6 +1,7 @@
 namespace eLearningSystem.Data.Model
 {
     using eLearningSystem.Data.Common;
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -11,42 +12,46 @@ namespace eLearningSystem.Data.Model
     public partial class Course : BaseEntity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Course()
+        public Course() : base()
         {
             Chapters = new HashSet<Chapter>();
             Ratings = new HashSet<Rating>();
-            User_Course = new HashSet<User_Course>();
+            UserCourse = new HashSet<UserCourse>();
         }
 
         //[DatabaseGenerated(DatabaseGeneratedOption.None)]
         //public int id { get; set; }
 
         [StringLength(50)]
-        public string name { get; set; }
+        public string Name { get; set; }
 
-        public string description { get; set; }
+        public string Description { get; set; }
 
-        public double? price { get; set; }
+        public double? Price { get; set; }
 
-        public double? discount { get; set; }
+        public double? Discount { get; set; }
 
         [StringLength(255)]
-        public string image_url { get; set; }
+        public string ImageUrl { get; set; }
 
-        public bool? is_visiable { get; set; }
+        public bool? IsVisible { get; set; }
 
         [ForeignKey("Category")]
-        public int? category_id { get; set; }
+        public int? CategoryId { get; set; }
 
+        //[JsonIgnore]
         public virtual Category Category { get; set; }
 
+        //[JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Chapter> Chapters { get; set; }
 
+        //[JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Rating> Ratings { get; set; }
 
+        [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User_Course> User_Course { get; set; }
+        public virtual ICollection<UserCourse> UserCourse { get; set; }
     }
 }

@@ -1,15 +1,25 @@
 import { Chapter } from './chapter.model';
 
 export class Course {
-    id: number;
-    name: string;
-    description: string;
-    price: number;
-    // tslint:disable-next-line:variable-name
-    image_url: string;
-    // tslint:disable-next-line:variable-name
-    is_visiable: boolean;
-    // tslint:disable-next-line:variable-name
-    category_id: number;
-    chapters: Chapter[];
+
+    constructor(id: number, name: string, des: string, price: number, imageUrl: string, isVisiable: boolean, categoryId: number) {
+        this.Id = id;
+        this.Name = name;
+        this.Description = des;
+        this.Price = price;
+        this.ImageUrl = imageUrl;
+        this.IsVisible = isVisiable;
+        this.CategoryId = categoryId;
+    }
+
+    Id: number;
+    Name: string;
+    Description: string;
+    Price: number;
+    Discount: number;
+    ImageUrl: string;
+    IsVisible: boolean;
+    CategoryId: number;
+    Chapters: Chapter[];
+    CreateDate: string;
 }

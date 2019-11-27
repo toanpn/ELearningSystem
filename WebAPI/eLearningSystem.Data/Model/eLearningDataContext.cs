@@ -31,10 +31,10 @@ namespace eLearningSystem.Data.Model
         public virtual DbSet<Rating> Ratings { get; set; }
         public virtual DbSet<Test> Tests { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
-        public virtual DbSet<User_Course> User_Course { get; set; }
-        public virtual DbSet<User_Lesson> User_Lesson { get; set; }
-        public virtual DbSet<User_Test> User_Test { get; set; }
-        public virtual DbSet<User_Question> User_Questions { get; set; }
+        public virtual DbSet<UserCourse> UserCourse { get; set; }
+        public virtual DbSet<UserLesson> UserLesson { get; set; }
+        public virtual DbSet<UserTest> UserTest { get; set; }
+        public virtual DbSet<UserQuestion> User_Questions { get; set; }
         //public virtual DbSet<Video> Videos { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

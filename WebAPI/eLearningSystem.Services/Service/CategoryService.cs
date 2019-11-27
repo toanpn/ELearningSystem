@@ -26,7 +26,7 @@ namespace eLearningSystem.Services.Service
 
         public Category GetById(int Id)
         {
-            return _categoryRepository.FindBy(x=>x.id == Id).FirstOrDefault();
+            return _categoryRepository.FindBy(x=>x.Id == Id).FirstOrDefault();
         }
     }
 }

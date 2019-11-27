@@ -26,7 +26,7 @@ namespace eLearningSystem.Services.Service
 
         public Course GetById(int Id)
         {
-            return _courseRepository.FindBy(x=>x.id == Id).FirstOrDefault();
+            return _courseRepository.FindBy(x=>x.Id == Id).FirstOrDefault();
         }
     }
 }

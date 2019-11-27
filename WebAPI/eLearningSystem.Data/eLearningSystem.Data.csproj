@@ -45,6 +45,9 @@
     <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -59,9 +62,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Entity.cs" />
-    <Compile Include="Migrations\201911260626553_a.cs" />
-    <Compile Include="Migrations\201911260626553_a.Designer.cs">
-      <DependentUpon>201911260626553_a.cs</DependentUpon>
+    <Compile Include="Migrations\201911260900077_init.cs" />
+    <Compile Include="Migrations\201911260900077_init.Designer.cs">
+      <DependentUpon>201911260900077_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911270333386_add-name.cs" />
+    <Compile Include="Migrations\201911270333386_add-name.Designer.cs">
+      <DependentUpon>201911270333386_add-name.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911270351465_imageUser.cs" />
+    <Compile Include="Migrations\201911270351465_imageUser.Designer.cs">
+      <DependentUpon>201911270351465_imageUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Anwser.cs" />
@@ -91,8 +102,14 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201911260626553_a.resx">
-      <DependentUpon>201911260626553_a.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201911260900077_init.resx">
+      <DependentUpon>201911260900077_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911270333386_add-name.resx">
+      <DependentUpon>201911270333386_add-name.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911270351465_imageUser.resx">
+      <DependentUpon>201911270351465_imageUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

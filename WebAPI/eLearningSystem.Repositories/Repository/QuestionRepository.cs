@@ -18,12 +18,12 @@ namespace eLearningSystem.Repositories.Repository
 
         public int GetLastId()
         {
-            return _dbset.Max(t => t.id);
+            return _dbset.Max(t => t.Id);
         }
 
         public int GetLastIndex(int id)
         {
-            var last = _dbset.Where(t => t.test_id == id).Max(t => t.index_num);
+            var last = _dbset.Where(t => t.TestId == id).Max(t => t.IndexNum);
             var max = 0;
             if (last != null)
             {
@@ -34,7 +34,7 @@ namespace eLearningSystem.Repositories.Repository
 
         public ICollection<Question> GetListQuestionByTest(int id)
         {
-            return _dbset.Where(t => t.test_id == id).ToList();
+            return _dbset.Where(t => t.TestId == id).ToList();
         }
     }
 }

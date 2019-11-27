@@ -1,6 +1,7 @@
 namespace eLearningSystem.Data.Model
 {
     using eLearningSystem.Data.Common;
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -10,26 +11,25 @@ namespace eLearningSystem.Data.Model
     [Table("Rating")]
     public partial class Rating : BaseEntity
     {
-        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
-        //public int id { get; set; }
+        public Rating() : base() { }
 
         [StringLength(255)]
-        public string content { get; set; }
+        public string Content { get; set; }
 
-        public DateTime? time { get; set; }
+        public int? Stars { get; set; }
 
-        public int? stars { get; set; }
-
-        public bool? is_visible { get; set; }
+        public bool? IsVisible { get; set; }
 
         [ForeignKey("Course")]
-        public int? course_id { get; set; }
+        public int? CourseId { get; set; }
 
         [ForeignKey("User")]
-        public int? user_id { get; set; }
+        public int? UserId { get; set; }
 
+        [JsonIgnore]
         public virtual Course Course { get; set; }
 
+        [JsonIgnore]
         public virtual User User { get; set; }
     }
 }
