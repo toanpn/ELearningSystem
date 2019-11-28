@@ -1,12 +1,12 @@
 import { BrowserModule} from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { CoursesComponent } from './courses.component';
+import { AboutComponent } from './about.component';
 import { LayoutModule } from '../../layouts/layout/layout.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     declarations: [
-        CoursesComponent
+        AboutComponent
     ],
     imports: [
         BrowserModule,
@@ -14,7 +14,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
         NgbModule
     ],
     providers: [],
-    bootstrap: [CoursesComponent]
+    bootstrap: [AboutComponent]
 })
 
-export class CourseModule { }
+export class AboutModule { }

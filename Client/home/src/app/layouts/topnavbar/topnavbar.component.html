@@ -45,11 +45,11 @@
 
                     <div class="col-3 col-lg-9 flex justify-content-end align-content-center">
                         <nav class="site-navigation flex justify-content-end align-items-center">
-                            <ul class="flex flex-column flex-lg-row justify-content-lg-end align-content-center">
+                            <ul class="flex flex-column flex-lg-row justify-content-lg-end align-content-center" style="white-space: nowrap;">
                                 <li class="current-menu-item"><a href="#" [routerLink]="['/home']">Trang Chủ</a></li>
                                 <li><a href="#" [routerLink]="['/about']">Thông Tin</a></li>
                                 <li><a href="#" [routerLink]="['/courses']">Khóa Học</a></li>
-\                                <li><a href="#" [routerLink]="['/contact']">Liên Hệ</a></li>
+                                <li><a href="#" [routerLink]="['/contact']">Liên Hệ</a></li>
                             </ul>
 
                             <div class="hamburger-menu d-lg-none">
@@ -69,15 +69,38 @@
         </div><!-- .nav-bar -->
     </header><!-- .site-header -->
 
-    <div class="page-header-overlay">
+    <div class="page-header-overlay" *ngIf="currentUser">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <header class="entry-header">
-                        <h1>{{myTitle}}</h1>
+                        <h1 style="text-align: start; font-weight: 700;">{{myTitle}}</h1>
                     </header><!-- .entry-header -->
                 </div><!-- .col -->
             </div><!-- .row -->
         </div><!-- .container -->
     </div><!-- .page-header-overlay -->
+
+    <div class="hero-content-overlay" *ngIf="!currentUser">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="hero-content-wrap flex flex-column justify-content-center align-items-start">
+                        <header class="entry-header">
+                            <h4>BẮT ĐẦU VỚI CÁC KHÓA HỌC TRỰC TUYẾN</h4>
+                            <h1 style="text-align: start; font-weight: 700;">HỆ THỐNG HỌC TRỰC TUYẾN<br>TỐT NHẤT</h1>
+                        </header><!-- .entry-header -->
+
+                        <!-- <div class="entry-content">
+                            <p>Học với hệ thống chuyên gia trong mọi lĩnh vực. Mua một lần và học trọn đời.</p>
+                        </div> -->
+
+                        <footer class="entry-footer read-more">
+                            <a href="#/about">CHI TIẾT</a>
+                        </footer><!-- .entry-footer -->
+                    </div><!-- .hero-content-wrap -->
+                </div><!-- .col -->
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </div>
 </div><!-- .page-header -->

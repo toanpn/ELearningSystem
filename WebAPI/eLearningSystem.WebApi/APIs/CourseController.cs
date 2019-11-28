@@ -122,6 +122,22 @@ namespace eLearningSystem.WebApi.APIs
         }
 
         [AllowAnonymous]
+        [Route("GetCoursesFree")]
+        [HttpGet]
+        public ICollection<Course> GetCoursesFree()
+        {
+            return _courseService.GetListCourseFree();
+        }
+
+        [AllowAnonymous]
+        [Route("GetCoursesFreePageResult")]
+        [HttpGet]
+        public PagedResults<Course> GetCoursesFreePageResult(int pageSize, int pageNumber)
+        {
+            return _courseService.GetListCourseFreePageResult(pageNumber, pageSize);
+        }
+
+        [AllowAnonymous]
         [Route("GetPageResult")]
         [HttpGet]
         public PagedResults<Course> GetPageResult(int pageSize, int pageNumber)

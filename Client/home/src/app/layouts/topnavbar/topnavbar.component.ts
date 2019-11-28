@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {smoothlyMenu} from '../../core/helper/app.helpers';
 import {AuthService} from '../../core/services/auth/auth.service';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import { UserModel } from 'src/app/core/models/user.model';
 import { ShareService } from 'src/app/shared/services/share.service';
 import { UserService } from 'src/app/core/services/user.service';
@@ -21,9 +21,13 @@ export class TopnavbarComponent implements OnInit, OnDestroy {
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private authService: AuthService,
+    // tslint:disable-next-line:variable-name
     private _shareService: ShareService,
+    // tslint:disable-next-line:variable-name
     private _userService: UserService,
+    // tslint:disable-next-line:variable-name
     private _notificationService: NotificationService
   ) {}
 
@@ -41,17 +45,17 @@ export class TopnavbarComponent implements OnInit, OnDestroy {
       }
     });
 
-    this._shareService.myTitleStream$.subscribe( (t: string) =>{
+    this._shareService.myTitleStream$.subscribe( (t: string) => {
       this.myTitle = t;
-    })
+    });
+
+    console.log(this.route.url);
   }
 
   checkToken() {
-      this._userService
-
       this._userService.getCurrentUser()
-          .subscribe((res: ResponseModel<UserModel>)=>{
-              if(res.StatusCode ==200){
+          .subscribe((res: ResponseModel<UserModel>) => {
+              if (res.StatusCode === 200) {
                 this._shareService.broadcastCurrentUserChange(res.Data);
                 localStorage.setItem('current_user', JSON.stringify(res.Data));
               }
@@ -67,6 +71,7 @@ export class TopnavbarComponent implements OnInit, OnDestroy {
     this._shareService.broadcastCurrentUserChange(undefined);
     this._notificationService.showSuccess(
       NotificationConstant.LOGOUT_SUCCESS,
+      // tslint:disable-next-line:quotemark
       "Thành công",
       3000
     );

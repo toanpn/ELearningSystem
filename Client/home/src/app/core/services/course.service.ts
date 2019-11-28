@@ -7,7 +7,7 @@ const router = {
     getAll: 'http://localhost:60793/api/Course/GetAllCourse',
     getCourseNew: 'http://localhost:60793/api/Course/GetCoursesNewPageResult',
     getCourseHot: 'http://localhost:60793/api/Course/GetCoursesHotPageResult',
-    getCourseFree: 'http://localhost:60793/api/Course/GetCoursesHotPageResult',
+    getCourseFree: 'http://localhost:60793/api/Course/GetCoursesFreePageResult',
     getCoursePage: 'http://localhost:60793/api/Course/GetPageResult',
     searchCourse: 'http://localhost:60793/api/Course/SearchPageResult',
     getCourseByCategory: 'http://localhost:60793/api/Course/GetCourseByCategory'

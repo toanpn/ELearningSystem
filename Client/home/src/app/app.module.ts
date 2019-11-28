@@ -18,6 +18,8 @@ import { CoreModule } from './core/core.module';
 import { CourseModule } from './modules/courses/courses.module';
 import { HomeModule } from './modules/home/home.module';
 import { SingleCourseComponent } from './modules/single-course/single-course.component';
+import { ContactModule } from './modules/contact/contact.module';
+import { AboutModule } from './modules/about/about.module';
 // import {ItemCourserComponent} from './layouts/item-courser/item-courser.component';
 
 @NgModule({
@@ -41,6 +43,8 @@ import { SingleCourseComponent } from './modules/single-course/single-course.com
     CoreModule,
     CourseModule,
     HomeModule,
+    ContactModule,
+    AboutModule
   ],
   providers: [
     ShareService,

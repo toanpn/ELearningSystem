@@ -1,20 +1,23 @@
 import { BrowserModule} from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { CoursesComponent } from './courses.component';
+import { ContactComponent } from './contact.component';
 import { LayoutModule } from '../../layouts/layout/layout.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
-        CoursesComponent
+        ContactComponent
     ],
     imports: [
         BrowserModule,
         LayoutModule,
-        NgbModule
+        NgbModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     providers: [],
-    bootstrap: [CoursesComponent]
+    bootstrap: [ContactComponent]
 })
 
-export class CourseModule { }
+export class ContactModule { }

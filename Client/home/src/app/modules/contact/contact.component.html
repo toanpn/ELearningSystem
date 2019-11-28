@@ -1,0 +1,38 @@
+<div class="container">
+    <app-breadcrum titlebreadcrum="Giới thiệu"></app-breadcrum>
+
+    <div class="row justify-content-between">
+        <div class="col-12">
+            <div class="contact-gmap">
+                    <iframe frameborder="0" style="width: 100%; height: 450px;" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3723.6591509410964!2d105.784092!3d21.04632!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab2d88bb4195%3A0x3006e474cce20274!2zSOG7jWMgdmnhu4duIEvhu7kgdGh14bqtdCBRdcOibiBz4bux!5e0!3m2!1svi!2s!4v1574967963834!5m2!1svi!2s" allowfullscreen=""></iframe>
+            </div><!-- .contact-gmap -->
+        </div><!-- .col -->
+
+        <div class="col-12 col-lg-6">
+            <div class="contact-form">
+                <h3>Mẫu Liên Hệ</h3>
+                <form [formGroup]="formData">
+                    <input type="text" formControlName="name" id="name" placeholder="Tên của bạn" required="">
+                    <input type="email" formControlName="email" id="email" placeholder="Email của bạn" required="">
+                    <input type="text" formControlName="title" id="title" placeholder="Tiêu đề" required="">
+                    <textarea placeholder="Nội dung" formControlName="content" id="content" rows="4" required=""></textarea>
+                    <input type="submit" value="Gửi Tin Nhắn">
+                </form>
+            </div><!-- .contact-form -->
+        </div><!-- .col -->
+
+        <div class="col-12 col-lg-6">
+            <div class="contact-info">
+                <h3>Thông Tin Liên Hệ</h3>
+
+                <p>Mọi phản hồi của quý vị xin liên lạc với chúng tôi theo thôn tin bên dưới.</p>
+
+                <ul class="p-0 m-0">
+                    <li><span>Địa chỉ:</span>Số 236 Hoàng Quốc Việt</li>
+                    <li><span>Email:</span><a href="#">admin@gmail.com</a></li>
+                    <li><span>Điện thoại:</span><a href="#">001-1234-88888</a></li>
+                </ul>
+            </div><!-- .contact-info -->
+        </div><!-- .col -->
+    </div>
+</div>

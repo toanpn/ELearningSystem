@@ -38,6 +38,7 @@ export class HomeComponent implements OnInit {
     // tslint:disable-next-line:max-line-length
     this.type = new BehaviorSubject<number>(0);
     this.obserable = this.type.asObservable();
+    this.loadCourseFree();
     this.obserable.subscribe( t => {
       switch (t) {
         case 0:
@@ -70,10 +71,11 @@ export class HomeComponent implements OnInit {
   }
 
   loadCourseFree() {
-    this._courseService.loadCoursesPageResults({
+    this._courseService.loadAllCourseFree({
       pageNumber: 1,
       pageSize: 2
     }).subscribe(res => {
+      console.log(res);
       this.listCourseFree = res.Results;
     });
   }

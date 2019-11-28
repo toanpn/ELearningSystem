@@ -62,8 +62,9 @@ export class CoursesComponent implements OnInit {
         } else if (params.type === '2') {
           this.myTitleBreadCrum = 'Khóa học hot nhất';
           this.getCourseHot();
-        } else {
+        } else if (params.type === '3') {
           this.myTitleBreadCrum = 'Khóa học miễn phí';
+          this.getCourseFree();
         }
       } else {
         this.myTitleBreadCrum = 'Danh sách khóa học';

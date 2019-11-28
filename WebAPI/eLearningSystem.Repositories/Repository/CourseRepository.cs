@@ -30,7 +30,8 @@ namespace eLearningSystem.Repositories.Repository
 
         public ICollection<Course> GetListCourseFree()
         {
-            return null;
+            return _dbset.Where(t =>
+            (t.Price * ((100 - t.Discount) / 100)) == 0 || t.Price == 0).ToList();
         }
 
         public ICollection<Course> GetListCourseHot()
