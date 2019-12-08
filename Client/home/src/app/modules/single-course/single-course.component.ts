@@ -11,6 +11,12 @@ export class SingleCourseComponent implements OnInit {
   course: any;
   teacher: any;
   students: any;
+  teacherRatingAVG: number;
+  teacherCountReviews: number;
+  teacherNumberOfStudent: number;
+  teacherNumberOfCourse: number;0
+  courseNumberOfLesson: string;
+  courseTotalTime: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -19,39 +25,41 @@ export class SingleCourseComponent implements OnInit {
    }
 
   ngOnInit() {
-    // this.route.queryParams.subscribe(params => {
-    //   let id = this.route.snapshot.params['id'];
-    //     console.log(id);
-    //   const userId = params['id'];
-    // });
     this.route.queryParams.subscribe(params => {
       if (this.route.snapshot.params['id']) {
         this.getCourse(this.route.snapshot.params['id']);
-        this.getUserCourse(this.route.snapshot.params['id']);
+        this.getTeacher(this.route.snapshot.params['id']);
         this.getStudents(this.route.snapshot.params['id']);
       }
     });
   }
+
   getCourse(id: any) {
     const filter = {
       id
     };
     this.courseService.loadCourse(filter).subscribe(res => {
       this.course = res.results;
+      console.log(this.course.Chapters)
+    // this.courseTotalTime = this.course.Chapters;
+    // let sec = this.course.Chapters.reduce(function(prev, cur) {
+    //   return prev + cur.VideoTime;
+    // }, 0);
+    this.courseNumberOfLesson = '122';
     });
   }
   
-  calculater(lessons: any): string {
+  FormatingSecond(lessons: any): string {
     let sec = lessons.reduce(function(prev, cur) {
       return prev + cur.VideoTime;
     }, 0);
 
     // const minutes: number = Math.floor(sec / 60);
     // return minutes + ':' + (sec - minutes * 60);
-    return this.amkmsks(sec);
+    return this.secondtoHHMMSS(sec);
   }
 
-  amkmsks(num: string) {
+  secondtoHHMMSS(num: string) {
     let sec_num = parseInt(num, 10); // don't forget the second param
     let hours   = Math.floor(sec_num / 3600);
     let minutes = Math.floor((sec_num - (hours * 3600)) / 60);
@@ -66,12 +74,17 @@ export class SingleCourseComponent implements OnInit {
     return strHours+':'+strMinutes+':'+strSeconds;
 }
 
-  getUserCourse(id: any) {
+  getTeacher(id: any) {
     const filter = {
       id
     };
     this.courseService.getTeacherByCourseId(filter).subscribe(res => {
-      this.teacher = res.results[0].User;
+      console.log(res.results);
+      this.teacher = res.results;
+      this.teacherNumberOfCourse = this.teacher.UserCourse.length;
+      // this.teacherNumberOfStudent = this.teacher.UserCourse.length - 1;
+      this.teacherNumberOfStudent = 12;
+      this.teacherRatingAVG = 3.4;
     });
   }
 

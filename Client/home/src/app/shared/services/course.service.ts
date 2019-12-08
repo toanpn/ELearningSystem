@@ -8,7 +8,7 @@ const router = {
   createCourse: `${HttpClientHelper.baseURL}/api/Course/AddCourse`,
   getCourse: `${HttpClientHelper.baseURL}/api/Course?idCourse=`,
   GetStudentsByCourseId: `${HttpClientHelper.baseURL}/api/Course/GetStudentsByCourseId?idCourse=`,
-  GetTeacherByCourseId: `${HttpClientHelper.baseURL}/api/Course/GetTeacherByCourseId?idCourse=`,
+  GetTeacherByCourseId: `${HttpClientHelper.baseURL}/api/User/GetTeacherByCourseId?idCourse=`,
   updateCourse: `${HttpClientHelper.baseURL}/api/Course/UpdateCourse`,
   deleteCourse: `${HttpClientHelper.baseURL}/api/Course/DeleteCourse`
 };

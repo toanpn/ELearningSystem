@@ -52,12 +52,12 @@ namespace eLearningSystem.WebApi.APIs
             return Ok(new { results = _courseService.GetById(idCourse).UserCourse.Where(x=>x.IsOwner == false) });
         }
 
-        [HttpGet]
-        [Route("GetTeacherByCourseId")]
-        public IHttpActionResult GetTeacherByCourseId(int idCourse)
-        {
-            return Ok(new { results = _courseService.GetById(idCourse).UserCourse.Where(x=>x.IsOwner == true) });
-        }
+        //[HttpGet]
+        //[Route("GetTeacherByCourseId")]
+        //public IHttpActionResult GetTeacherByCourseId(int idCourse)
+        //{
+        //    return Ok(new { results = _courseService.GetById(idCourse).UserCourse.Where(x=>x.IsOwner == true) });
+        //}
 
 
         //Get: api/Course/DeleteCourse

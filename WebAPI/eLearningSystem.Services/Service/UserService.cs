@@ -72,5 +72,10 @@ namespace eLearningSystem.Services.Service
         {
             return _repository.GetUserByUserName(userName);
         }
+
+        public User GetTeacherByCourseId(int id)
+        {
+            return _repository.FindBy(u => u.UserCourse.Any(x => x.CourseId == id && x.IsOwner == true)).First();
+        }
     }
 }

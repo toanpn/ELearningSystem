@@ -25,7 +25,16 @@ namespace eLearningSystem.Data.Model
         [StringLength(50)]
         public string Name { get; set; }
 
+        [StringLength(1000)]
+        public string CourseTarget { get; set; }
+
+        [StringLength(1000)]
+        public string Requirements { get; set; }
+
         public string Description { get; set; }
+
+        [StringLength(1000)]
+        public string TargetAudience { get; set; }
 
         public double? Price { get; set; }
 
