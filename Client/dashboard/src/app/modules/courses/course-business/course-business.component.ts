@@ -52,7 +52,7 @@ export class CourseBusinessComponent implements OnInit {
 
   getListCategories() {
     this.categoryService.loadListCategories().subscribe(res => {
-      this.categories$ = res.results;
+      this.categories$ = res;
     });
   }
 

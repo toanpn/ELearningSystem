@@ -24,9 +24,8 @@ import { CategoryComponent } from './modules/category/category.component';
 import { CategoryBusinessComponent } from './modules/category/pages/category-business/category-business.component';
 import { TestComponent } from './modules/test/test.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-import { from } from 'rxjs';
 import { QuestionBusinessComponent } from './modules/test/pages/question-business/question-business.component';
-
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +58,7 @@ import { QuestionBusinessComponent } from './modules/test/pages/question-busines
     CoreModule,
     // ckeditor
     CKEditorModule,
+    CurrencyMaskModule
   ],
   providers: [
     ShareService,

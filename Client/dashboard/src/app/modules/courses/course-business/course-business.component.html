@@ -17,8 +17,8 @@
         </div>
         <div class="form-group col-md-6">
           <label>Giá tiền</label>
-          <input class="form-control" id="price" formControlName="price" placeholder="Giá tiền" required="true"
-            type="number">
+          <input class="form-control" currencyMask [options]="{thousands: '.',decimal:',' , precision:0,prefix: ''}"
+            id="price" formControlName="price" placeholder="Giá tiền" required="true" type="text">
         </div>
       </div>
       <div class="row">
@@ -34,7 +34,7 @@
           </mat-select> -->
           <select class="form-control" id="category_id" formControlName="category_id">
             <option value="" disabled>--Select a category--</option>
-            <option *ngFor="let category of categories$" [ngValue]="category.id">{{category.name}}
+            <option *ngFor="let category of categories$" [ngValue]="category.Id">{{category.Name}}
             </option>
           </select>
         </div>
