@@ -54,7 +54,7 @@ export class CategoryBusinessComponent implements OnInit {
 
   setValueForm(category: any) {
     this.formData.patchValue({
-      name: category.name
+      name: category.Name
     });
   }
 
@@ -84,7 +84,7 @@ export class CategoryBusinessComponent implements OnInit {
 
   onUpdate() {
     const cate = {
-      Id: this.category.id,
+      Id: this.category.Id,
       name: this.form.name.value.toString().trim()
     };
     this.categoryService.updateCategory(cate).subscribe(

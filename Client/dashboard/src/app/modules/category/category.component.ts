@@ -19,7 +19,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
     private router: Router,
     private notificationService: NotificationService,
     private categoryService: CategoryService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.loadListCategory();
@@ -37,11 +37,11 @@ export class CategoryComponent implements OnInit, OnDestroy {
   }
 
   editCategory(category) {
-    this.router.navigateByUrl(`/category-business?id=${category.id}`);
+    this.router.navigateByUrl(`/category-business?id=${category.Id}`);
   }
 
   deleteCategory(category) {
-    this.categoryService.deleteCategory({ id: category.id }).subscribe(() => {
+    this.categoryService.deleteCategory({ id: category.Id }).subscribe(() => {
       this.loadListCategory();
       this.notificationService.showSuccess(
         'Xóa thể loại thành công',
