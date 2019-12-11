@@ -4,6 +4,7 @@
   </a> -->
   <button [routerLink]="['/course-business']" class="btn btn-primary pull-right"><i class="fa fa-plus-circle"></i> Thêm
     mới khoá học</button>
+    {{course$|json}}
   <div class="column">
     <div class="table-container">
       <table class="table">
@@ -20,26 +21,27 @@
           </tr>
         </thead>
         <tbody class="table-body" *ngIf="courses$">
+          
           <!-- <tr style="height: 100px;" *ngFor="let course of (courses$ | async)?.results;" class="cursor-pointer"> -->
           <tr style="height: 100px;" *ngFor="let course of courses$" class="cursor-pointer">
             <td>
-              {{course.id}}
+              {{course.Id}}
             </td>
             <td>
-              <img [src]="course.image_url" alt="ảnh khoá học">
+              <img [src]="course.ImageUrl" alt="ảnh khoá học">
               <!-- {{course.image_url}} -->
             </td>
             <td>
-              {{course.name}}
+              {{course.Name}}
             </td>
             <td>
-              <a>{{course.Category.name}}</a>
+              <a>{{course.Category.Name}}</a>
             </td>
             <td style="max-height:100px">
-              {{course.description}}
+              {{course.Description}}
             </td>
             <td style="text-align: center;">
-              {{course.price | currency : "VND"  }}
+              {{course.Price | currency : "VND":'symbol':underfined:'vi' }}
             </td>
             <td style="text-align: center;">
               <div *ngIf="course.is_visiable else invisiable">

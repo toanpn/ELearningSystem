@@ -22,7 +22,8 @@ import {
   MatToolbarModule,
   MatTooltipModule,
   MatPaginatorModule,
-  MatGridListModule
+  MatGridListModule,
+  MatStepperModule
 } from '@angular/material';
 
 @NgModule({
@@ -48,7 +49,8 @@ import {
     MatSliderModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatStepperModule
   ],
   exports: [
     MatButtonModule,
@@ -73,7 +75,8 @@ import {
     MatNativeDateModule,
     MatAutocompleteModule,
     MatPaginatorModule,
-    MatGridListModule
+    MatGridListModule,
+    MatStepperModule
   ]
 })
 export class MaterialModule {}

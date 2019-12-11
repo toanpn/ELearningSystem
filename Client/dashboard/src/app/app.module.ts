@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule,LOCALE_ID } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -26,6 +26,10 @@ import { TestComponent } from './modules/test/test.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { QuestionBusinessComponent } from './modules/test/pages/question-business/question-business.component';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { AddCourseComponent } from './modules/courses/course-business/add-course/add-course.component';
+import localeVi from '@angular/common/locales/vi';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localeVi, 'vi');
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,10 +40,11 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
     TestComponent,
     CoursesComponent,
     CourseBusinessComponent,
-    QuestionBusinessComponent
+    QuestionBusinessComponent,
+    AddCourseComponent
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -63,7 +68,11 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
   providers: [
     ShareService,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
-    { provide: MatPaginatorIntl, useClass: MatPaginatorIntlVN }
+    { provide: MatPaginatorIntl, useClass: MatPaginatorIntlVN },
+    {
+      provide: LOCALE_ID,
+      useValue: 'vi' // 'de' for Germany, 'fr' for France ...
+     }
   ],
   exports: [],
   bootstrap: [AppComponent]
