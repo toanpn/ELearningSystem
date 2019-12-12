@@ -198,7 +198,9 @@
   <ItemGroup>
     <Compile Include="APIs\AnswerController.cs" />
     <Compile Include="APIs\CategoryController.cs" />
+    <Compile Include="APIs\ChapterController.cs" />
     <Compile Include="APIs\CourseController.cs" />
+    <Compile Include="APIs\LessonController.cs" />
     <Compile Include="APIs\QuestionController.cs" />
     <Compile Include="APIs\UserRoleController.cs" />
     <Compile Include="APIs\RoleController.cs" />
