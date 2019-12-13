@@ -6,6 +6,7 @@ import { HttpClientHelper } from '../../shared/HttpClientHelper';
 const router = {
   getAll: `${HttpClientHelper.baseURL}/api/Course/GetAllCourse`,
   createCourse: `${HttpClientHelper.baseURL}/api/Course/AddCourse`,
+  createChapter: `${HttpClientHelper.baseURL}/api/Chapter/AddChapter`,
   getCourse: `${HttpClientHelper.baseURL}/api/Course?idCourse=`,
   updateCourse: `${HttpClientHelper.baseURL}/api/Course/UpdateCourse`,
   deleteCourse: `${HttpClientHelper.baseURL}/api/Course/DeleteCourse`
@@ -32,6 +33,7 @@ export class CourseService {
     return this.http.post(router.createCourse, course);
   }
 
+
   updateCourse(course?: {
     name: string;
     description: string;
@@ -49,5 +51,9 @@ export class CourseService {
 
   deleteCourse(id: number): Observable<any> {
     return this.http.get(`${router.deleteCourse}?idCourse=${id}`);
+  }
+
+  createChapter(chapter: any): Observable<any> {
+    return this.http.post(router.createChapter, chapter);
   }
 }
