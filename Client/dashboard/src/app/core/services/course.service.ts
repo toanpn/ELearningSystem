@@ -22,12 +22,12 @@ export class CourseService {
   }
 
   createCourse(course?: {
-    name: string;
-    description: string;
-    image_url: string;
-    category_id: number;
-    price: number;
-    is_visiable: boolean
+    Name: string;
+    Description: string;
+    ImageUrl: string;
+    CategoryId: number;
+    Price: number;
+    IsVisible: boolean
   }): Observable<any> {
     return this.http.post(router.createCourse, course);
   }

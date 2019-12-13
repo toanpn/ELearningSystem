@@ -31,6 +31,9 @@ namespace eLearningSystem.Data.Model
 
         public bool? Gender { get; set; }
 
+        [StringLength(1000)]
+        public string Description { get; set; }
+
         [Column(TypeName = "date")]
         public DateTime? BirthDay { get; set; }
         public int? Scores { get; set; }
@@ -69,7 +72,6 @@ namespace eLearningSystem.Data.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Transaction> Transactions { get; set; }
 
-        [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserCourse> UserCourse { get; set; }
 

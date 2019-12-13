@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>Thêm bài học</h2>
+<form [formGroup]="lessonForm" (ngSubmit)="onSubmit()">
+<mat-dialog-content class="mat-typography">
+    <div class="row">
+      <div class="form-group col-md-12">
+        <label>Tên bài học</label>
+        <input class="form-control" id="name" formControlName="Name" placeholder="Tên phần học" required="true"
+          type="text">
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-12">
+        <label>URL</label>
+        <input class="form-control" id="image_url" formControlName="VideoUrl" placeholder="Thứ tự phần học" required=""
+          type="text">
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-12">
+        <label>Thơi lượng video</label>
+        <input class="form-control" id="image_url" formControlName="VideoTime" placeholder="Thứ tự phần học" required=""
+          type="text">
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-12">
+        <label>Mô tả</label>
+        <textarea class="form-control" id="Description" formControlName="Description" placeholder="Mô tả khóa học" required="" rows="5"></textarea>
+      </div>
+    </div>
+    <!-- <h1>
+      <div *ngFor="let category of (categories$ | async)?.results">
+        {{category.id}}
+      </div>
+    </h1> -->
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button class="btn btn-danger" mat-dialog-close>Hủy</button>
+  <button mat-button class="btn btn-success" type="submit">Thêm </button>
+</mat-dialog-actions>
+</form>
