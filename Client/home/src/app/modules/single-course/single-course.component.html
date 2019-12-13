@@ -1,10 +1,12 @@
 <div class="container">
-    <div class="row">
+    <app-breadcrum titlebreadcrum="{{course.Name}}"></app-breadcrum>
+
+    <div class="mt-5 row">
         <div class="col-12 offset-lg-1 col-lg-10">
             <div class="featured-image">
-                <img src="../../../assets/images/single-course-featured-img.jpg" alt="aaa">
+                <img src="{{course.ImageUrl}}" style="width: 100%;" alt="{{course.Name}}">
 
-                <div class="course-cost">{{ course?.Price | currency: "VND" }}</div>
+                <div class="course-cost">{{ course?.Price | currency: "$ " }}</div>
             </div>
         </div><!-- .col -->
     </div><!-- .row -->
@@ -37,17 +39,17 @@
                     </div><!-- .course-author -->
 
                     <div class="course-cats mt-3">
-                        <label class="m-0">Categories</label>
+                        <label class="m-0">Thể Loại</label>
                         <div class="author-name"><a href="#">{{ course?.Category?.Name }}</a></div>
                     </div><!-- .course-cats -->
 
                     <div class="course-students mt-3">
-                        <label class="m-0">Student</label>
+                        <label class="m-0">Số lượng mua</label>
                         <div class="author-name"><a href="#">{{students?.length }} (REGISTERED)</a></div>
                     </div><!-- .course-students -->
 
                     <div class="buy-course mt-3">
-                        <a class="btn" href="#">ADD to cart</a>
+                        <a class="btn" (click)="addToCart()">Thêm vào rỏ hàng</a>
                     </div><!-- .buy-course -->
                 </div><!-- .course-info -->
 

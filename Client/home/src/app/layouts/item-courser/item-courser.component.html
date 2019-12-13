@@ -1,11 +1,11 @@
 <div class="course-content">
     <figure class="course-thumbnail">
-        <a href="/course/{{course.Id}}"><img src={{course.ImageUrl}} alt=""></a>
+        <a [routerLink]="['/course', course.Id]"><img src={{course.ImageUrl}} alt=""></a>
     </figure><!-- .course-thumbnail -->
 
     <div class="course-content-wrap">
         <header class="entry-header">
-            <h2 class="entry-title"><a href="/course/{{course.Id}}">{{course.Name}}</a></h2>
+            <h2 class="entry-title"><a [routerLink]="['/course', course.Id]">{{course.Name}}</a></h2>
 
             <div class="entry-meta flex flex-wrap align-items-center">
                 <div class="course-author"><a href="#">Michelle Golden</a></div>

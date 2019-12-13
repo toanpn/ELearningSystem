@@ -75,7 +75,6 @@ export class HomeComponent implements OnInit {
       pageNumber: 1,
       pageSize: 2
     }).subscribe(res => {
-      console.log(res);
       this.listCourseFree = res.Results;
     });
   }
@@ -85,7 +84,6 @@ export class HomeComponent implements OnInit {
       pageNumber: 1,
       pageSize: 6
     }).subscribe(res => {
-      console.log(res);
       this.listCourse = res.Results;
     });
   }
@@ -95,7 +93,6 @@ export class HomeComponent implements OnInit {
       pageNumber: 1,
       pageSize: 6
     }).subscribe(res => {
-      console.log(res);
       this.listCourse = res.Results;
     });
   }
