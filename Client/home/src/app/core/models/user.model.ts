@@ -7,4 +7,5 @@ export interface UserModel {
     Scores: number;
     Email: string;
     BirthDay: string;
+    Name: string;
 }

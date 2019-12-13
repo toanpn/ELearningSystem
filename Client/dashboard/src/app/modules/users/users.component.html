@@ -24,12 +24,12 @@
               {{user.Email}}
             </td>
             <td>
-              <p *ngIf="user.gender === true">Nam</p>
-              <p *ngIf="user.gender === false">Nữ</p>
-              <p *ngIf="user.gender === null || user.gender === undefined">Không xác định</p>
+              <p *ngIf="user.Gender === true">Nam</p>
+              <p *ngIf="user.Gender === false">Nữ</p>
+              <p *ngIf="user.Gender === null || user.Gender === undefined">Không xác định</p>
             </td>
             <td>
-              {{user.address}}
+              {{user.Address}}
             </td>
             <td>
               {{user.PhoneNumber}}
@@ -49,7 +49,7 @@
                 </ng-template>
               </mat-menu>
 
-              
+
               <button mat-button [matMenuTriggerFor]="appMenu" [matMenuTriggerData]="{ name: userName }">
                 <mat-icon>more_vert</mat-icon>
               </button>

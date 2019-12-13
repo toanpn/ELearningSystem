@@ -13,13 +13,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public constructor(
   ) {
     this.nav = document.querySelector('nav.navbar');
-    // tslint:disable-next-line:prefer-const
-    const observable = Observable.create(observer => {
-      observer.next('a');
-      observer.next('b');
-    });
-
-    observable.subscribe(o => console.log(o));
   }
 
   public ngOnInit(): any {

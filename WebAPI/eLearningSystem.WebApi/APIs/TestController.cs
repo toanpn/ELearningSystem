@@ -51,13 +51,14 @@ namespace eLearningSystem.WebApi.APIs
 
         [HttpPost]
         [Route("AddTest")]
-        public IHttpActionResult AddTest([FromBody]Test test)
+        public Test AddTest([FromBody]Test test)
         {
             if (test != null)
             {
-                service.Create(test);
+                var t = service.Create(test);
+                return t;
             }
-            return Ok();
+            return null;
         }
 
         [HttpPost]

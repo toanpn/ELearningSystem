@@ -1,4 +1,5 @@
 ﻿using eLearningSystem.Data.Common;
+using eLearningSystem.Repositories.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +18,6 @@ namespace eLearningSystem.Repositories.Common
         void DeleteById(int id);
         void Edit(T entity);
         void Save();
+        PagedResults<T> CreatePagedResults(int pageNumber, int pageSize);
     }
 }

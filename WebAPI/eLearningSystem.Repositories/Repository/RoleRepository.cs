@@ -1,6 +1,7 @@
 ﻿using eLearningSystem.Data.Model;
 using eLearningSystem.Repositories.Common;
 using eLearningSystem.Repositories.IRepository;
+using eLearningSystem.Repositories.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -41,6 +42,11 @@ namespace eLearningSystem.Repositories.Repository
                 };
                 _dbset.Add(role);
             }
+        }
+
+        public PagedResults<Role> CreatePagedResults(int pageNumber, int pageSize)
+        {
+            throw new NotImplementedException();
         }
 
         public Role Delete(Role entity)

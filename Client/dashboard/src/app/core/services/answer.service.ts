@@ -17,33 +17,33 @@ export class AnswerService {
   constructor(private http: HttpClient) { }
 
   loadListAnswers(filter: {
-    id: string
+    Id: string
   }): Observable<any> {
-    return this.http.get(`${router.getAllAnswer}` + `${filter.id}`);
+    return this.http.get(`${router.getAllAnswer}` + `${filter.Id}`);
   }
 
   createAnswer(value?: {
-    content: string;
-    type: string;
-    question_id: number;
+    Content: string;
+    Type: string;
+    QuestionId: number;
   }): Observable<any> {
     return this.http.post(router.createAnswer, value);
   }
 
   updateAnswer(value?: {
-    content: string;
-    type: string;
-    question_id: number;
-    id: number;
+    Content: string;
+    Type: string;
+    QuestionId: number;
+    Id: number;
   }): Observable<any> {
     return this.http.post(router.updateAnswer, value);
   }
 
-  loadAnswer(filter: { id: string }): Observable<any> {
-    return this.http.get(`${router.getAnswer}` + `${filter.id}`);
+  loadAnswer(filter: { Id: string }): Observable<any> {
+    return this.http.get(`${router.getAnswer}` + `${filter.Id}`);
   }
 
-  deleteAnswer(filter: { id: number }): Observable<any> {
-    return this.http.get(`${router.deleteAnswer}` + `${filter.id}`);
+  deleteAnswer(filter: { Id: number }): Observable<any> {
+    return this.http.get(`${router.deleteAnswer}` + `${filter.Id}`);
   }
 }

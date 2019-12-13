@@ -1,14 +1,13 @@
 export class Answer {
   [x: string]: any;
-    constructor(id: number, content: string, type: string, questionId: number) {
-        this.id = id;
-        this.content = content;
-        this.type = type;
-        this.question_id = questionId;
-    }
-    id: number;
-    content: string;
-    type: string;
-    // tslint:disable-next-line:variable-name
-    question_id: number;
+  constructor(id: number, content: string, type: string, questionId: number) {
+    this.Id = id;
+    this.Content = content;
+    this.Type = type;
+    this.QuestionId = questionId;
+  }
+  Id: number;
+  Content: string;
+  Type: string;
+  QuestionId: number;
 }

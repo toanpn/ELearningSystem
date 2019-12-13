@@ -1,4 +1,5 @@
 ﻿using eLearningSystem.Data.Model;
+using eLearningSystem.Repositories.Models;
 using eLearningSystem.Services.IService;
 using eLearningSystem.WebApi.Models;
 using System;
@@ -32,6 +33,7 @@ namespace eLearningSystem.WebApi.APIs
         }
 
         //Get: api/Course/GetAllCourse
+        [AllowAnonymous]
         [Route("GetAllCourse")]
         [HttpGet]
         public IHttpActionResult GetAllCourse()
@@ -87,5 +89,76 @@ namespace eLearningSystem.WebApi.APIs
             return Ok();
         }
 
+        [AllowAnonymous]
+        [Route("GetCoursesHot")]
+        [HttpGet]
+        public ICollection<Course> GetCoursesHot()
+        {
+            return _courseService.GetListCourseHot();
+        }
+
+        [AllowAnonymous]
+        [Route("GetCoursesHotPageResult")]
+        [HttpGet]
+        public PagedResults<Course> GetCoursesHotPageResult(int pageSize, int pageNumber)
+        {
+            return _courseService.GetListCourseHotPageResult(pageNumber, pageSize);
+        }
+
+        [AllowAnonymous]
+        [Route("GetCoursesNew")]
+        [HttpGet]
+        public ICollection<Course> GetCoursesNew()
+        {
+            return _courseService.GetListCourseNew();
+        }
+
+        [AllowAnonymous]
+        [Route("GetCoursesNewPageResult")]
+        [HttpGet]
+        public PagedResults<Course> GetCoursesNewPageResult(int pageSize, int pageNumber)
+        {
+            return _courseService.GetListCourseNewPageResult(pageNumber, pageSize);
+        }
+
+        [AllowAnonymous]
+        [Route("GetCoursesFree")]
+        [HttpGet]
+        public ICollection<Course> GetCoursesFree()
+        {
+            return _courseService.GetListCourseFree();
+        }
+
+        [AllowAnonymous]
+        [Route("GetCoursesFreePageResult")]
+        [HttpGet]
+        public PagedResults<Course> GetCoursesFreePageResult(int pageSize, int pageNumber)
+        {
+            return _courseService.GetListCourseFreePageResult(pageNumber, pageSize);
+        }
+
+        [AllowAnonymous]
+        [Route("GetPageResult")]
+        [HttpGet]
+        public PagedResults<Course> GetPageResult(int pageSize, int pageNumber)
+        {
+            return _courseService.CreatePagedResults(pageNumber, pageSize);
+        }
+
+        [AllowAnonymous]
+        [Route("SearchPageResult")]
+        [HttpGet]
+        public PagedResults<Course> SearchPageResult(string keyword, int pageSize, int pageNumber)
+        {
+            return _courseService.SearchPageResults(keyword, pageNumber, pageSize);
+        }
+
+        [AllowAnonymous]
+        [Route("GetCourseByCategory")]
+        [HttpGet]
+        public PagedResults<Course> GetCourseByCategory(int id, int pageSize, int pageNumber)
+        {
+            return _courseService.GetListCourseByCategory(id, pageNumber, pageSize);
+        }
     }
 }

@@ -13,7 +13,7 @@ export class ShareService {
     this.currentUser.next(user);
   }
 
-  broadcastTitle(title: string){
+  broadcastTitle(title: string) {
     this.myTitle.next(title);
   }
 }

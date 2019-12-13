@@ -13,7 +13,6 @@ export class ItemCourserComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.course);
   }
 
 }

@@ -1,5 +1,6 @@
 ﻿using eLearningSystem.Data.Model;
 using eLearningSystem.Repositories.Common;
+using eLearningSystem.Repositories.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -15,10 +16,51 @@ namespace eLearningSystem.Repositories.Repository
 
         }
 
-        public override IEnumerable<Course> GetAll()
+        public ICollection<Course> GetListCourseByCategory(int id)
         {
-            return _entities.Set<Course>().AsEnumerable();
+            return _dbset.Where(t => t.CategoryId == id).ToList();
         }
 
+        public ICollection<Course> GetListCourseByListId(ICollection<int?> listId)
+        {
+            if (listId != null)
+                return _dbset.Where(t => listId.Contains(t.Id)).OrderBy(t => t.Id).ToList();
+            return null;
+        }
+
+        public ICollection<Course> GetListCourseFree()
+        {
+            return _dbset.Where(t =>
+            (t.Price * ((100 - t.Discount) / 100)) == 0 || t.Price == 0).ToList();
+        }
+
+        public ICollection<Course> GetListCourseHot()
+        {
+            return null;
+        }
+
+        public ICollection<Course> GetListCourseNew()
+        {
+            return _dbset.OrderBy(t => t.CreateDate).ToList();
+        }
+
+        public PagedResults<Course> SearchPageResults(string keyword, int pageNumber, int pageSize)
+        {
+            
+            var list = _dbset.Where(t => t.Name.ToLower().Contains(keyword.ToLower())).OrderBy(t => t.Id).ToList();
+            int count = list.Count();
+            int CurrentPage = pageNumber;
+            int TotalPages = (int)Math.Ceiling(count / (double)pageSize);
+            var items = list.Skip((CurrentPage - 1) * pageSize).Take(pageSize).ToList();
+
+            return new PagedResults<Course>
+            {
+                Results = items,
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                TotalNumberOfPages = TotalPages,
+                TotalNumberOfRecords = count
+            };
+        }
     }
 }

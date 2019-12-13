@@ -29,7 +29,6 @@ namespace eLearningSystem.Data.Model
         public int? IndexNum { get; set; }
         public string Content { get; set; }
 
-        [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Anwser> Anwsers { get; set; }
         [JsonIgnore]

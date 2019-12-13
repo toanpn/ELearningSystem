@@ -1297,7 +1297,7 @@ a.btn:hover {
     color: #c0c1cd;
 }
 
-.search-widget button[type="submit"] {
+.search-widget button {
     width: 48px;
     height: 48px;
     border: 0;

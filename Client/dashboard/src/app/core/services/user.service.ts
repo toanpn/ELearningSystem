@@ -24,10 +24,10 @@ export class UserService {
   createUser(user?: {
     Email: string;
     PhoneNumber: string;
-    address: string;
-    gender: boolean;
+    Address: string;
+    Gender: boolean;
     UserName: string;
-    birth_day: string;
+    BirthDay: string;
   }): Observable<any> {
     return this.http.post(router.createUser, user);
   }
@@ -35,10 +35,10 @@ export class UserService {
   updateUser(user?: {
     Email: string;
     PhoneNumber: string;
-    address: string;
-    gender: boolean;
+    Address: string;
+    Gender: boolean;
     UserName: string;
-    birth_day: string;
+    BirthDay: string;
     Id: number;
   }): Observable<any> {
     return this.http.post(router.updateUser, user);

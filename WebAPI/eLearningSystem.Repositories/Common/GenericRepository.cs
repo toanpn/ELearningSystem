@@ -1,5 +1,6 @@
 ﻿using eLearningSystem.Data;
 using eLearningSystem.Data.Common;
+using eLearningSystem.Repositories.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -60,6 +61,24 @@ namespace eLearningSystem.Repositories.Common
         public virtual void Save()
         {
             _entities.SaveChanges();
+        }
+
+        public PagedResults<T> CreatePagedResults(int pageNumber, int pageSize)
+        {
+            var list = GetAll();
+            int count = list.Count();
+            int CurrentPage = pageNumber;
+            int TotalPages = (int)Math.Ceiling(count / (double)pageSize);
+            var items = list.Skip((CurrentPage - 1) * pageSize).Take(pageSize).ToList();
+
+            return new PagedResults<T>
+            {
+                Results = items,
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                TotalNumberOfPages = TotalPages,
+                TotalNumberOfRecords = count
+            };
         }
     }
 }

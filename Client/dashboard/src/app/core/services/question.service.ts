@@ -9,7 +9,6 @@ const router = {
   updateQuestion: `http://localhost:60793/api/Question/UpdateQuestion`,
   deleteQuestion: `http://localhost:60793/api/Question/DeleteQuestion?Id=`,
   lastIndex: `http://localhost:60793/api/Question/GetLastIndexTest?Id=`,
-  lastId: `http://localhost:60793/api/Question/GetLastId`
 };
 
 @Injectable({
@@ -19,43 +18,39 @@ export class QuestionService {
   constructor(private http: HttpClient) { }
 
   loadListQuestions(filter: {
-    id: string
+    Id: string
   }): Observable<any> {
-    return this.http.get(`${router.getAllByTest}` + `${filter.id}`);
+    return this.http.get(`${router.getAllByTest}` + `${filter.Id}`);
   }
 
   createQuestion(value?: {
-    test_id: number,
-    correct_answer: string,
-    index_num: number,
-    content: string,
+    TestId: number,
+    CorrectAnswer: string,
+    IndexNum: number,
+    Content: string,
   }): Observable<any> {
     return this.http.post(router.createQuestion, value);
   }
 
   updateQuestion(value?: {
-    test_id: number,
-    correct_answer: string,
-    index_num: number,
-    content: string,
-    id: number;
+    TestId: number,
+    CorrectAnswer: string,
+    IndexNum: number,
+    Content: string,
+    Id: number;
   }): Observable<any> {
     return this.http.post(router.updateQuestion, value);
   }
 
-  loadQuestion(filter: { id: string }): Observable<any> {
-    return this.http.get(`${router.getQuestion}` + `${filter.id}`);
+  loadQuestion(filter: { Id: string }): Observable<any> {
+    return this.http.get(`${router.getQuestion}` + `${filter.Id}`);
   }
 
-  deleteQuestion(filter: { id: number }): Observable<any> {
-    return this.http.get(`${router.deleteQuestion}` + `${filter.id}`);
+  deleteQuestion(filter: { Id: number }): Observable<any> {
+    return this.http.get(`${router.deleteQuestion}` + `${filter.Id}`);
   }
 
-  getLastIndexQuestion(filter: { id: number }): Observable<any> {
-    return this.http.get(`${router.lastIndex}` + `${filter.id}`);
-  }
-
-  getLastIdQuestion(): Observable<any> {
-    return this.http.get(`${router.lastId}`);
+  getLastIndexQuestion(filter: { Id: number }): Observable<any> {
+    return this.http.get(`${router.lastIndex}` + `${filter.Id}`);
   }
 }

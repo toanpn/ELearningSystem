@@ -5,9 +5,12 @@ import { Injectable } from '@angular/core';
 
 const router = {
     getAll: 'http://localhost:60793/api/Course/GetAllCourse',
-    getAllByTime: 'http://localhost:60793/api/Course/GetAllCourse',
-    getAllByRate: 'http://localhost:60793/api/Course/GetAllCourse',
-    getById: 'http://localhost:60793/api/Course/idCourse='
+    getCourseNew: 'http://localhost:60793/api/Course/GetCoursesNewPageResult',
+    getCourseHot: 'http://localhost:60793/api/Course/GetCoursesHotPageResult',
+    getCourseFree: 'http://localhost:60793/api/Course/GetCoursesFreePageResult',
+    getCoursePage: 'http://localhost:60793/api/Course/GetPageResult',
+    searchCourse: 'http://localhost:60793/api/Course/SearchPageResult',
+    getCourseByCategory: 'http://localhost:60793/api/Course/GetCourseByCategory'
 };
 
 @Injectable({
@@ -20,15 +23,41 @@ export class CourseService {
     return this.http.get(router.getAll);
   }
 
-  loadCourseById(id: number): Observable<any>{
-    return this.http.get(router.getById + id);
+  loadCoursesPageResults(filter: {pageSize: any, pageNumber: any}): Observable<any> {
+    return this.http.get(router.getCoursePage +
+      `?pageSize=${filter.pageSize}` +
+      `&pageNumber=${filter.pageNumber}`);
   }
 
-  loadAllCourseNew(): Observable<any> {
-    return this.http.get(router.getAllByTime);
+  loadAllCourseNew(filter: {pageSize: any, pageNumber: any}): Observable<any> {
+    return this.http.get(router.getCourseNew +
+      `?pageSize=${filter.pageSize}` +
+      `&pageNumber=${filter.pageNumber}`);
   }
 
-  loadAllCourseHot(): Observable<any> {
-    return this.http.get(router.getAllByRate);
+  loadAllCourseHot(filter: {pageSize: any, pageNumber: any}): Observable<any> {
+    return this.http.get(router.getCourseHot +
+      `?pageSize=${filter.pageSize}` +
+      `&pageNumber=${filter.pageNumber}`);
+  }
+
+  loadAllCourseFree(filter: {pageSize: any, pageNumber: any}): Observable<any> {
+    return this.http.get(router.getCourseFree +
+      `?pageSize=${filter.pageSize}` +
+      `&pageNumber=${filter.pageNumber}`);
+  }
+
+  searchCourse(filter: {keyword: string, pageSize: any, pageNumber: any}): Observable<any> {
+    return this.http.get(`${router.searchCourse}` +
+    `?keyword=${filter.keyword}` +
+    `&pageSize=${filter.pageSize}` +
+    `&pageNumber=${filter.pageNumber}`);
+  }
+
+  loadCourseByCategory(filter: {id: any, pageSize: any, pageNumber: any}): Observable<any> {
+    return this.http.get(`${router.getCourseByCategory}` +
+    `?id=${filter.id}` +
+    `&pageSize=${filter.pageSize}` +
+    `&pageNumber=${filter.pageNumber}`);
   }
 }
