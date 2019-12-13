@@ -57,6 +57,7 @@
     <Compile Include="Common\BaseService.cs" />
     <Compile Include="Common\IBaseService.cs" />
     <Compile Include="IService\IAnswerService.cs" />
+    <Compile Include="IService\ICartService.cs" />
     <Compile Include="IService\ILessonService.cs" />
     <Compile Include="IService\IChapterService.cs" />
     <Compile Include="IService\ICommentService.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="IService\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\AnswerService.cs" />
+    <Compile Include="Service\CartService.cs" />
     <Compile Include="Service\LessonService.cs" />
     <Compile Include="Service\ChapterService.cs" />
     <Compile Include="Service\CategoryService.cs" />

@@ -62,30 +62,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Entity.cs" />
-    <Compile Include="Migrations\201911260900077_init.cs" />
-    <Compile Include="Migrations\201911260900077_init.Designer.cs">
-      <DependentUpon>201911260900077_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911270333386_add-name.cs" />
-    <Compile Include="Migrations\201911270333386_add-name.Designer.cs">
-      <DependentUpon>201911270333386_add-name.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911270351465_imageUser.cs" />
-    <Compile Include="Migrations\201911270351465_imageUser.Designer.cs">
-      <DependentUpon>201911270351465_imageUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911280740225_Course.cs" />
-    <Compile Include="Migrations\201911280740225_Course.Designer.cs">
-      <DependentUpon>201911280740225_Course.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911280818299_target.cs" />
-    <Compile Include="Migrations\201911280818299_target.Designer.cs">
-      <DependentUpon>201911280818299_target.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911280906022_s.cs" />
-    <Compile Include="Migrations\201911280906022_s.Designer.cs">
-      <DependentUpon>201911280906022_s.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Anwser.cs" />
     <Compile Include="Model\Cart.cs" />
@@ -112,26 +88,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201911260900077_init.resx">
-      <DependentUpon>201911260900077_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911270333386_add-name.resx">
-      <DependentUpon>201911270333386_add-name.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911270351465_imageUser.resx">
-      <DependentUpon>201911270351465_imageUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911280740225_Course.resx">
-      <DependentUpon>201911280740225_Course.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911280818299_target.resx">
-      <DependentUpon>201911280818299_target.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911280906022_s.resx">
-      <DependentUpon>201911280906022_s.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

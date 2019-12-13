@@ -8,6 +8,7 @@ import { UserService } from 'src/app/core/services/user.service';
 import { ResponseModel } from 'src/app/core/models/response.model';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { NotificationConstant } from 'src/app/core/constants/notification.constant';
+import { CartService } from 'src/app/core/services/cart.service';
 
 
 @Component({
@@ -18,6 +19,7 @@ import { NotificationConstant } from 'src/app/core/constants/notification.consta
 export class TopnavbarComponent implements OnInit, OnDestroy {
   currentUser: UserModel;
   myTitle: string;
+  numberOfItemCart: number;
 
   constructor(
     private router: Router,
@@ -28,8 +30,12 @@ export class TopnavbarComponent implements OnInit, OnDestroy {
     // tslint:disable-next-line:variable-name
     private _userService: UserService,
     // tslint:disable-next-line:variable-name
-    private _notificationService: NotificationService
-  ) {}
+    private _notificationService: NotificationService,
+    // tslint:disable-next-line:variable-name
+    private _cartService: CartService
+  ) {
+    this.numberOfItemCart = 0;
+  }
 
   ngOnInit(): void {
     if (localStorage.getItem('access_token')) {
@@ -43,6 +49,14 @@ export class TopnavbarComponent implements OnInit, OnDestroy {
       if (user === undefined) {
         this.currentUser = undefined;
       }
+    });
+
+    this._cartService.getNumberCart().subscribe(res => {
+      this._shareService.broadcastCartChange(res.Results);
+    });
+
+    this._shareService.numberItemOffCartStream$.subscribe( nb => {
+      this.numberOfItemCart = nb;
     });
 
     this._shareService.myTitleStream$.subscribe( (t: string) => {
