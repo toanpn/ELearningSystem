@@ -13,3 +13,7 @@ html,
 body {
   height: 100%;
 }
+
+.ck-editor__editable_inline,[_nghost-xix-c2] .ck-editor__editable_inline{
+  min-height: 100px!important;
+}

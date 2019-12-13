@@ -11,7 +11,7 @@
     <div class="row" style="margin-right: 30px; ">
       <div class="col-md-10">
         <label>Nội dung câu hỏi</label>
-        <ckeditor [editor]="Editor" [(ngModel)]="content" (ngModelChange)="content = $event"></ckeditor>
+        <ckeditor [editor]="Editor" [config]="{extraPlugins: 'divarea', language:'vi',fillEmptyBlocks:'false'}"  [(ngModel)]="content" (ngModelChange)="content = $event"></ckeditor>
       </div>
       <div class="col-md-10">
         <label>Đáp án đúng</label>

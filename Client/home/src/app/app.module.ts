@@ -20,10 +20,13 @@ import { HomeModule } from './modules/home/home.module';
 import { SingleCourseComponent } from './modules/single-course/single-course.component';
 import { ContactModule } from './modules/contact/contact.module';
 import { AboutModule } from './modules/about/about.module';
+import { TestComponent } from './modules/test/test.component';
+import { StudyComponent } from './modules/study/study.component';
+import { TabsModule } from 'ngx-bootstrap';
 // import {ItemCourserComponent} from './layouts/item-courser/item-courser.component';
 
 @NgModule({
-  declarations: [AppComponent, SingleCourseComponent],
+  declarations: [AppComponent, SingleCourseComponent, TestComponent, StudyComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -44,7 +47,8 @@ import { AboutModule } from './modules/about/about.module';
     CourseModule,
     HomeModule,
     ContactModule,
-    AboutModule
+    AboutModule,
+    TabsModule.forRoot()
   ],
   providers: [
     ShareService,
@@ -53,4 +57,4 @@ import { AboutModule } from './modules/about/about.module';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

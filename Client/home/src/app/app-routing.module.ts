@@ -8,6 +8,8 @@ import { CoursesComponent } from './modules/courses/courses.component';
 import { SingleCourseComponent } from './modules/single-course/single-course.component';
 import { AboutComponent } from './modules/about/about.component';
 import { ContactComponent } from './modules/contact/contact.component';
+import { TestComponent } from './modules/test/test.component';
+import { StudyComponent } from './modules/study/study.component';
 
 const ROUTES: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -20,12 +22,12 @@ const ROUTES: Routes = [
         component: HomeComponent
       },
       {
-        path: 'courses',
-        component: CoursesComponent
+        path: 'test',
+        component: TestComponent
       },
       {
-        path: 'course/:id',
-        component: SingleCourseComponent
+        path: 'courses',
+        component: CoursesComponent
       },
       {
         path: 'about',
@@ -38,8 +40,16 @@ const ROUTES: Routes = [
     ]
   },
   {
+    path: 'study',
+    component: StudyComponent
+  },
+  {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'course/:id',
+    component: SingleCourseComponent
   },
   // Handle all other routes
   { path: '**', redirectTo: '/home' }
