@@ -11,7 +11,7 @@ using System.Web.Http;
 namespace eLearningSystem.WebApi.APIs
 {
     [RoutePrefix("api/User")]
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     public class UserController : ApiController
     {
         private readonly IUserService _userService;
@@ -24,6 +24,7 @@ namespace eLearningSystem.WebApi.APIs
         //Post: api/User/AddUser
         [Route("AddUser")]
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult AddUser([FromBody]User user)
         {
             user.EmailConfirmed = false;
@@ -37,6 +38,7 @@ namespace eLearningSystem.WebApi.APIs
 
         //Get: api/User/GetAllUser
         [Route("GetAllUser")]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IHttpActionResult GetAllUser()
         {
@@ -45,6 +47,7 @@ namespace eLearningSystem.WebApi.APIs
 
         //Get: api/User/DeleteUser
         [Route("DeleteUser")]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IHttpActionResult DeleteUser(int idUser)
         {
@@ -54,10 +57,18 @@ namespace eLearningSystem.WebApi.APIs
 
 
         //Get: api/User/{id}
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IHttpActionResult GetUser(int idUser)
         {
             return Ok(new { results = _userService.GetById(idUser) });
+        }
+
+        [HttpGet]
+        [Route("GetTeacherByCourseId")]
+        public IHttpActionResult GetTeacherByCourseId(int idCourse)
+        {
+            return Ok(new { results = _userService.GetTeacherByCourseId(idCourse) });
         }
 
         ////Post: api/User/DeleteUser
@@ -71,6 +82,7 @@ namespace eLearningSystem.WebApi.APIs
 
         //Post: api/User/UpdateUser
         [Route("UpdateUser")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IHttpActionResult UpdateUser([FromBody]User user)
         {

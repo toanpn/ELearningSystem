@@ -17,5 +17,7 @@ namespace eLearningSystem.Services.IService
         void Update(User entity);
         IEnumerable<User> GetByRole(int idRole);
         User GetUserByUserName(string userName);
+
+        User GetTeacherByCourseId(int id);
     }
 }

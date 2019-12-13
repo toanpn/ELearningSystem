@@ -1,62 +1,19 @@
-<div class="container" style="padding-bottom: 100px;">
-  <div>
-    <h1 class="text-center" *ngIf="isUpdate===false">
-      Thêm mới khoá học
-    </h1>
-    <h1 class="text-center" *ngIf="isUpdate===true">
-      Sửa thông tin khoá học
-    </h1>
-  </div>
-  <div>
-    <form [formGroup]="formData">
-      <div class="row">
-        <div class="form-group col-md-6">
-          <label>Tên khoá học</label>
-          <input class="form-control" id="name" formControlName="name" placeholder="Tên khoá học" required="true"
-            type="text">
-        </div>
-        <div class="form-group col-md-6">
-          <label>Giá tiền</label>
-          <input class="form-control" id="price" formControlName="price" placeholder="Giá tiền" required="true"
-            type="number">
-        </div>
+  <br>
+  <mat-horizontal-stepper [linear]="isLinear"  #stepper>
+    <mat-step [completed]="true" [editable]="true">
+        <ng-template matStepLabel>Thêm khóa học</ng-template>
+        <app-add-course (next)="nextTab()"></app-add-course>
+    </mat-step>
+    <mat-step [completed]="true" [editable]="true" >
+        <ng-template matStepLabel>Thêm nội dung bài học</ng-template>
+        <app-add-lesson-chapter [CourseId]="CourseId" (next)="nextTab()"></app-add-lesson-chapter>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      You are now done.
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
       </div>
-      <div class="row">
-        <div class="form-group col-md-6">
-          <label>Ảnh đại diện</label>
-          <input class="form-control" id="image_url" formControlName="image_url" placeholder="Link ảnh" required=""
-            type="text">
-        </div>
-        <div class="form-group col-md-6" [formGroup]="formData">
-          <label>Category</label>
-          <!-- <mat-select class="form-control">
-            <mat-option *ngFor="let category of categories$">{{ category.name }}</mat-option>
-          </mat-select> -->
-          <select class="form-control" id="category_id" formControlName="category_id">
-            <option value="" disabled>--Select a category--</option>
-            <option *ngFor="let category of categories$" [ngValue]="category.id">{{category.name}}
-            </option>
-          </select>
-        </div>
-      </div>
-      <!-- <h1>
-        <div *ngFor="let category of (categories$ | async)?.results">
-          {{category.id}}
-        </div>
-      </h1> -->
-      <div class="row">
-        <div class="form-group col-md-12">
-          <label>Mô tả</label>
-          <!-- <input class="form-control" formControlName="description" id="description"  > -->
-          <textarea class="form-control" id="description" formControlName="description" placeholder="Mô tả"
-            rows="5"></textarea>
-        </div>
-      </div>
-    </form>
-  </div>
-  <div>
-    <button (click)="cancel()" class="btn btn-danger btn-cancel">Hủy</button>
-    <button (click)="onCreate()" class="btn btn-success btn-create" *ngIf="isUpdate===false">Thêm mới</button>
-    <button (click)="onUpdate()" class="btn btn-success btn-create" *ngIf="isUpdate===true">Cập nhập</button>
-  </div>
-</div>
+    </mat-step>
+  </mat-horizontal-stepper>

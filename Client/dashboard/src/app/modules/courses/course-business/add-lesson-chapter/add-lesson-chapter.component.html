@@ -1,0 +1,42 @@
+<button class="btn btn-success pull-right" (click)="openChapterDialog()" mat-button><i class="fa fa-plus-circle"></i> Thêm
+  chương học</button>
+<div style="clear:both"></div>
+<br>
+<div>
+  <mat-accordion>
+    <mat-expansion-panel (click)="false" *ngFor="let chapter of lstChapter;let i = index">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{chapter.Name}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="table-container">
+        <table class="table">
+          <tbody class="table-body" >
+            <!-- <tr style="height: 100px;" *ngFor="let course of (courses$ | async)?.results;" class="cursor-pointer"> -->
+            <tr *ngFor="let lesson of chapter.Lessons" class="cursor-pointer">
+              <td style="width: 30px;">
+                <i class="fa fa-play-circle" aria-hidden="true"></i>
+              </td>
+              <td>
+                {{lesson.Name}}
+              </td>
+              <td style="width: 60px;">
+                <a>{{lesson.VideoTime}}</a>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <button style="margin-top: 20px;" class="btn btn-primary" (click)="openLessonDialog(i)" mat-button><i class="fa fa-plus-circle"></i> Thêm
+                  bài học</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </mat-expansion-panel>
+
+  </mat-accordion>
+</div>
+

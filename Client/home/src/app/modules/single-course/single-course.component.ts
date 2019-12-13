@@ -14,6 +14,12 @@ export class SingleCourseComponent implements OnInit {
   course: any;
   teacher: any;
   students: any;
+  teacherRatingAVG: number;
+  teacherCountReviews: number;
+  teacherNumberOfStudent: number;
+  teacherNumberOfCourse: number;0
+  courseNumberOfLesson: string;
+  courseTotalTime: string;
 
   constructor(
     // tslint:disable-next-line:variable-name
@@ -29,11 +35,12 @@ export class SingleCourseComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       if (this.route.snapshot.params.id) {
         this.getCourse(this.route.snapshot.params.id);
-        this.getUserCourse(this.route.snapshot.params.id);
+        this.getTeacher(this.route.snapshot.params.id);
         this.getStudents(this.route.snapshot.params.id);
       }
     });
   }
+
   getCourse(id: any) {
     const filter = {
       id
@@ -44,18 +51,30 @@ export class SingleCourseComponent implements OnInit {
     });
   }
 
-  calculater(lessons: any): string {
+  // calculater(lessons: any): string {
+  //   // tslint:disable-next-line:only-arrow-functions
+  //   const sec = lessons.reduce(function(prev, cur) {
+  //     console.log(this.course.Chapters);
+  //   // this.courseTotalTime = this.course.Chapters;
+  //   // let sec = this.course.Chapters.reduce(function(prev, cur) {
+  //   //   return prev + cur.VideoTime;
+  //   // }, 0);
+  //   this.courseNumberOfLesson = '122';
+  //   });
+  // }
+
+  FormatingSecond(lessons: any): string {
     // tslint:disable-next-line:only-arrow-functions
-    const sec = lessons.reduce(function(prev, cur) {
+    const sec = lessons.reduce( function( prev, cur) {
       return prev + cur.VideoTime;
     }, 0);
 
     // const minutes: number = Math.floor(sec / 60);
     // return minutes + ':' + (sec - minutes * 60);
-    return this.amkmsks(sec);
+    return this.secondtoHHMMSS(sec);
   }
 
-  amkmsks(num: string) {
+  secondtoHHMMSS(num: string) {
     // tslint:disable-next-line:variable-name
     const sec_num = parseInt(num, 10); // don't forget the second param
     const hours   = Math.floor(sec_num / 3600);
@@ -87,12 +106,17 @@ export class SingleCourseComponent implements OnInit {
     });
   }
 
-  getUserCourse(id: any) {
+  getTeacher(id: any) {
     const filter = {
       id
     };
     this.courseService.getTeacherByCourseId(filter).subscribe(res => {
-      this.teacher = res.results[0].User;
+      console.log(res.results);
+      this.teacher = res.results;
+      this.teacherNumberOfCourse = this.teacher.UserCourse.length;
+      // this.teacherNumberOfStudent = this.teacher.UserCourse.length - 1;
+      this.teacherNumberOfStudent = 12;
+      this.teacherRatingAVG = 3.4;
     });
   }
 

@@ -22,7 +22,10 @@ import {
   MatToolbarModule,
   MatTooltipModule,
   MatPaginatorModule,
-  MatGridListModule
+  MatGridListModule,
+  MatStepperModule,
+  MatExpansionModule,
+  MatDialogModule
 } from '@angular/material';
 
 @NgModule({
@@ -48,7 +51,10 @@ import {
     MatSliderModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatStepperModule,
+    MatExpansionModule,
+    MatDialogModule
   ],
   exports: [
     MatButtonModule,
@@ -73,7 +79,10 @@ import {
     MatNativeDateModule,
     MatAutocompleteModule,
     MatPaginatorModule,
-    MatGridListModule
+    MatGridListModule,
+    MatStepperModule,
+    MatExpansionModule,
+    MatDialogModule
   ]
 })
 export class MaterialModule {}

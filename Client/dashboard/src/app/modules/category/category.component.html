@@ -7,6 +7,7 @@
         <thead class="table-header">
           <tr>
             <th>Thể Loại</th>
+            <th>Ngày Tạo</th>
             <th style="min-width: 100px">Thao tác</th>
           </tr>
         </thead>
@@ -14,6 +15,9 @@
           <tr *ngFor="let category of (category$ | async); let i = index;" class="cursor-pointer">
             <td>
               {{category.Name}}
+            </td>
+            <td>
+              {{category.CreateDate}}
             </td>
             <td>
               <mat-icon (click)="editCategory(category)" style="cursor: pointer;color: #2f4050;" class="mat-18"
