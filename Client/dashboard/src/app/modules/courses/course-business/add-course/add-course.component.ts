@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, TemplateRef, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Observable } from 'rxjs';
@@ -16,7 +16,7 @@ export class AddCourseComponent implements OnInit {
   formData: FormGroup;
   isUpdate = false;
   course: any;
-  @Output() next = new EventEmitter();
+  @Output() next = new EventEmitter<number>();
 
   categories$: Observable<any>;
   constructor(
@@ -36,11 +36,11 @@ export class AddCourseComponent implements OnInit {
 
   initForm() {
     this.formData = this.formBuilder.group({
-      name: '',
-      category_id: '',
-      image_url: '',
-      description: '',
-      price: ''
+      name: ['', Validators.required],
+      category_id: ['', Validators.required],
+      image_url: ['', Validators.required],
+      description: ['', Validators.required],
+      price: ['', Validators.required]
     });
   }
   ngOnInit() {
@@ -81,6 +81,10 @@ export class AddCourseComponent implements OnInit {
   }
 
   onCreate() {
+    if (this.formData.invalid) {
+      this.notificationService.showError('Vui lòng nhập đầy đủ thông tin', 'Thất bại', 2000);
+      return;
+    }
     const course = {
       Name: this.form.name.value.toString().trim(),
       Price: this.form.price.value === null ? 1 : this.form.price.value,
@@ -98,13 +102,13 @@ export class AddCourseComponent implements OnInit {
       ]
     };
     this.courseService.createCourse(course).subscribe(
-      () => {
+      (data) => {
         this.notificationService.showSuccess(
           'Thêm khóa học thành công',
           'Thành công',
           2000
         );
-        this.next.emit();
+        this.next.emit(data.Results.Id);
       },
       () => {
         this.notificationService.showError(

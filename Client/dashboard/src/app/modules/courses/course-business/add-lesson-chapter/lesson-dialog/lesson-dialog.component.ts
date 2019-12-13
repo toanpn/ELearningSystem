@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-lesson-dialog',
@@ -11,25 +12,27 @@ export class LessonDialogComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public ChapterId: number,
-    public dialogRef: MatDialogRef<LessonDialogComponent>) { }
+    public dialogRef: MatDialogRef<LessonDialogComponent>,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
     this.initForm();
   }
   initForm() {
     this.lessonForm = this.formBuilder.group({
-      Name: '',
-      Description: '',
-      VideoUrl: '',
-      VideoTime: ''
+      Name: ['', Validators.required],
+      Description: ['', Validators.required],
+      VideoUrl: ['', Validators.required],
+      VideoTime: ['', Validators.required]
     });
   }
 
   onSubmit() {
     if (this.lessonForm.invalid) {
+      this.toastr.error('Vui lòng nhập đầy đủ thông tin');
       return;
     }
-    this.dialogRef.close({...this.lessonForm.value});
+    this.dialogRef.close({ ...this.lessonForm.value });
   }
 
 

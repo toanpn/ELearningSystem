@@ -2,7 +2,7 @@
   <mat-horizontal-stepper [linear]="isLinear"  #stepper>
     <mat-step [completed]="true" [editable]="true">
         <ng-template matStepLabel>Thêm khóa học</ng-template>
-        <app-add-course (next)="nextTab()"></app-add-course>
+        <app-add-course (next)="nextTab($event)"></app-add-course>
     </mat-step>
     <mat-step [completed]="true" [editable]="true" >
         <ng-template matStepLabel>Thêm nội dung bài học</ng-template>
@@ -10,10 +10,13 @@
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Done</ng-template>
-      You are now done.
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
+      <div class="finish-wrap">
+        <div><i class="fa fa-check-circle icon-check"></i></div>
+        <div class="text-finish">Hoàn thành</div>
+      </div>
+      <div style="display: flex;justify-content: flex-end;">
+        <button class="btn btn-success btn-create" matStepperPrevious (click)="cancel()">Quay lại</button>
+        <button class="btn btn-success btn-danger" (click)="stepper.reset()">Reset</button>
       </div>
     </mat-step>
   </mat-horizontal-stepper>

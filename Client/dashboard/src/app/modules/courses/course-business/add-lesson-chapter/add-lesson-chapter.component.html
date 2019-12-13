@@ -38,5 +38,10 @@
     </mat-expansion-panel>
 
   </mat-accordion>
+  <br>
+  <div *ngIf="lstChapter.length > 0">
+    <button (click)="cancel()" class="btn btn-danger btn-cancel">Hủy</button>
+    <button (click)="onCreate()" class="btn btn-success btn-create">Thêm mới</button>
+  </div>
 </div>
 

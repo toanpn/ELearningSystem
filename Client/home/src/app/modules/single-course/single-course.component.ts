@@ -14,7 +14,7 @@ export class SingleCourseComponent implements OnInit {
   teacherRatingAVG: number;
   teacherCountReviews: number;
   teacherNumberOfStudent: number;
-  teacherNumberOfCourse: number;0
+  teacherNumberOfCourse: number;
   courseNumberOfLesson: string;
   courseTotalTime: string;
 
