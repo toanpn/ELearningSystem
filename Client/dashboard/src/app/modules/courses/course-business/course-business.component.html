@@ -1,16 +1,12 @@
   <br>
   <mat-horizontal-stepper [linear]="isLinear"  #stepper>
-    <mat-step [completed]="false" [editable]="false">
-        <ng-template matStepLabel>Register Course</ng-template>
+    <mat-step [completed]="true" [editable]="true">
+        <ng-template matStepLabel>Thêm khóa học</ng-template>
         <app-add-course (next)="nextTab()"></app-add-course>
     </mat-step>
-    <mat-step [completed]="false" [editable]="false" >
-        <ng-template matStepLabel>Additional Lesson - Chapter</ng-template>
-       
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
+    <mat-step [completed]="true" [editable]="true" >
+        <ng-template matStepLabel>Thêm nội dung bài học</ng-template>
+        <app-add-lesson-chapter [CourseId]="CourseId" (next)="nextTab()"></app-add-lesson-chapter>
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Done</ng-template>

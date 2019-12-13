@@ -7,7 +7,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 export class CourseBusinessComponent implements OnInit {
   isLinear = true;
   @ViewChild('stepper', { static: true }) stepper: any;
-
+  CourseId = -1;
   constructor() {}
 
   ngOnInit() {

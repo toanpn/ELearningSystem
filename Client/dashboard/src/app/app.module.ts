@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule,LOCALE_ID } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -29,6 +29,9 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { AddCourseComponent } from './modules/courses/course-business/add-course/add-course.component';
 import localeVi from '@angular/common/locales/vi';
 import { registerLocaleData } from '@angular/common';
+import { AddLessonChapterComponent } from './modules/courses/course-business/add-lesson-chapter/add-lesson-chapter.component';
+import { ChapterDialogComponent } from './modules/courses/course-business/add-lesson-chapter/chapter-dialog/chapter-dialog.component';
+import { LessonDialogComponent } from './modules/courses/course-business/add-lesson-chapter/lesson-dialog/lesson-dialog.component';
 registerLocaleData(localeVi, 'vi');
 @NgModule({
   declarations: [
@@ -41,10 +44,13 @@ registerLocaleData(localeVi, 'vi');
     CoursesComponent,
     CourseBusinessComponent,
     QuestionBusinessComponent,
-    AddCourseComponent
+    AddCourseComponent,
+    AddLessonChapterComponent,
+    ChapterDialogComponent,
+    LessonDialogComponent
   ],
   imports: [
-  BrowserModule,
+    BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -65,6 +71,7 @@ registerLocaleData(localeVi, 'vi');
     CKEditorModule,
     CurrencyMaskModule
   ],
+  entryComponents: [ChapterDialogComponent, LessonDialogComponent],
   providers: [
     ShareService,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
@@ -72,7 +79,7 @@ registerLocaleData(localeVi, 'vi');
     {
       provide: LOCALE_ID,
       useValue: 'vi' // 'de' for Germany, 'fr' for France ...
-     }
+    }
   ],
   exports: [],
   bootstrap: [AppComponent]

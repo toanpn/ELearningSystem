@@ -1,0 +1,28 @@
+  <h2 mat-dialog-title>Thêm phần học</h2>
+  <form [formGroup]="chapterForm" (ngSubmit)="onSubmit()">
+  <mat-dialog-content class="mat-typography">
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label>Tên phần học</label>
+          <input class="form-control" id="name" formControlName="Name" placeholder="Tên phần học" required="true"
+            type="text">
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label>Vị trí</label>
+          <input class="form-control" id="image_url" formControlName="IndexNum" placeholder="Thứ tự phần học" required=""
+            type="text">
+        </div>
+      </div>
+      <!-- <h1>
+        <div *ngFor="let category of (categories$ | async)?.results">
+          {{category.id}}
+        </div>
+      </h1> -->
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button class="btn btn-danger" mat-dialog-close>Hủy</button>
+    <button mat-button class="btn btn-success" type="submit">Thêm </button>
+  </mat-dialog-actions>
+</form>

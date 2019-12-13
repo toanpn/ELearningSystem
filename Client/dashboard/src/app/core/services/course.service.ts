@@ -48,7 +48,6 @@ export class CourseService {
   }
 
   deleteCourse(id: number): Observable<any> {
-    debugger
     return this.http.get(`${router.deleteCourse}?idCourse=${id}`);
   }
 }
