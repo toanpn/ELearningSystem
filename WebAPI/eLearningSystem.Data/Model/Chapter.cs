@@ -24,12 +24,12 @@ namespace eLearningSystem.Data.Model
 
         public int? IndexNumber { get; set; }
 
-        public virtual Course Course { get; set; }
+        public Course Course { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Lesson> Lessons { get; set; }
+        public ICollection<Lesson> Lessons { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Test> Tests { get; set; }
+        public ICollection<Test> Tests { get; set; }
     }
 }

@@ -11,8 +11,8 @@ namespace eLearningSystem.Data.Model
         [ForeignKey("Test")]
         public int? TestId { get; set; }
 
-        public virtual Test Test { get; set; }
+        public Test Test { get; set; }
 
-        public virtual User User { get; set; }
+        public User User { get; set; }
     }
 }

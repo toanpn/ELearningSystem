@@ -42,6 +42,11 @@ namespace eLearningSystem.Repositories.Common
         {
             return _dbset.Remove(entity);
         }
+        public T FindById(object id)
+        {
+            return _dbset.Find(id);
+        }
+
 
         public virtual void Edit(object id, T entity)
         {
@@ -57,5 +62,7 @@ namespace eLearningSystem.Repositories.Common
         {
             _entities.SaveChanges();
         }
+
+
     }
 }

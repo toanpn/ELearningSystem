@@ -26,12 +26,12 @@ namespace eLearningSystem.Data.Model
         [ForeignKey("Chapter")]
         public int? ChapterId { get; set; }
 
-        public virtual Chapter Chapter { get; set; }
+        public Chapter Chapter { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Question> Questions { get; set; }
+        public ICollection<Question> Questions { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserTest> UserTests { get; set; }
+        public ICollection<UserTest> UserTests { get; set; }
     }
 }

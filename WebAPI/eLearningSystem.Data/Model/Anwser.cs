@@ -13,6 +13,6 @@ namespace eLearningSystem.Data.Model
         [ForeignKey("Question")]
         public int? QuestionId { get; set; }
 
-        public virtual Question Question { get; set; }
+        public Question Question { get; set; }
     }
 }

@@ -204,6 +204,7 @@
     <Compile Include="API\ManagerChapterController.cs" />
     <Compile Include="API\ManagerCategoryController.cs" />
     <Compile Include="API\ManagerCourseController.cs" />
+    <Compile Include="API\UserCourseController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />

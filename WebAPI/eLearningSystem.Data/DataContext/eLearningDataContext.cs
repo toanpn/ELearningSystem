@@ -11,8 +11,7 @@ namespace eLearningSystem.Data.Model
         public eLearningDataContext()
             : base("eLearningDataContext")
         {
-            this.Configuration.LazyLoadingEnabled = false;
-            this.Configuration.ProxyCreationEnabled = false;
+            this.Configuration.LazyLoadingEnabled = true;
         }
 
         public static eLearningDataContext Create()
@@ -20,20 +19,20 @@ namespace eLearningSystem.Data.Model
             return new eLearningDataContext();
         }
 
-        public virtual DbSet<Anwser> Anwsers { get; set; }
-        public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<Chapter> Chapters { get; set; }
-        public virtual DbSet<Comment> Comments { get; set; }
-        public virtual DbSet<Course> Courses { get; set; }
-        public virtual DbSet<Lesson> Lessons { get; set; }
-        public virtual DbSet<Question> Questions { get; set; }
-        public virtual DbSet<Rating> Ratings { get; set; }
-        public virtual DbSet<Test> Tests { get; set; }
-        public virtual DbSet<Transaction> Transactions { get; set; }
-        public virtual DbSet<UserCourse> User_Course { get; set; }
-        public virtual DbSet<UserLesson> User_Lesson { get; set; }
-        public virtual DbSet<UserTest> User_Test { get; set; }
-        //public virtual DbSet<Video> Videos { get; set; }
+        public DbSet<Anwser> Anwsers { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Chapter> Chapters { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Lesson> Lessons { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Rating> Ratings { get; set; }
+        public DbSet<Test> Tests { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<UserCourse> User_Course { get; set; }
+        public DbSet<UserLesson> User_Lesson { get; set; }
+        public DbSet<UserTest> User_Test { get; set; }
+        //public  DbSet<Video> Videos { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -36,12 +36,12 @@ namespace eLearningSystem.Data.Model
         public int? IndexNumber { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Comment> Comment1 { get; set; }
+        public  ICollection<Comment> Comment1 { get; set; }
 
-        public virtual Comment Comment2 { get; set; }
+        public  Comment Comment2 { get; set; }
 
-        public virtual Lesson Lesson { get; set; }
+        public  Lesson Lesson { get; set; }
 
-        public virtual User User { get; set; }
+        public  User User { get; set; }
     }
 }

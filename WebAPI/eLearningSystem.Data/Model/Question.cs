@@ -25,8 +25,8 @@ namespace eLearningSystem.Data.Model
         public int? IndexNumber { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Anwser> Anwsers { get; set; }
+        public  ICollection<Anwser> Anwsers { get; set; }
 
-        public virtual Test Test { get; set; }
+        public  Test Test { get; set; }
     }
 }

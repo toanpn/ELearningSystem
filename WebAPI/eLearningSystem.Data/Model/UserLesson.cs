@@ -15,8 +15,8 @@ namespace eLearningSystem.Data.Model
 
         public int? Time { get; set; }
 
-        public virtual Lesson Lesson { get; set; }
+        public Lesson Lesson { get; set; }
 
-        public virtual User User { get; set; }
+        public User User { get; set; }
     }
 }

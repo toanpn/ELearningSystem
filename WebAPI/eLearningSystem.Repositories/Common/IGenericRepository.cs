@@ -12,6 +12,8 @@ namespace eLearningSystem.Repositories.Common
     {
         IEnumerable<T> GetAll();
         IEnumerable<T> FindBy(Expression<Func<T, bool>> predicate);
+
+        T FindById(object id);
         T Add(T entity);
         T Delete(T entity);
         void Edit(object id, T entity);

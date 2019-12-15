@@ -60,11 +60,15 @@
     <Compile Include="IService\IChapterService.cs" />
     <Compile Include="IService\ICourseService.cs" />
     <Compile Include="IService\ILessonService.cs" />
+    <Compile Include="IService\IUserCourseService.cs" />
+    <Compile Include="IService\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\CategoryService.cs" />
     <Compile Include="Service\ChapterService.cs" />
     <Compile Include="Service\CourseService.cs" />
     <Compile Include="Service\LessonService.cs" />
+    <Compile Include="Service\UserCourseService.cs" />
+    <Compile Include="Service\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

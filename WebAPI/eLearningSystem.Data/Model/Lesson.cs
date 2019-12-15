@@ -30,14 +30,14 @@ namespace eLearningSystem.Data.Model
 
         public double? VideoTime { get; set; }
 
-        public virtual Chapter Chapter { get; set; }
+        public  Chapter Chapter { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Comment> Comments { get; set; }
+        public  ICollection<Comment> Comments { get; set; }
 
-        //public virtual Video Video { get; set; }
+        //public  Video Video { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserLesson> UserLessons { get; set; }
+        public  ICollection<UserLesson> UserLessons { get; set; }
     }
 }

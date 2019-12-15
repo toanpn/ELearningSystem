@@ -34,15 +34,15 @@ namespace eLearningSystem.Data.Model
         [ForeignKey("Category")]
         public int? CategoryId { get; set; }
 
-        public virtual Category Category { get; set; }
+        public Category Category { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Chapter> Chapters { get; set; }
+        public ICollection<Chapter> Chapters { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Rating> Ratings { get; set; }
+        public ICollection<Rating> Ratings { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserCourse> UserCourses { get; set; }
+        public ICollection<UserCourse> UserCourses { get; set; }
     }
 }
