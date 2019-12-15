@@ -1,0 +1,26 @@
+$color-clear: transparent;
+$color-base: #000;
+
+.snack-bar-container {
+  display: table;
+  color: $color-base;
+  width: 100%;
+
+  .snack-bar-icon {
+    font-size: 25px;
+    display: table-cell;
+  }
+
+  .snack-bar-content {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0 20px;
+  }
+
+  .snack-bar-dismiss {
+    font-size: 25px;
+    display: table-cell;
+    cursor: pointer;
+    text-align: right;
+  }
+}

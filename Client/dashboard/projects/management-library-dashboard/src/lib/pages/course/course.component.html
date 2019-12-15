@@ -1,0 +1,42 @@
+<div class="table-container">
+  <div class="table-header">
+    <button mat-raised-button color="primary" (click)="onAddNewCourse()">Thêm khoá học</button>
+  </div>
+  <table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="Tên khoá học">
+      <th mat-header-cell *matHeaderCellDef> Tên khoá học </th>
+      <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Hình ảnh">
+      <th mat-header-cell *matHeaderCellDef> Hình ảnh </th>
+      <td mat-cell *matCellDef="let element">
+        <img class="img-w-80" [src]="baseUrl + element.ImageUrl" />
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Giá tiền">
+      <th mat-header-cell *matHeaderCellDef> Giá tiền </th>
+      <td mat-cell *matCellDef="let element"> {{element.Price}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Thể loại">
+      <th mat-header-cell *matHeaderCellDef> Thể loại </th>
+      <td mat-cell *matCellDef="let element"> {{element.CategoryId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Thao tác">
+      <th mat-header-cell *matHeaderCellDef> Thao tác </th>
+      <td mat-cell *matCellDef="let element">
+        <i class="fa fa-edit" matTooltip="Cập nhập thông tin khoá học" (click)="onUpdateCourse(element)"></i>
+        <i class="fa fa-bookmark" matTooltip="Cập nhập nội dung khoá học" (click)="onUpdateContentCourse(element)"></i>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" [length]="totalItems" (page)="onChangePaging($event)"
+    showFirstLastButtons></mat-paginator>
+</div>

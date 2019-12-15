@@ -1,0 +1,20 @@
+<mat-toolbar role="heading">
+  <mat-toolbar-row>
+    <span class="fill-remaining-space"></span>
+
+    <mat-menu #appMenu="matMenu">
+      <ng-template matMenuContent matMenuContent let-name="name">
+        <button mat-menu-item (click)="onLogOut()">Log off {{ name }}</button>
+      </ng-template>
+    </mat-menu>
+
+    <button
+      mat-button
+      [matMenuTriggerFor]="appMenu"
+      [matMenuTriggerData]="{ name: userName }"
+    >
+      <span>Hi {{ userName }}</span>
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>

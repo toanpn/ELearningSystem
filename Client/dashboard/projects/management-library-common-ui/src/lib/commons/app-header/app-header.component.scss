@@ -1,0 +1,23 @@
+:host {
+  .fill-remaining-space {
+    flex: 1 1 auto;
+  }
+
+  .icon-close {
+    text-align: right;
+    width: 100%;
+  }
+
+  .mat-toolbar {
+    height: 85px;
+    background-image: linear-gradient(
+      to right,
+      rgba(255, 0, 0, 0),
+      rgba(0, 137, 255, 0.34)
+    );
+    .mat-toolbar-row {
+      padding: 0;
+      height: 100%;
+    }
+  }
+}

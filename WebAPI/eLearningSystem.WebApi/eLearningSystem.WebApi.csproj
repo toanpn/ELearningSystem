@@ -201,7 +201,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="API\ManagerUsersController.cs" />
+    <Compile Include="API\ManagerChapterController.cs" />
+    <Compile Include="API\ManagerCategoryController.cs" />
+    <Compile Include="API\ManagerCourseController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -243,6 +245,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\FileExtension.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\UserRoleViewModel.cs" />

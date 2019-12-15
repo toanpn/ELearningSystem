@@ -22,7 +22,7 @@ namespace eLearningSystem.Services.Base
 
         public virtual T GetById(int id)
         {
-            return _repository.FindBy(x=>x.Id == id).FirstOrDefault();
+            return _repository.FindBy(x => x.Id == id).FirstOrDefault();
         }
         public virtual void Create(T entity)
         {
@@ -35,10 +35,10 @@ namespace eLearningSystem.Services.Base
         }
 
 
-        public virtual void Update(T entity)
+        public virtual void Update(object id, T entity)
         {
             if (entity == null) throw new ArgumentNullException("entity");
-            _repository.Edit(entity);
+            _repository.Edit(id, entity);
             _unitOfWork.Commit();
         }
 

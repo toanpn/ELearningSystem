@@ -1,0 +1,11 @@
+<div
+  class="flex-login-container"
+  [ngClass]="{ 'is-mobile': isMobile$ | async }"
+>
+  <div class="left-container">
+    <div id="app-left-content" class="bg-login-1"></div>
+  </div>
+  <div class="right-container bg-login-2">
+    <app-login-form (submitForm)="submitLogin($event)"></app-login-form>
+  </div>
+</div>

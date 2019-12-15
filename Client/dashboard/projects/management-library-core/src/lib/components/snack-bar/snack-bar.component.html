@@ -1,0 +1,15 @@
+<div class="snack-bar-container">
+  <span
+    class="snack-bar-icon"
+    [ngClass]="{
+      'fas fa-check': data.type === 'success',
+      'fa fa-window-close': data.type === 'error'
+    }"
+  >
+  </span>
+  <span
+    class="snack-bar-span-content snack-bar-content"
+    [innerHTML]="data.content"
+  ></span>
+  <em class="vnas2-icon-close snack-bar-dismiss" (click)="dismiss()"></em>
+</div>

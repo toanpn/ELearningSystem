@@ -1,4 +1,5 @@
-﻿using eLearningSystem.Data.Model;
+﻿using eLearningSystem.Data.DTO;
+using eLearningSystem.Data.Model;
 using eLearningSystem.Repositories.Common;
 using System;
 using System.Collections.Generic;
@@ -10,5 +11,6 @@ namespace eLearningSystem.Repositories.Repository
 {
     public interface ICourseRepository : IGenericRepository<Course>
     {
+        PagedResults<Course> CreatePagedResults(int pageNumber, int pageSize);
     }
 }

@@ -1,4 +1,5 @@
-﻿using eLearningSystem.Data.Model;
+﻿using eLearningSystem.Data.DTO;
+using eLearningSystem.Data.Model;
 using eLearningSystem.Repositories.Common;
 using System;
 using System.Collections.Generic;
@@ -15,9 +16,22 @@ namespace eLearningSystem.Repositories.Repository
 
         }
 
-        public override IEnumerable<Course> GetAll()
+        public PagedResults<Course> CreatePagedResults(int pageNumber, int pageSize)
         {
-            return _entities.Set<Course>().AsEnumerable();
+            var list = _dbset.OrderBy(t => t.Id).ToList();
+            int count = list.Count();
+            int CurrentPage = pageNumber;
+            int TotalPages = (int)Math.Ceiling(count / (double)pageSize);
+            var items = list.Skip((CurrentPage - 1) * pageSize).Take(pageSize).ToList();
+
+            return new PagedResults<Course>
+            {
+                Results = items,
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                TotalNumberOfPages = TotalPages,
+                TotalNumberOfRecords = count
+            };
         }
 
     }

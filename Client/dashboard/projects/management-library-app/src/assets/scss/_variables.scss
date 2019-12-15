@@ -1,0 +1,121 @@
+$base-path: '../assets/';
+
+// ---------- Color Variables ----------
+$color-primary: #005aab;
+$color-success: #019843;
+$color-critical: #d71c32;
+$color-warning: #eec000;
+$color-support-blue: #00b8ee;
+$color-secondary: #05693f;
+$color-highlight-control: #c3d8ea;
+$color-positive: #069662;
+
+$text-color-main: #142834;
+$text-color-secondary: #5a6771;
+$text-color-highlight: #005aab;
+$text-color-invert: #ffffff;
+$text-color-disable: #5a6670;
+$text-color-explain: #8b9aa4;
+
+$color-mid: #888;
+$color-black: #5a6770;
+$color-active-accent: #ffc400;
+$color-active-second: #05693f;
+
+$color-clear: transparent;
+$color-base: #ffffff;
+
+$color-bg-control-1: #f4f7fa;
+$color-bg-control-2: #f0f3f6;
+$color-bg-control-3: #dee3e6;
+$color-bg-control-4: #5a6771;
+
+$color-bg-sub-menu: #203143;
+$color-bg-header: #394b61;
+
+$color-bg-page-border: #cbcfd5;
+$color-bg-light-gray: #dfe2e6;
+$color-bg-gray: #5a6670;
+$color-yellow: yellow;
+$color-dark-yellow: #fdbc09;
+$color-orange: orange;
+$color-disabled: #545454;
+$color-lavender: #856fde;
+$color-bg-blue-fade: #dbe7f2;
+$color-pending-report-group: #e6e5e5;
+$color-bg-blue: #f4f7fa;
+$color-support-blue-violet: #8a2be2;
+$color-bg-light-blue: #c4c9cc;
+
+// ---------- Size Variables ----------
+$app-min-width: 1024px;
+$nav-top-height: 60px;
+
+$data-header-height: 62px;
+$data-footer-height: 60px;
+$data-thead-height: 50px;
+$data-font-size: 14px;
+
+$popup-header-height: 48px;
+$popup-footer-height: 66px;
+$popup-button-CTA-height: 36px;
+$popup-button-CTA-min-width: 90px;
+$popup-button-CTA-margin: 20px;
+
+$button-CTA-height: 28px;
+$button-CTA-min-width: 81px;
+$button-CTA-padding-left-right: 12px;
+$button-CTA-margin-vertical: 16px;
+$button-CTA-margin: 20px;
+
+$table-header-height: 34px;
+$table-header-2-line-height: 38px;
+$table-container-buttons-CTA-height: 58px;
+$table-footer-height: 66px;
+$table-row-height: 41px;
+$table-header-font-size: 12px;
+$table-column-padding: 10px;
+$table-first-last-column-padding: 20px;
+
+$typography-bold: 700;
+$typography-semi-bold: 600;
+$typography-regular: 400;
+$typography-light: 700;
+$typography-h1-size: 36px;
+$typography-h2-size: 28px;
+$typography-h3-size: 20px;
+$typography-h4-size: 18px;
+$typography-h5-size: 16px;
+$typography-h6-size: 14px;
+$typography-h7-size: 12px;
+
+$padding-left-right-minimun: 20px;
+$padding-top-bottom-minimun: 20px;
+$padding-between-buttons: 20px;
+
+$filter-height: 76px;
+$filter-padding-left-right: 20px;
+$filter-padding-between-button: 20px;
+$filter-margin-between-title-and-form-field: 100px;
+$filter-mat-form-field-padding-top-bottom: 1.25em;
+
+$scroll-size-horizontal: 7px;
+$scroll-size-veritcal: 7px;
+
+$hyperlink-margin-between-icon-and-text: 8px;
+
+$form-line-height: 1.2;
+$form-value-padding-vertical-to-label-and-underline: 8px;
+$form-padding-vertical: 16px;
+$form-label-font-size: 12px;
+$form-place-holder-font-size: 14px;
+$form-content-font-size: 14px;
+
+$check-box-magin-vertical: 10px;
+
+$radio-button-magin-vertical: 10px;
+
+$tab-group-ink-height: 48px;
+$tab-group-ink-bar-height: 5px;
+
+$mat-card-content-padding: 10px 5px;

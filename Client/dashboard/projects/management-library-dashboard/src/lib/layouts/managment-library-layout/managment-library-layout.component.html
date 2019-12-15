@@ -1,0 +1,18 @@
+<app-layout-two-columns [pageTitle]="pageTitle$ | async">
+  <div leftCol>
+    <p [hidden]="menus">loading...</p>
+    <mat-list *ngIf="menus">
+      <mat-list-item
+        [routerLink]="[link.url]"
+        routerLinkActive="active"
+        *ngFor="let link of menus"
+      >
+        <i class="icon" [ngClass]="link.icon"></i>
+        <span>{{ link.name }}</span>
+      </mat-list-item>
+    </mat-list>
+  </div>
+  <div mainContainer>
+    <router-outlet></router-outlet>
+  </div>
+</app-layout-two-columns>

@@ -1,0 +1,30 @@
+.snack-bar-message {
+  padding: 4px 16px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  .snack-bar-container {
+    color: #fff !important;
+  }
+  &.information {
+    background-color: $color-support-blue;
+  }
+
+  &.success {
+    background-color: $color-success;
+  }
+
+  &.warning {
+    background-color: $color-warning;
+    ::ng-deep() .snack-bar-dismiss {
+      display: none !important;
+    }
+    ::ng-deep() .ion-md-warning {
+      font-size: 25px !important;
+    }
+  }
+
+  &.error {
+    background-color: $color-critical;
+  }
+}

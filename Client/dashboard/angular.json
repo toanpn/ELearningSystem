@@ -1,0 +1,342 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "management-library-app": {
+      "projectType": "application",
+      "root": "projects/management-library-app",
+      "sourceRoot": "projects/management-library-app/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/management-library-app",
+            "index": "projects/management-library-app/src/index.html",
+            "main": "projects/management-library-app/src/main.ts",
+            "polyfills": "projects/management-library-app/src/polyfills.ts",
+            "tsConfig": "projects/management-library-app/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/management-library-app/src/favicon.ico",
+              "projects/management-library-app/src/assets",
+              "projects/management-library-app/src/environment.js"
+            ],
+            "styles": [
+              "projects/management-library-app/src/styles.scss",
+              "node_modules/normalize.css/normalize.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/management-library-app/src/environments/environment.ts",
+                  "with": "projects/management-library-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "management-library-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "management-library-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "management-library-app:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/management-library-app/src/test.ts",
+            "polyfills": "projects/management-library-app/src/polyfills.ts",
+            "tsConfig": "projects/management-library-app/tsconfig.spec.json",
+            "karmaConfig": "projects/management-library-app/karma.conf.js",
+            "assets": [
+              "projects/management-library-app/src/favicon.ico",
+              "projects/management-library-app/src/assets"
+            ],
+            "styles": [
+              "projects/management-library-app/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/management-library-app/tsconfig.app.json",
+              "projects/management-library-app/tsconfig.spec.json",
+              "projects/management-library-app/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/management-library-app/e2e/protractor.conf.js",
+            "devServerTarget": "management-library-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "management-library-app:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "lib-logger": {
+      "projectType": "library",
+      "root": "projects/lib-logger",
+      "sourceRoot": "projects/lib-logger/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lib-logger/tsconfig.lib.json",
+            "project": "projects/lib-logger/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lib-logger/src/test.ts",
+            "tsConfig": "projects/lib-logger/tsconfig.spec.json",
+            "karmaConfig": "projects/lib-logger/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lib-logger/tsconfig.lib.json",
+              "projects/lib-logger/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "management-library-auth": {
+      "projectType": "library",
+      "root": "projects/management-library-auth",
+      "sourceRoot": "projects/management-library-auth/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/management-library-auth/tsconfig.lib.json",
+            "project": "projects/management-library-auth/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/management-library-auth/src/test.ts",
+            "tsConfig": "projects/management-library-auth/tsconfig.spec.json",
+            "karmaConfig": "projects/management-library-auth/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/management-library-auth/tsconfig.lib.json",
+              "projects/management-library-auth/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "management-library-core": {
+      "projectType": "library",
+      "root": "projects/management-library-core",
+      "sourceRoot": "projects/management-library-core/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/management-library-core/tsconfig.lib.json",
+            "project": "projects/management-library-core/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/management-library-core/src/test.ts",
+            "tsConfig": "projects/management-library-core/tsconfig.spec.json",
+            "karmaConfig": "projects/management-library-core/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/management-library-core/tsconfig.lib.json",
+              "projects/management-library-core/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "management-library-api": {
+      "projectType": "library",
+      "root": "projects/management-library-api",
+      "sourceRoot": "projects/management-library-api/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/management-library-api/tsconfig.lib.json",
+            "project": "projects/management-library-api/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/management-library-api/src/test.ts",
+            "tsConfig": "projects/management-library-api/tsconfig.spec.json",
+            "karmaConfig": "projects/management-library-api/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/management-library-api/tsconfig.lib.json",
+              "projects/management-library-api/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "management-library-common-ui": {
+      "projectType": "library",
+      "root": "projects/management-library-common-ui",
+      "sourceRoot": "projects/management-library-common-ui/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/management-library-common-ui/tsconfig.lib.json",
+            "project": "projects/management-library-common-ui/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/management-library-common-ui/src/test.ts",
+            "tsConfig": "projects/management-library-common-ui/tsconfig.spec.json",
+            "karmaConfig": "projects/management-library-common-ui/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/management-library-common-ui/tsconfig.lib.json",
+              "projects/management-library-common-ui/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "management-library-dashboard": {
+      "projectType": "library",
+      "root": "projects/management-library-dashboard",
+      "sourceRoot": "projects/management-library-dashboard/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/management-library-dashboard/tsconfig.lib.json",
+            "project": "projects/management-library-dashboard/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/management-library-dashboard/src/test.ts",
+            "tsConfig": "projects/management-library-dashboard/tsconfig.spec.json",
+            "karmaConfig": "projects/management-library-dashboard/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/management-library-dashboard/tsconfig.lib.json",
+              "projects/management-library-dashboard/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "management-library-app",
+  "schematics": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  }
+}

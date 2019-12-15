@@ -1,0 +1,10 @@
+@mixin cols_generate($start, $end, $step) {
+  $colums-slug: col !default;
+
+  @for $col from $start to $end {
+    .#{$colums-slug}-#{$col} {
+      max-width: #{$col}+ '%';
+    }
+    $col: $step;
+  }
+}

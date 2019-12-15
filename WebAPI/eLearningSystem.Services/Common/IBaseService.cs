@@ -14,6 +14,6 @@ namespace eLearningSystem.Services.Base
         void Delete(T entity);
         IEnumerable<T> GetAll();
         T GetById(int id);
-        void Update(T entity);
+        void Update(object id, T entity);
     }
 }

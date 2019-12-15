@@ -1,0 +1,39 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2018", "dom"],
+    "paths": {
+      "@management-library/lib-logger": ["projects/lib-logger/src/public-api"],
+      "@management-library/auth": [
+        "projects/management-library-auth/src/public-api"
+      ],
+      "@management-library/core": [
+        "projects/management-library-core/src/public-api"
+      ],
+      "@management-library/api": [
+        "projects/management-library-api/src/public-api"
+      ],
+      "@management-library/common-ui": [
+        "projects/management-library-common-ui/src/public-api"
+      ],
+      "@management-library/dashboard": [
+        "projects/management-library-dashboard/src/public-api"
+      ]
+    }
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  }
+}

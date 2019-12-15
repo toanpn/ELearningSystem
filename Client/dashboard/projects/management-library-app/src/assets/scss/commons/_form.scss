@@ -1,0 +1,15 @@
+.form-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 2px;
+  > * {
+    flex: 1;
+  }
+  label {
+    max-width: 150px;
+  }
+  .mat-form-field {
+    width: 100%;
+  }
+}

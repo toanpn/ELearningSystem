@@ -1,0 +1,64 @@
+::ng-deep body.LoginComponent {
+  background: rgba(15, 39, 85, 0.85) !important;
+}
+
+:host {
+  .flex-login-container {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    margin: 0 100px;
+    &.is-mobile {
+      flex-direction: column;
+      margin: 0;
+      .left-container {
+        display: none;
+      }
+    }
+    > div {
+      box-shadow: 6px 3px 10px 5px #0000009e;
+      height: 700px;
+      align-items: center;
+      align-self: center;
+    }
+  }
+
+  .left-container {
+    display: flex;
+    flex: 2 0 0;
+    #app-left-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      h1 {
+        text-align: center;
+        color: #fff;
+      }
+      &.bg-login-1 {
+        width: 100%;
+        height: 100%;
+        background-color: #05693f;
+        background-size: cover;
+        background-position: 50% 50%;
+        background-image: url(/assets/images/left-background.jpg);
+        background-repeat: no-repeat;
+      }
+    }
+  }
+  .right-container {
+    background: #fff;
+    display: flex;
+    flex: 1 0 0;
+  }
+
+  @media screen and (max-height: 768px) {
+    .flex-login-container {
+      > div {
+        height: 500px;
+      }
+      .bg-login-2 {
+        background-position-y: -20px;
+      }
+    }
+  }
+}

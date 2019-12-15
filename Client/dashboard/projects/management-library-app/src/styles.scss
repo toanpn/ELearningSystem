@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%;
+  overflow-y: hidden;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+@import 'assets/scss/theme.scss';
+body {
+  font-size: $data-font-size;
+}

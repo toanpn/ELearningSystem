@@ -1,0 +1,42 @@
+<mat-sidenav-container class="sidenav-container">
+  <!-- left col -->
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    [attr.role]="(isHandsetLeft$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandsetLeft$ | async) ? 'over' : 'side'"
+    [opened]="(isHandsetLeft$ | async) === false"
+  >
+    <div class="scrolling-content">
+      <ng-content select="[leftCol]"></ng-content>
+    </div>
+  </mat-sidenav>
+
+  <!-- Add Content Here -->
+  <section class="main-container">
+    <mat-toolbar
+      class="page-header-container"
+      [ngClass]="{ 'is-mobile': isMobile$ | async }"
+    >
+      <button
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <ul class="page-header-title__container">
+        <li><span class="vnas2-icon-home1"></span>Trang chủ</li>
+
+        <li class="active">
+          <i class="fa fa-chevron-right"></i> {{ pageTitle }}
+        </li>
+      </ul>
+      <span class="fill-remaining-space"></span>
+    </mat-toolbar>
+    <div class="content-container">
+      <ng-content select="[mainContainer]"></ng-content>
+    </div>
+  </section>
+</mat-sidenav-container>
+<!-- Creates a layout with a left and right sidenav and implicit content. -->

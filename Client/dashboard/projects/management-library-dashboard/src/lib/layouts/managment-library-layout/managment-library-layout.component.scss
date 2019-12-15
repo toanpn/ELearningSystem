@@ -1,0 +1,20 @@
+:host {
+  .mat-list-base {
+    padding-top: 0;
+    .mat-list-item {
+      cursor: pointer;
+      font-size: 14px;
+      &.active {
+        background-image: linear-gradient(
+          to right,
+          rgba(255, 0, 0, 0),
+          rgba(0, 137, 255, 0.34)
+        );
+        color: #000;
+      }
+      .icon {
+        padding-right: 10px;
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+$width-item-domain: calc(100% / 2 - 10px);
+$width-item-domain-with-mobile: 100%;
+
+.news-container {
+  display: flex;
+  flex-wrap: wrap;
+  &.is-mobile {
+    .item-domain {
+      width: $width-item-domain-with-mobile;
+      max-width: $width-item-domain-with-mobile;
+    }
+  }
+  .item-domain {
+    flex: 1 auto;
+    width: $width-item-domain;
+    max-width: $width-item-domain;
+    margin: 5px 5px 0;
+    &:nth-of-type(2n) {
+      .mat-card-title {
+        color: green;
+      }
+    }
+    &:nth-of-type(2n + 1) {
+      .mat-card-title {
+        color: red;
+      }
+    }
+  }
+}

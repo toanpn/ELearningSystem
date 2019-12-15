@@ -62,7 +62,12 @@
     <Compile Include="Constants\DateTimeParse.cs" />
     <Compile Include="Constants\HttpCode.cs" />
     <Compile Include="Constants\MessageResponse.cs" />
+    <Compile Include="DTO\PagedResults.cs" />
     <Compile Include="DTO\ResponseDataDTO.cs" />
+    <Compile Include="Migrations\201912140830595_INIT.cs" />
+    <Compile Include="Migrations\201912140830595_INIT.Designer.cs">
+      <DependentUpon>201912140830595_INIT.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Anwser.cs" />
     <Compile Include="Model\Category.cs" />
@@ -80,6 +85,8 @@
     <Compile Include="Model\UserLesson.cs" />
     <Compile Include="Model\UserTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ChapterViewModel.cs" />
+    <Compile Include="ViewModels\LessonViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -87,6 +94,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201912140830595_INIT.resx">
+      <DependentUpon>201912140830595_INIT.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

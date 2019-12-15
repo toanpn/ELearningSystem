@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace eLearningSystem.Repositories.Common
 {
     public abstract class GenericRepository<T> : IGenericRepository<T>
-        where T : BaseEntity 
+        where T : BaseEntity
     {
         protected DbContext _entities;
         protected readonly IDbSet<T> _dbset;
@@ -43,9 +43,14 @@ namespace eLearningSystem.Repositories.Common
             return _dbset.Remove(entity);
         }
 
-        public virtual void Edit(T entity)
+        public virtual void Edit(object id, T entity)
         {
-            _entities.Entry(entity).State = System.Data.Entity.EntityState.Modified;
+            T existEntity = _dbset.Find(id);
+            if (existEntity != null)
+            {
+                _entities.Entry(existEntity).CurrentValues.SetValues(entity);
+            }
+
         }
 
         public virtual void Save()

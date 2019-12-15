@@ -1,0 +1,43 @@
+<h1 mat-dialog-title>{{title}} khoá học </h1>
+<div mat-dialog-content>
+  <form [formGroup]="formData">
+    <div class="form-group">
+      <label for="Name">Tên khoá học</label>
+      <mat-form-field hideRequiredMarker="true">
+        <input matInput formControlName="Name" placeholder="Tên khoá học" />
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <label for="Price">Giá tiền</label>
+      <mat-form-field hideRequiredMarker="true">
+        <input matInput formControlName="Price" placeholder="Giá tiền" type="number" />
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <label for="Name">Thể loại</label>
+      <mat-form-field hideRequiredMarker="true">
+        <mat-select formControlName="CategoryId">
+          <mat-option *ngFor="let category of categories" [value]="category.Id">
+            {{category.Name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <label for="Description">Mô tả</label>
+      <mat-form-field hideRequiredMarker="true">
+        <textarea matInput formControlName="Description" placeholder="Mô tả" rows="4"></textarea>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <label for="Description">Hình ảnh</label>
+      <input (change)="changeImage($event)" accept="image/*" type="file" />
+      <img class="img-responsive img-max-w-300" [src]="formData.controls.ImageUrl.value"
+        *ngIf="formData.controls.ImageUrl.value" />
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button color="primary" [disabled]="formData.invalid" mat-button mat-raised-button
+    (click)="onSubmitForm()">{{title}}</button>
+</div>

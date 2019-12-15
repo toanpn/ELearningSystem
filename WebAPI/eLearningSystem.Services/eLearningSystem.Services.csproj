@@ -56,16 +56,15 @@
   <ItemGroup>
     <Compile Include="Common\BaseService.cs" />
     <Compile Include="Common\IBaseService.cs" />
-    <Compile Include="IService\ICommentService.cs" />
-    <Compile Include="IService\IUserRoleService.cs" />
-    <Compile Include="IService\IRoleService.cs" />
-    <Compile Include="IService\ITestService.cs" />
-    <Compile Include="IService\IUserService.cs" />
+    <Compile Include="IService\ICategoryService.cs" />
+    <Compile Include="IService\IChapterService.cs" />
+    <Compile Include="IService\ICourseService.cs" />
+    <Compile Include="IService\ILessonService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\UserRoleService.cs" />
-    <Compile Include="Service\RoleService.cs" />
-    <Compile Include="Service\TestService.cs" />
-    <Compile Include="Service\UserService.cs" />
+    <Compile Include="Service\CategoryService.cs" />
+    <Compile Include="Service\ChapterService.cs" />
+    <Compile Include="Service\CourseService.cs" />
+    <Compile Include="Service\LessonService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
