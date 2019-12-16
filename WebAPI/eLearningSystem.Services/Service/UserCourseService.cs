@@ -49,5 +49,24 @@ namespace eLearningSystem.Services.Service
 
             return courses;
         }
+
+        public List<int> GetOwnCourseID(string userName)
+        {
+            List<int> coursesId = new List<int>();
+
+            User user = _userRepository.GetUserByUserName(userName);
+
+            List<UserCourse> userCourses = _userCourseRepository.GetOwnCourses(user.Id);
+
+            if (userCourses.Count > 0)
+            {
+                foreach (var userCourse in userCourses)
+                {
+                    coursesId.Add(Convert.ToInt32(userCourse.CourseId));
+                }
+            }
+
+            return coursesId;
+        }
     }
 }

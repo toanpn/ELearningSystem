@@ -11,5 +11,6 @@ namespace eLearningSystem.Services.IService
     public interface IUserCourseService : IBaseService<UserCourse>
     {
         List<Course> GetOwnCourses(string userName);
+        List<int> GetOwnCourseID(string userName);
     }
 }

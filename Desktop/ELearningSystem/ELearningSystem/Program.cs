@@ -14,9 +14,10 @@ namespace ELearningSystem
         [STAThread]
         static void Main()
         {
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmThi());
+            Application.Run(new FrmLearn());
         }
     }
 }
