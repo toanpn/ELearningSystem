@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>Thêm mới bài học </h1>
+<div mat-dialog-content>
+  <form [formGroup]="formData">
+    <div class="form-group">
+      <label for="Name">Tên bài học</label>
+      <mat-form-field hideRequiredMarker="true">
+        <input matInput formControlName="Name" placeholder="Tên bài học" />
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <label for="Price">URL</label>
+      <mat-form-field hideRequiredMarker="true">
+        <input matInput formControlName="VideoUrl" placeholder="URL" />
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <label for="VideoTime">Thơi lượng video</label>
+      <mat-form-field hideRequiredMarker="true">
+        <input matInput formControlName="VideoTime" placeholder="Thơi lượng video" />
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <label for="Description">Mô tả</label>
+      <mat-form-field hideRequiredMarker="true">
+        <textarea matInput formControlName="Description" placeholder="Mô tả" rows="4"></textarea>
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button color="primary" [disabled]="formData.invalid" mat-button mat-raised-button (click)="onSubmitForm()">Thêm
+    mới</button>
+</div>

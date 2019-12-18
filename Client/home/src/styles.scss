@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+/* Import main project style */
+@import "assets/styles/style";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "./css/bootstrap.min.css";
+@import "./css/elegant-fonts.css";
+@import "./css/font-awesome.min.css";
+@import "./css/swiper.min.css";
+@import "./css/themify-icons.css";
+@import "./css/style.css";
+
+html,
+body {
+  height: 100%;
+}
+
+.ck-editor__editable_inline,[_nghost-xix-c2] .ck-editor__editable_inline{
+  min-height: 100px!important;
+}

@@ -10,5 +10,6 @@ namespace eLearningSystem.Repositories.IRepository
 {
     public interface IChapterRepository : IGenericRepository<Chapter>
     {
+        List<Chapter> FindChaptersByCourseId(int courseId);
     }
 }

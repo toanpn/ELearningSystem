@@ -34,5 +34,51 @@ namespace eLearningSystem.Repositories.Repository
             };
         }
 
+        public ICollection<Course> GetListCourseByCategory(int id)
+        {
+            return _dbset.Where(t => t.CategoryId == id).ToList();
+        }
+
+        public ICollection<Course> GetListCourseByListId(ICollection<int?> listId)
+        {
+            if (listId != null)
+                return _dbset.Where(t => listId.Contains(t.Id)).OrderBy(t => t.Id).ToList();
+            return null;
+        }
+
+        public List<Course> GetListCourseFree()
+        {
+            return _dbset.Where(t => t.Price == 0 || t.Discount == 100).ToList();
+        }
+
+        public ICollection<Course> GetListCourseHot()
+        {
+            return null;
+        }
+
+        public ICollection<Course> GetListCourseNew()
+        {
+            return _dbset.OrderBy(t => t.CreateTime).ToList();
+        }
+
+        public PagedResults<Course> SearchPageResults(string keyword, int pageNumber, int pageSize)
+        {
+
+            var list = _dbset.Where(t => t.Name.ToLower().Contains(keyword.ToLower())).OrderBy(t => t.Id).ToList();
+            int count = list.Count();
+            int CurrentPage = pageNumber;
+            int TotalPages = (int)Math.Ceiling(count / (double)pageSize);
+            var items = list.Skip((CurrentPage - 1) * pageSize).Take(pageSize).ToList();
+
+            return new PagedResults<Course>
+            {
+                Results = items,
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                TotalNumberOfPages = TotalPages,
+                TotalNumberOfRecords = count
+            };
+        }
+
     }
 }

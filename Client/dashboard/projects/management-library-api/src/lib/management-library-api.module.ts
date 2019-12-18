@@ -1,3 +1,4 @@
+import { ChapterService } from './services/chapter.service';
 import { CategoryService } from './services/category.service';
 import { ApiService } from './services/api-service';
 import { CourseService } from './services/course.service';
@@ -8,7 +9,8 @@ const providers = [
   AuthenticationService,
   ApiService,
   CourseService,
-  CategoryService
+  CategoryService,
+  ChapterService
 ];
 @NgModule({
   declarations: [],

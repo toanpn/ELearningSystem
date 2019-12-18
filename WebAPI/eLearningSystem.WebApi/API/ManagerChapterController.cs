@@ -1,5 +1,7 @@
 ﻿using eLearningSystem.Data.Constants;
 using eLearningSystem.Data.DTO;
+using eLearningSystem.Data.Model;
+using eLearningSystem.Data.ViewModels;
 using eLearningSystem.Services.IService;
 using eLearningSystem.WebApi.ViewModels;
 using System;
@@ -22,12 +24,12 @@ namespace eLearningSystem.WebApi.API
 
         [Route("api/chapter/create")]
         [HttpPost]
-        public IHttpActionResult CreateChapter(ChapterViewModel chapterViewModel)
+        public IHttpActionResult CreateChapter(CreateChaptersViewModel chaptersViewModel)
         {
             ResponseDataDTO<int> response = new ResponseDataDTO<int>();
             try
             {
-                response.Data = this._chapterService.CreateChapter(chapterViewModel);
+                response.Data = this._chapterService.CreateChapters(chaptersViewModel);
                 response.Message = MessageResponse.SUCCESS;
                 response.Code = HttpCode.OK;
 
@@ -37,6 +39,29 @@ namespace eLearningSystem.WebApi.API
                 response.Code = HttpCode.INTERNAL_SERVER_ERROR;
                 response.Message = MessageResponse.FAIL;
                 response.Data = 0;
+
+                Console.WriteLine(ex.ToString());
+            }
+            return Ok(response);
+        }
+
+        [Route("api/chapter/getbycourseId/{courseId}")]
+        [HttpGet]
+        public IHttpActionResult GetChapters(int courseId)
+        {
+            ResponseDataDTO<List<Chapter>> response = new ResponseDataDTO<List<Chapter>>();
+            try
+            {
+                response.Data = this._chapterService.GetChaptersByCourseId(courseId);
+                response.Message = MessageResponse.SUCCESS;
+                response.Code = HttpCode.OK;
+
+            }
+            catch (Exception ex)
+            {
+                response.Code = HttpCode.INTERNAL_SERVER_ERROR;
+                response.Message = MessageResponse.FAIL;
+                response.Data = null;
 
                 Console.WriteLine(ex.ToString());
             }

@@ -15,5 +15,10 @@ namespace eLearningSystem.Repositories.Repository
         public ChapterRepository(DbContext context) : base(context)
         {
         }
+
+        public List<Chapter> FindChaptersByCourseId(int courseId)
+        {
+            return this._dbset.Where(m => m.CourseId == courseId).ToList();
+        }
     }
 }

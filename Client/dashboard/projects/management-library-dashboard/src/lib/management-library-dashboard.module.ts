@@ -10,9 +10,16 @@ import { ManagementLibraryDashboardRoutingModule } from './management-library-da
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ManagementLibraryApiModule } from '@management-library/api';
 import { CourseFormDialogComponent } from './components/course-form-dialog/course-form-dialog.component';
-import { CourseDetailComponent } from './pages/course-detail/course-detail.component';
-const components = [ManagmentLibraryLayoutComponent, CourseFormDialogComponent];
-const pages = [DashboardComponent, CourseComponent, CourseDetailComponent];
+import { ChapterComponent } from './pages/chapter/chapter.component';
+import { ChapterFormDialogComponent } from './components/chapter-form-dialog/chapter-form-dialog.component';
+import { LessonFormDialogComponent } from './components/lesson-form-dialog/lesson-form-dialog.component';
+const components = [
+  ManagmentLibraryLayoutComponent,
+  CourseFormDialogComponent,
+  ChapterFormDialogComponent,
+  LessonFormDialogComponent
+];
+const pages = [DashboardComponent, CourseComponent, ChapterComponent];
 @NgModule({
   declarations: [...components, ...pages],
   imports: [
@@ -24,7 +31,11 @@ const pages = [DashboardComponent, CourseComponent, CourseDetailComponent];
     MaterialModule
   ],
   providers: [DashboardSandboxService],
-  entryComponents: [CourseFormDialogComponent]
+  entryComponents: [
+    CourseFormDialogComponent,
+    ChapterFormDialogComponent,
+    LessonFormDialogComponent
+  ]
 })
 export class ManagementLibraryDashboardModule {
   constructor() {}

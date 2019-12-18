@@ -1,0 +1,54 @@
+<div class="course-content">
+  <figure class="course-thumbnail">
+    <a routerLink="/course/{{ course.Id }}"
+      ><img
+        width="336px"
+        height="362px"
+        [src]="'http://localhost:60793/' + course.ImageUrl"
+        alt=""
+    /></a>
+  </figure>
+  <!-- .course-thumbnail -->
+  <div class="course-content-wrap">
+    <header class="entry-header">
+      <h2 class="entry-title">
+        <a routerLink="/course/{{ course.Id }}">{{ course.Name }}</a>
+      </h2>
+
+      <div class="entry-meta flex flex-wrap align-items-center">
+        <div class="course-author"><a routerLink="#">Michelle Golden</a></div>
+
+        <div class="course-date">{{ course.CreateDate }}</div>
+      </div>
+      <!-- .course-date -->
+    </header>
+    <!-- .entry-header -->
+
+    <footer
+      class="entry-footer flex flex-wrap justify-content-between align-items-center"
+    >
+      <div class="course-cost" *ngIf="course.Price === 0">
+        <span class="free-cost">FREE</span>
+      </div>
+      <!-- .price-drop -->
+      <div class="course-cost" *ngIf="course.Price !== 0">
+        ${{ course.Price }}
+      </div>
+      <!-- .price-drop -->
+
+      <div class="course-ratings flex justify-content-end align-items-center">
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star-o"></span>
+
+        <span class="course-ratings-count">(4 votes)</span>
+      </div>
+      <!-- .course-ratings -->
+    </footer>
+    <!-- .entry-footer -->
+  </div>
+  <!-- .course-content-wrap -->
+</div>
+<!-- .course-content -->

@@ -29,7 +29,8 @@
       <th mat-header-cell *matHeaderCellDef> Thao tác </th>
       <td mat-cell *matCellDef="let element">
         <i class="fa fa-edit" matTooltip="Cập nhập thông tin khoá học" (click)="onUpdateCourse(element)"></i>
-        <i class="fa fa-bookmark" matTooltip="Cập nhập nội dung khoá học" (click)="onUpdateContentCourse(element)"></i>
+        <i class="fa fa-bookmark" matTooltip="Cập nhập nội dung khoá học"
+          [routerLink]="['/app/dashboard/manager-chapter', element.Id]"></i>
       </td>
     </ng-container>
 

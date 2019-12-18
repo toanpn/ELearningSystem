@@ -1,0 +1,47 @@
+<div class="chapter-header">
+  <button mat-raised-button color="primary" (click)="onCreateNewChapter()">Thêm chương học</button>
+</div>
+<div class="chapter-content">
+  <mat-accordion>
+    <mat-expansion-panel (click)="false" *ngFor="let chapter of listChapter;let i = index">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{chapter.Name}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="table-container">
+        <table class="table">
+          <tbody class="table-body">
+            <tr *ngFor="let lesson of chapter.Lessons" class="cursor-pointer">
+              <td style="width: 30px;">
+                <i class="fa fa-play-circle" aria-hidden="true"></i>
+              </td>
+              <td style="width: 200px;">
+                {{lesson.Name}}
+              </td>
+              <td style="width: 200px;">
+                <a>{{lesson.Description}}</a>
+              </td>
+              <td>
+                <i class="fa fa-edit" matTooltip="Cập nhập thông tin bài học"></i>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <button mat-button mat-raised-button color="primary" (click)="onCreateLesson(i)"><i
+                    class="fa fa-plus-circle"></i>
+                  Thêm
+                  bài học</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <br>
+  <div class="button-actions" *ngIf="listChapter.length > 0">
+    <button mat-button mat-raised-button color="warn">Hủy</button>
+    <button mat-button mat-raised-button color="primary" (click)="onCreateChapters()">Thêm mới</button>
+  </div>
+</div>

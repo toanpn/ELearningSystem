@@ -1,0 +1,149 @@
+<header class="site-header">
+    <div class="top-header-bar">
+        <div class="container-fluid">
+            <div class="row">
+                <div
+                    class="col-12 col-lg-6 d-none d-md-flex flex-wrap justify-content-center justify-content-lg-start mb-3 mb-lg-0">
+                    <div class="header-bar-email d-flex align-items-center">
+                        <i class="fa fa-envelope"></i>admin@gmail.com
+                    </div><!-- .header-bar-email -->
+                    <div class="header-bar-email d-flex align-items-center">
+                        <i class="fa fa-phone"></i>0918279888
+                    </div><!-- .header-bar-email -->
+
+                </div><!-- .col -->
+
+                <div
+                    class="col-12 col-lg-6 d-flex flex-wrap justify-content-center justify-content-lg-end align-items-center">
+                    <div class="header-bar-search">
+                        <form class="flex align-items-stretch">
+                            <input type="search" placeholder="Bạn muốn học gì?">
+                            <button type="submit" value="" class="flex justify-content-center align-items-center"><i
+                                    class="fa fa-search"></i></button>
+                        </form>
+                    </div><!-- .header-bar-search -->
+
+                    <div class="header-bar-menu">
+                        <ul class="flex justify-content-center align-items-center py-2 pt-md-0">
+
+                            <li *ngIf="!currentUser"><a href="#" [routerLink]="['/home']">Đăng Ký</a></li>
+                            <li *ngIf="!currentUser"><a href="#" [routerLink]="['/login']">Đăng Nhập</a></li>
+                            <li *ngIf="currentUser">{{currentUser?.UserName}} <a (click)="logout()"
+                                    style="display: inline;">Đăng xuất</a></li>
+                        </ul>
+                    </div><!-- .header-bar-menu -->
+                </div><!-- .col -->
+            </div><!-- .row -->
+        </div><!-- .container-fluid -->
+    </div><!-- .top-header-bar -->
+
+</header><!-- .site-header -->
+
+<div class="row h-100 video-wrap">
+    <div class="col-3 left-column h-100">
+        <div class="title text-bold">Bài học</div>
+        <div>
+            <p class="text-danger">Chương 1</p>
+            <div class="text-bold">Illustrator Tutorial Overview & Breakdown</div>
+        </div>
+        <div class="text-danger">
+            <div class="row">
+                <div class="col-1 offset-1"><i class="fa fa-play-circle"></i></div>
+                <div class="col-10">
+                    <p>Illustrator Tutorial Overview & Breakdown</p>
+                    <span style="margin-top: -16px;">1:32</span>
+                </div>
+                
+
+            </div>
+        </div>
+        <div class="">
+            <div class="row">
+                <div class="col-1 offset-1"><i class="fa fa-play-circle"></i></div>
+                <div class="col-10">
+                    <p>Bài 2: Interface Introduction to Adobe Illustrator</p>
+                    <span style="margin-top: -16px;">19:52</span>
+                </div>
+            </div>
+        </div>
+        <div class="">
+            <div class="row">
+                <div class="col-1 offset-1"><i class="fa fa-play-circle"></i></div>
+                <div class="col-10">
+                    <p>Bài 3: Panels & Workspaces in Adobe Illustrator</p>
+                    <span style="margin-top: -16px;">5:32</span>
+                </div>
+            </div>
+        </div>
+        <div class="">
+            <div class="row">
+                <div class="col-1 offset-1"><i class="fa fa-play-circle"></i></div>
+                <div class="col-10">
+                    <p>Bài 4: Artboards in Adobe Illustrator</p>
+                    <span style="margin-top: -16px;">1:45:32</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-6">
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/IBouhf4seWQ"
+                allowfullscreen></iframe>
+        </div>
+        <br>
+        <div>
+            <tabset #staticTabs>
+              <tab heading="Giảng Viên">
+                <div class="media border p-3">
+                    <img src="https://www.w3schools.com/bootstrap4/img_avatar3.png" alt="John Doe"
+                        class="mr-3 mt-3 rounded-circle" style="width:60px;">
+                    <div class="media-body">
+                        <h4>Admin </h4>
+                        <p>Giảng Viên tại trường A</p>
+                    </div>
+                </div>
+              </tab>
+              <tab heading="Thông tin chung">
+                    <p>Phù hợp với</p>
+                <p>- Những người đang hoặc sẽ trở thành Designer, yêu thích thiết kế đồ họa</p>
+                
+                <p>- Những người làm công việc thiết kế, in ấn, marketing....</p>
+              </tab>
+              <tab heading="Đánh giá">
+                  <div class="rate">
+                    <div>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-alt"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                  </div>
+                  <div style="font-size: 28px;text-align: center;margin-top: 10px;">
+                      Rất Tốt 
+                  </div>
+              </tab>
+            </tabset>
+          </div>
+    </div>
+    <div class="col-3 left-column h-100">
+        <div class="title text-bold">Thảo luận</div>
+        <div class="media border p-3">
+            <img src="https://www.w3schools.com/bootstrap4/img_avatar3.png" alt="John Doe"
+                class="mr-3 mt-3 rounded-circle" style="width:60px;">
+            <div class="media-body">
+                <h4>John Doe <small><i>Posted on February 19, 2016</i></small></h4>
+                <p>Lorem ipsum...</p>
+            </div>
+        </div>
+        <div class="media border p-3">
+            <img src="https://www.w3schools.com/bootstrap4/img_avatar3.png" alt="John Doe"
+                class="mr-3 mt-3 rounded-circle" style="width:60px;">
+            <div class="media-body">
+                <h4>John Doe <small><i>Posted on February 19, 2016</i></small></h4>
+                <p>Lorem ipsum...</p>
+            </div>
+        </div>
+    </div>
+</div>

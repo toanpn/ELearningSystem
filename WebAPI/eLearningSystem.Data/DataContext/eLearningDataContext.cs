@@ -11,7 +11,6 @@ namespace eLearningSystem.Data.Model
         public eLearningDataContext()
             : base("eLearningDataContext")
         {
-            this.Configuration.LazyLoadingEnabled = true;
         }
 
         public static eLearningDataContext Create()

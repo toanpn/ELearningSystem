@@ -1,3 +1,4 @@
+import { ChapterComponent } from './pages/chapter/chapter.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -18,6 +19,11 @@ const routes: Routes = [
         path: 'manager-course',
         component: CourseComponent,
         data: { title: 'Quản lý khoá học', type: 'Course' }
+      },
+      {
+        path: 'manager-chapter/:courseId',
+        component: ChapterComponent,
+        data: { title: 'Quản lý chuơng học', type: 'Chapter' }
       }
     ]
   },

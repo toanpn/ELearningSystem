@@ -1,0 +1,231 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 offset-lg-1 col-lg-10">
+      <div class="featured-image">
+        <img
+          [src]="'http://localhost:60793/' + course?.ImageUrl"
+          alt=""
+          class="course-image"
+        />
+        <div class="course-cost">Giá tiền: {{ course?.Price }}</div>
+        <button
+          mat-button
+          mat-flat-button
+          color="primary"
+          (click)="addToCart()"
+        >
+          Mua khoá học
+        </button>
+      </div>
+    </div>
+    <!-- .col -->
+  </div>
+  <!-- .row -->
+
+  <div class="row">
+    <div class="col-12 offset-lg-1 col-lg-1">
+      <div class="post-share">
+        <h3>share</h3>
+
+        <ul class="flex flex-wrap align-items-center p-0 m-0">
+          <li>
+            <a href="#"><i class="fa fa-facebook"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-google-plus"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-thumb-tack"></i></a>
+          </li>
+        </ul>
+      </div>
+      <!-- .post-share -->
+    </div>
+    <!-- .col -->
+
+    <div class="col-12 col-lg-8">
+      <div class="single-course-wrap">
+        <div class="single-course-cont-section">
+          <h2>Tên khoá học: {{ course?.Name }}</h2>
+          <h2>Mô tả:</h2>
+          <div [innerHTML]="course?.Description"></div>
+        </div>
+
+        <div class="single-course-accordion-cont mt-3">
+          <h2>Danh sách bài học:</h2>
+          <mat-accordion [multi]="true">
+            <mat-expansion-panel
+              [expanded]="true"
+              (click)="(false)"
+              *ngFor="let chapter of listChapter; let i = index"
+            >
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{ chapter.Name }}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="table-container">
+                <table class="table">
+                  <tbody class="table-body">
+                    <tr
+                      *ngFor="let lesson of chapter.Lessons"
+                      class="cursor-pointer"
+                    >
+                      <td style="width: 30px;">
+                        <i class="fa fa-play-circle" aria-hidden="true"></i>
+                      </td>
+                      <td style="min-width: 200px;">
+                        {{ lesson?.Name }}
+                      </td>
+                      <td style="min-width: 200px;">
+                        <a>{{ lesson?.Description }}</a>
+                      </td>
+                      <td style="min-width: 200px;">
+                        <a>{{ convertSecondToTime(lesson.VideoTime) }}</a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+        <!-- .single-course-accordion-cont  -->
+
+        <div class="instructors-info">
+          <header class="entry-heading">
+            <h2 class="entry-title">Giáo viên</h2>
+          </header>
+          <!-- .entry-heading -->
+
+          <div class="instructor-short-info flex flex-wrap">
+            <div class="instructors-stats">
+              <img
+                [src]="'http://localhost:60793' + teacher?.UrlImage"
+                alt=""
+              />
+            </div>
+
+            <div class="instructors-details">
+              <div class="ratings flex align-items-center">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+                <span> (4 votes)</span>
+              </div>
+              <!-- .ratings -->
+
+              <h2 class="entry-title mt-3">
+                {{ course?.Name }}
+              </h2>
+
+              <div class="course-teacher mt-3">
+                Giáo viên: <a href="#">{{ teacher?.Name }}</a>
+              </div>
+              <!-- .course-teacher -->
+
+              <div class="entry-content mt-3">
+                <p>
+                  {{ teacher?.Description }}
+                </p>
+              </div>
+              <!-- .entry-content -->
+            </div>
+            <!-- .instructors-details -->
+          </div>
+          <!-- .instructor-short-info -->
+        </div>
+        <!-- .instructors-info -->
+
+        <div class="related-courses">
+          <header
+            class="entry-heading flex flex-wrap justify-content-between align-items-center"
+          >
+            <h2 class="entry-title">Xem thêm</h2>
+          </header>
+          <!-- .entry-heading -->
+
+          <div class="row mx-m-25">
+            <div
+              class="col-12 col-lg-6 px-25"
+              *ngFor="let course of listCourses"
+            >
+              <div class="course-content">
+                <figure class="course-thumbnail">
+                  <a [routerLink]="['/course', course.Id]"
+                    ><img
+                      [src]="'http://localhost:60793/' + course?.ImageUrl"
+                      alt=""
+                  /></a>
+                </figure>
+                <!-- .course-thumbnail -->
+
+                <div class="course-content-wrap">
+                  <header class="entry-header">
+                    <h2 class="entry-title">
+                      <a href="#">{{ course?.Name }}</a>
+                    </h2>
+
+                    <div class="entry-meta flex flex-wrap align-items-center">
+                      <div class="course-author">
+                        <a href="#">Ms. Lucius</a>
+                      </div>
+
+                      <div class="course-date">Dec 18, 2018</div>
+                    </div>
+                    <!-- .course-date -->
+                  </header>
+                  <!-- .entry-header -->
+
+                  <footer
+                    class="entry-footer flex flex-wrap justify-content-between align-items-center"
+                  >
+                    <div class="course-cost" *ngIf="course.Discount > 0">
+                      {{ course?.Discount }}
+                      <span class="price-drop">{{ course.Price }}</span>
+                    </div>
+                    <div class="course-cost" *ngIf="!course.Discount">
+                      {{ course.Price }}
+                    </div>
+                    <!-- .course-cost -->
+
+                    <div
+                      class="course-ratings flex justify-content-end align-items-center"
+                    >
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star-o"></span>
+
+                      <span class="course-ratings-count">(4 votes)</span>
+                    </div>
+                    <!-- .course-ratings -->
+                  </footer>
+                  <!-- .entry-footer -->
+                </div>
+                <!-- .course-content-wrap -->
+              </div>
+              <!-- .course-content -->
+            </div>
+            <!-- .col -->
+          </div>
+          <!-- .row -->
+        </div>
+        <!-- .related-course -->
+      </div>
+      <!-- .single-course-wrap -->
+    </div>
+    <!-- .col -->
+  </div>
+  <!-- .row -->
+</div>
+<!-- .container -->

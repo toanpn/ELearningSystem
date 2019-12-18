@@ -24,7 +24,7 @@ namespace eLearningSystem.Data.Model
         public bool? Gender { get; set; }
 
         [Column(TypeName = "date")]
-        
+
         public DateTime? DateOfBirth { get; set; }
 
         public int? Score { get; set; }
@@ -46,6 +46,8 @@ namespace eLearningSystem.Data.Model
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserTest> UserTests { get; set; }
+
+        public virtual ICollection<Cart> Cart { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User, int> manager, string authenticationType)
         {

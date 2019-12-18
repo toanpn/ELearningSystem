@@ -1,4 +1,5 @@
 ﻿using eLearningSystem.Data.Model;
+using eLearningSystem.Data.ViewModels;
 using eLearningSystem.Services.Base;
 using eLearningSystem.WebApi.ViewModels;
 using System;
@@ -11,6 +12,7 @@ namespace eLearningSystem.Services.IService
 {
     public interface IChapterService : IBaseService<Chapter>
     {
-        int CreateChapter(ChapterViewModel chapterViewModel);
+        int CreateChapters(CreateChaptersViewModel chapterViewModel);
+        List<Chapter> GetChaptersByCourseId(int courseId);
     }
 }

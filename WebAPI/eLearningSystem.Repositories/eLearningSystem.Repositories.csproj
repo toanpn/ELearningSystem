@@ -56,19 +56,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IRepository\ICartRepository.cs" />
     <Compile Include="IRepository\ICategoryRepository.cs" />
     <Compile Include="IRepository\IChapterRepository.cs" />
     <Compile Include="IRepository\ICourseRepository.cs" />
     <Compile Include="IRepository\ILessonRepository.cs" />
+    <Compile Include="IRepository\ITeacherRepository.cs" />
     <Compile Include="IRepository\IUserCourseRepository.cs" />
     <Compile Include="IRepository\IUserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Common\GenericRepository.cs" />
     <Compile Include="Common\IGenericRepository.cs" />
+    <Compile Include="Repository\CartRepository.cs" />
     <Compile Include="Repository\CategoryRepository.cs" />
     <Compile Include="Repository\ChapterRepository.cs" />
     <Compile Include="Repository\CourseRepository.cs" />
     <Compile Include="Repository\LessonRepository.cs" />
+    <Compile Include="Repository\TeacherRepository.cs" />
     <Compile Include="Repository\UserCourseRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />

@@ -1,0 +1,327 @@
+<div class="icon-boxes">
+  <div class="container-fluid">
+    <div class="flex flex-wrap align-items-stretch">
+      <div class="icon-box">
+        <div class="icon">
+          <span class="ti-user"></span>
+        </div>
+        <!-- .icon -->
+
+        <header class="entry-header">
+          <h2 class="entry-title">Học hỏi từ các chuyên gia</h2>
+        </header>
+        <!-- .entry-header -->
+
+        <div class="entry-content">
+          <p>
+            Các khóa học được xây dựng lên bởi các chuyên gia có giàu kinh
+            nghiệm trong các lĩnh vực...
+          </p>
+        </div>
+        <!-- .entry-content -->
+
+        <footer class="entry-footer read-more">
+          <a href="#/about">đọc thêm<i class="fa fa-long-arrow-right"></i></a>
+        </footer>
+        <!-- .entry-footer -->
+      </div>
+      <!-- .icon-box -->
+
+      <div class="icon-box">
+        <div class="icon">
+          <span class="ti-folder"></span>
+        </div>
+        <!-- .icon -->
+
+        <header class="entry-header">
+          <h2 class="entry-title">Hệ thống tốt nhất</h2>
+        </header>
+        <!-- .entry-header -->
+
+        <div class="entry-content">
+          <p>Hệ thống được thiết kế bởi các sinh viên MTA...</p>
+        </div>
+        <!-- .entry-content -->
+
+        <footer class="entry-footer read-more">
+          <a href="#/about">đọc thêm<i class="fa fa-long-arrow-right"></i></a>
+        </footer>
+        <!-- .entry-footer -->
+      </div>
+      <!-- .icon-box -->
+
+      <div class="icon-box">
+        <div class="icon">
+          <span class="ti-book"></span>
+        </div>
+        <!-- .icon -->
+
+        <header class="entry-header">
+          <h2 class="entry-title">Khóa học trực tuyến tốt nhất</h2>
+        </header>
+        <!-- .entry-header -->
+
+        <div class="entry-content">
+          <p>
+            Các khóa học được biên soạn một cách tỉ mỉ, với giáo án cực chuẩn...
+          </p>
+        </div>
+        <!-- .entry-content -->
+
+        <footer class="entry-footer read-more">
+          <a href="#/about">đọc thêm<i class="fa fa-long-arrow-right"></i></a>
+        </footer>
+        <!-- .entry-footer -->
+      </div>
+      <!-- .icon-box -->
+
+      <div class="icon-box">
+        <div class="icon">
+          <span class="ti-world"></span>
+        </div>
+        <!-- .icon -->
+
+        <header class="entry-header">
+          <h2 class="entry-title">Kết nối học viên với giảng viên</h2>
+        </header>
+        <!-- .entry-header -->
+
+        <div class="entry-content">
+          <p>
+            Học viên có thể trực tiếp hỏi các vấn đề về khóa học với giảng
+            viên...
+          </p>
+        </div>
+        <!-- .entry-content -->
+
+        <footer class="entry-footer read-more">
+          <a href="#/about">đọc thêm<i class="fa fa-long-arrow-right"></i></a>
+        </footer>
+        <!-- .entry-footer -->
+      </div>
+      <!-- .icon-box -->
+    </div>
+    <!-- .row -->
+  </div>
+  <!-- .container-fluid -->
+</div>
+<!-- .icon-boxes -->
+
+<section class="about-section" *ngIf="!currentUser">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-6 align-content-lg-stretch">
+        <header class="heading">
+          <h2 class="entry-title">Về Ezuca</h2>
+
+          <p>
+            Ezuca là hệ thống học và thi trực tuyến hàng đầu Việt Nam. Các khóa
+            học luôn được bổ sung và cập nhật bởi các chuyên gia trong mọi lĩnh
+            vực trong đời sống xã hội.
+          </p>
+        </header>
+        <!-- .heading -->
+
+        <div class="entry-content ezuca-stats">
+          <div class="stats-wrap flex flex-wrap justify-content-lg-between">
+            <div class="stats-count">
+              50<span>M+</span>
+              <p>Học Viên</p>
+            </div>
+            <!-- .stats-count -->
+
+            <div class="stats-count">
+              30<span>K+</span>
+              <p>Khóa Học Khác Nhau</p>
+            </div>
+            <!-- .stats-count -->
+
+            <div class="stats-count">
+              340<span>M+</span>
+              <p>Giảng Viên Trực Tuyến</p>
+            </div>
+            <!-- .stats-count -->
+
+            <div class="stats-count">
+              20<span>+</span>
+              <p>Quốc Gia Hỗ Trợ</p>
+            </div>
+            <!-- .stats-count -->
+          </div>
+          <!-- .stats-wrap -->
+        </div>
+        <!-- .ezuca-stats -->
+      </div>
+      <!-- .col -->
+
+      <div class="col-12 col-lg-6 flex align-content-center mt-5 mt-lg-0">
+        <div class="ezuca-video position-relative">
+          <div class="video-play-btn position-absolute">
+            <img src="../../../assets/images/video-icon.png" alt="Video Play" />
+          </div>
+          <!-- .video-play-btn -->
+
+          <img src="../../../assets/images/video-screenshot.png" alt="" />
+        </div>
+        <!-- .ezuca-video -->
+      </div>
+      <!-- .col -->
+    </div>
+    <!-- .row -->
+  </div>
+  <!-- .container -->
+</section>
+<!-- .about-section -->
+
+<section class="featured-courses vertical-column courses-wrap">
+  <div class="container">
+    <div class="row mx-m-25">
+      <div class="col-12 px-25">
+        <header
+          class="heading flex flex-wrap justify-content-between align-items-center"
+        >
+          <h2 class="entry-title">Danh Sách Khóa Học</h2>
+        </header>
+        <!-- .heading -->
+      </div>
+      <!-- .col -->
+
+      <div
+        class="col-12 col-md-6 col-lg-4 px-25"
+        *ngFor="let course of listCourse"
+      >
+        <app-item-courser [course]="course"></app-item-courser>
+      </div>
+      <!-- .col -->
+
+      <div class="col-12 px-25 flex justify-content-center">
+        <a class="btn" href="#/courses">xem tất cả</a>
+      </div>
+      <!-- .col -->
+    </div>
+    <!-- .row -->
+  </div>
+  <!-- .container -->
+</section>
+<!-- .courses-wrap -->
+
+<section class="home-gallery">
+  <div
+    class="gallery-wrap flex flex-wrap"
+    style="position: relative; height: 721.875px;"
+  >
+    <div
+      class="gallery-grid gallery-grid1x1"
+      style="position: absolute; left: 0px; top: 0px;"
+    >
+      <a href="#"><img src="../../../assets/images/a.jpg" alt=""/></a>
+    </div>
+    <!-- .gallery-grid -->
+
+    <div
+      class="gallery-grid gallery-grid1x1"
+      style="position: absolute; left: 239px; top: 0px;"
+    >
+      <a href="#"><img src="../../../assets/images/b.jpg" alt=""/></a>
+    </div>
+    <!-- .gallery-grid -->
+
+    <div
+      class="gallery-grid gallery-grid2x2"
+      style="position: absolute; left: 478px; top: 0px;"
+    >
+      <a href="#"><img src="../../../assets/images/c.jpg" alt=""/></a>
+    </div>
+    <!-- .gallery-grid -->
+
+    <div
+      class="gallery-grid gallery-grid1x1"
+      style="position: absolute; left: 956px; top: 0px;"
+    >
+      <a href="#"><img src="../../../assets/images/d.jpg" alt=""/></a>
+    </div>
+    <!-- .gallery-grid -->
+
+    <div
+      class="gallery-grid gallery-grid1x1"
+      style="position: absolute; left: 1195px; top: 0px;"
+    >
+      <a href="#"><img src="../../../assets/images/e.jpg" alt=""/></a>
+    </div>
+    <!-- .gallery-grid -->
+
+    <div
+      class="gallery-grid gallery-grid2x1"
+      style="position: absolute; left: 1434px; top: 0px;"
+    >
+      <a href="#"><img src="../../../assets/images/g.jpg" alt=""/></a>
+    </div>
+    <!-- .gallery-grid -->
+
+    <div
+      class="gallery-grid gallery-grid2x1"
+      style="position: absolute; left: 0px; top: 239px;"
+    >
+      <a href="#"><img src="../../../assets/images/h.jpg" alt=""/></a>
+    </div>
+    <!-- .gallery-grid -->
+
+    <div
+      class="gallery-grid gallery-grid1x1"
+      style="position: absolute; left: 956px; top: 239px;"
+    >
+      <a href="#"><img src="../../../assets/images/i.jpg" alt=""/></a>
+    </div>
+    <!-- .gallery-grid -->
+
+    <div
+      class="gallery-grid gallery-grid2x2 "
+      style="position: absolute; left: 1195px; top: 239px;"
+    >
+      <a href="#"><img src="../../../assets/images/j.jpg" alt=""/></a>
+    </div>
+    <!-- .gallery-grid -->
+
+    <div
+      class="gallery-grid gallery-grid1x1"
+      style="position: absolute; left: 1673px; top: 239px;"
+    >
+      <a href="#"><img src="../../../assets/images/k.jpg" alt=""/></a>
+    </div>
+    <!-- .gallery-grid -->
+
+    <div
+      class="gallery-grid gallery-grid1x1"
+      style="position: absolute; left: 956px; top: 478px;"
+    >
+      <a href="#"><img src="../../../assets/images/l.jpg" alt=""/></a>
+    </div>
+    <!-- .gallery-grid -->
+
+    <div
+      class="gallery-grid gallery-grid2x1"
+      style="position: absolute; left: 478px; top: 480px;"
+    >
+      <a href="#"><img src="../../../assets/images/m.jpg" alt=""/></a>
+    </div>
+    <!-- .gallery-grid -->
+
+    <div
+      class="gallery-grid gallery-grid3x1"
+      style="position: absolute; left: 0px; top: 480px;"
+    >
+      <a href="#"><img src="../../../assets/images/n.jpg" alt=""/></a>
+    </div>
+    <!-- .gallery-grid -->
+
+    <div
+      class="gallery-grid gallery-grid1x1"
+      style="position: absolute; left: 1673px; top: 478px;"
+    >
+      <a href="#"><img src="../../../assets/images/o.jpg" alt=""/></a>
+    </div>
+    <!-- .gallery-grid -->
+  </div>
+  <!-- .gallery-wrap -->
+</section>
+<!-- .home-gallery -->

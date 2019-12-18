@@ -1,6 +1,7 @@
 namespace eLearningSystem.Data.Model
 {
     using eLearningSystem.Data.Common;
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
@@ -26,6 +27,10 @@ namespace eLearningSystem.Data.Model
 
         public double? Price { get; set; }
 
+        public double? Discount { get; set; }
+
+        public DateTime? CreateTime { get; set; }
+
         [StringLength(255)]
         public string ImageUrl { get; set; }
 
@@ -34,7 +39,12 @@ namespace eLearningSystem.Data.Model
         [ForeignKey("Category")]
         public int? CategoryId { get; set; }
 
+        [ForeignKey("Teacher")]
+        public int? TeacherId { get; set; }
+
+
         public Category Category { get; set; }
+        public Teacher Teacher { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public ICollection<Chapter> Chapters { get; set; }

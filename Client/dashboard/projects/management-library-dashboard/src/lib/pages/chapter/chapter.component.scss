@@ -1,0 +1,17 @@
+:host {
+  .chapter-header {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+  }
+
+  .chapter-content {
+    margin-top: 20px;
+  }
+
+  .button-actions {
+    button {
+      margin-right: 10px;
+    }
+  }
+}

@@ -119,10 +119,6 @@ export class CourseComponent extends BaseComponent
     });
   }
 
-  onUpdateContentCourse(course) {
-    return this.router.navigateByUrl(`/course-detail?id=${course.Id}`);
-  }
-
   private createNewCouse(data: any) {
     return this.courseService.createNewCourse(data).pipe(
       takeUntil(this.destroyed$),

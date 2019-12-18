@@ -1,0 +1,12 @@
+:host {
+  .container {
+    margin-top: 100px;
+    .featured-image {
+      text-align: center;
+      .course-image {
+        width: 600px;
+        height: 400px;
+      }
+    }
+  }
+}
