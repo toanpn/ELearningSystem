@@ -72,5 +72,29 @@ namespace eLearningSystem.WebApi.API
 
             return Ok(response);
         }
+
+        [Route("api/user-course/id")]
+        [HttpGet]
+        public IHttpActionResult GetAllCourseID()
+        {
+            String userName = User.Identity.Name;
+            ResponseDataDTO<List<int>> response = new ResponseDataDTO<List<int>>();
+            try
+            {
+                response.Code = HttpCode.OK;
+                response.Message = MessageResponse.SUCCESS;
+                response.Data = _userCourseService.GetOwnCourseID(userName);
+            }
+            catch (Exception ex)
+            {
+                response.Code = HttpCode.INTERNAL_SERVER_ERROR;
+                response.Message = MessageResponse.FAIL;
+                response.Data = null;
+
+                Console.WriteLine(ex.ToString());
+            }
+
+            return Ok(response);
+        }
     }
 }

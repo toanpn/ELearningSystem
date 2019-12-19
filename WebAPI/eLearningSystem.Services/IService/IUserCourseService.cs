@@ -12,5 +12,6 @@ namespace eLearningSystem.Services.IService
     {
         List<Course> GetOwnCourses(string userName);
         int BuyCourse(int courseId, string userName);
+        List<int> GetOwnCourseID(string userName);
     }
 }
