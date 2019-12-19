@@ -1,62 +1,107 @@
 <div class="container">
-    <app-breadcrum titlebreadcrum="Bài Thi"></app-breadcrum>
-
+  <app-breadcrum titlebreadcrum="Bài Thi"></app-breadcrum>
 </div>
 
 <div id="wrap">
-    <div class="container-fluid">
-        <div class="content-container">
-            <div class="quiz-inner-block" id="quiz-app">
-                <div class="title-quiz">
-                    <h1>Angular Basic</h1>
-                </div>
-                <div class="quiz-inner-content"><img class="quiz_img" alt="Image for quizzes page"
-                        src="/build/images/quiz_man.svg">
-                    <ul id="question-index">
-                        <span>
-                            <li class="slide slide0">
-                                <div class="question"><span>1/20</span>
-                                    <p> What will be the output of below program?</p>
-                                </div>
-                                <div class="answer-container">
-                                    <div class="row">
-                                        <div class="answer_code">function f(input: boolean){{ '{' }}<br>
-                                            let a = 100;<br> <br>
-                                            if (input) {{ '{' }}<br>
-                                                let b = a + 1;<br>
-                                                return b;<br>
-                                                {{ '}' }}<br>
-                                            return b;<br>
-                                            {{ '}' }}</div>
-                                        <div class="answer col-sm-offset-1 col-sm-5">
-                                            <ul>
-                                                <li><label><input name="answer" type="radio" value="701">
-                                                        <span>Undefined</span></label></li>
-                                                <li><label><input name="answer" type="radio" value="702">
-                                                        <span>101</span></label></li>
-                                                <li><label><input name="answer" type="radio" value="703">
-                                                        <span>Compilation error for a</span></label></li>
-                                                <li><label><input name="answer" type="radio" value="704">
-                                                        <span>Compilation error for b</span></label></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="bottom-container">
-                                    <div class="social"><button class="fb-share z-deep-1 pull-left"
-                                            fb-description="www.w3docs.com quiz single question"
-                                            fb-caption="www.w3docs.com"
-                                            fb-picture="https://www.w3docs.com/uploads/media/quiz_gallery/0001/02/425e59a6fa600facf8f88e4d72b667946b4675f3.png"
-                                            fb-link="https://www.w3docs.com/quiz/question/ZGx3"
-                                            fb-name="What will be the output of below program?"></button></div>
-                                    <div class="next_button"><a class="btn btn-warning z-deep-2">Next &gt;
-                                        </a></div>
-                                </div>
-                            </li>
-                        </span>
-                    </ul>
-                </div>
-            </div>
+  <div class="container-fluid">
+    <div class="content-container">
+      <div class="quiz-inner-block" id="quiz-app">
+        <a
+          [routerLink]="['/study', courseId]"
+          style="color: blue;
+          font-size: 15px;"
+        >
+          Tiếp tục khoá học
+        </a>
+        <div class="title-quiz">
+          <h1>{{ test?.Name }}</h1>
         </div>
+        <div class="quiz-inner-content">
+          <img
+            class="quiz_img"
+            alt="Image for quizzes page"
+            src="/build/images/quiz_man.svg"
+          />
+          <ul id="question-index">
+            <span>
+              <li class="slide slide0">
+                <div class="question">
+                  <span
+                    >{{ indexNumber + 1 }}/{{ test?.Questions.length }}</span
+                  >
+                  <p>{{ (test?.Questions)[indexNumber]?.Content }}</p>
+                </div>
+                <div class="answer-container">
+                  <div class="row">
+                    <div class="answer col-sm-offset-1 col-sm-5">
+                      <ul>
+                        <li
+                          *ngFor="
+                            let answer of (test?.Questions)[indexNumber]
+                              ?.Anwsers
+                          "
+                        >
+                          <label
+                            ><input
+                              name="{{ answer.Type }}"
+                              type="radio"
+                              value="{{ answer.Type }}"
+                              (change)="
+                                onChooseQuestion(
+                                  $event.target.value,
+                                  (test?.Questions)[indexNumber].Id,
+                                  indexNumber
+                                )
+                              "
+                            />
+                            <span style="margin-left: 10px;"
+                              >{{ answer?.Type }}. {{ answer?.Content }}</span
+                            ></label
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col-sm-7">
+                      <span style="color: red; font-size: 15px;">{{
+                        result
+                      }}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="bottom-container">
+                  <div class=" next_button social">
+                    <button
+                      *ngIf="indexNumber > 0"
+                      class="btn btn-warning z-deep-2"
+                      (click)="onPrevQuestion()"
+                      [disabled]="isSubmit"
+                    >
+                      Câu trước
+                    </button>
+                  </div>
+                  <div class="next_button">
+                    <button
+                      *ngIf="!(indexNumber >= test?.Questions.length - 1)"
+                      class="btn btn-warning z-deep-2"
+                      (click)="onNextQuestion()"
+                    >
+                      Câu tiếp theo
+                    </button>
+                    <button
+                      *ngIf="indexNumber >= test?.Questions.length - 1"
+                      class="btn btn-warning z-deep-2"
+                      (click)="onSubmitTest()"
+                      [disabled]="isSubmit"
+                    >
+                      Kết thúc
+                    </button>
+                  </div>
+                </div>
+              </li>
+            </span>
+          </ul>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

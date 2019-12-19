@@ -1,7 +1,7 @@
 import { CourseService } from 'src/app/core/services/course.service';
 import { ChapterService } from './../../core/services/chapter.service';
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { ShareService } from 'src/app/shared/services/share.service';
 import { CartService } from 'src/app/core/services/cart.service';
 import { NotificationService } from 'src/app/shared/services/notification.service';
@@ -14,6 +14,7 @@ import { Course } from 'src/app/core/models/course.model';
 })
 export class SingleCourseComponent implements OnInit {
   course: any;
+  courseId: number;
   teacher: any;
   listChapter: any[];
   listCourses: Course[];
@@ -24,17 +25,28 @@ export class SingleCourseComponent implements OnInit {
     private courseService: CourseService,
     private cartService: CartService,
     private chapterService: ChapterService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private router: Router
   ) {
     this.listChapter = new Array();
+
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.route.queryParams.subscribe(params => {
+          if (this.courseId !== this.route.snapshot.params.id) {
+            this.courseId = +this.route.snapshot.params.id;
+            this.getCourse(this.courseId);
+            this.getChapterByCourseId(this.courseId);
+            this.getTeacherByCourseId(this.courseId);
+          }
+        });
+      }
+    });
   }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       if (this.route.snapshot.params.id) {
-        this.getCourse(this.route.snapshot.params.id);
-        this.getChapterByCourseId(this.route.snapshot.params.id);
-        this.getTeacherByCourseId(this.route.snapshot.params.id);
       }
     });
     this.loadRelatedCourses();
@@ -55,6 +67,7 @@ export class SingleCourseComponent implements OnInit {
       this.teacher = res.Data;
     });
   }
+
   getChapterByCourseId(id: any) {
     this.chapterService.loadChaptersByCourseId(id).subscribe((res: any) => {
       this.listChapter = res.Data;

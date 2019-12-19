@@ -26,7 +26,8 @@ namespace eLearningSystem.WebApi.Controllers
         [Route("GetAllCart")]
         public ICollection<Cart> GetAllCart()
         {
-            return _cartService.GetAll().ToList();
+            string username = User.Identity.Name;
+            return _cartService.GetCartsByUserName(username);
         }
 
         [HttpPost]

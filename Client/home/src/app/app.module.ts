@@ -1,3 +1,4 @@
+import { SafePipeModule } from 'safe-pipe';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -23,15 +24,24 @@ import { AboutModule } from './modules/about/about.module';
 import { TestComponent } from './modules/test/test.component';
 import { StudyComponent } from './modules/study/study.component';
 import { TabsModule } from 'ngx-bootstrap';
-// import {ItemCourserComponent} from './layouts/item-courser/item-courser.component';
+import { MyCourseComponent } from './modules/my-course/my-course.component';
+import { CartComponent } from './modules/cart/cart.component';
 
 @NgModule({
-  declarations: [AppComponent, SingleCourseComponent, TestComponent, StudyComponent],
+  declarations: [
+    AppComponent,
+    SingleCourseComponent,
+    TestComponent,
+    StudyComponent,
+    MyCourseComponent,
+    CartComponent
+  ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    SafePipeModule,
     // Third Module
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
@@ -57,4 +67,4 @@ import { TabsModule } from 'ngx-bootstrap';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

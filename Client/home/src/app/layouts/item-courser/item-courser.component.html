@@ -16,7 +16,9 @@
       </h2>
 
       <div class="entry-meta flex flex-wrap align-items-center">
-        <div class="course-author"><a routerLink="#">Michelle Golden</a></div>
+        <div class="course-author">
+          <a href="#">{{ course?.Teacher?.Name }}</a>
+        </div>
 
         <div class="course-date">{{ course.CreateDate }}</div>
       </div>

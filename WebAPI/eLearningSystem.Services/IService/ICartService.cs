@@ -12,5 +12,6 @@ namespace eLearningSystem.Services.IService
     {
         int GetNumberCart(int id);
         bool CheckExistCart(int? courseId, int id);
+        ICollection<Cart> GetCartsByUserName(string username);
     }
 }

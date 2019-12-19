@@ -201,10 +201,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\CategoryController.cs" />
     <Compile Include="API\ManagerChapterController.cs" />
     <Compile Include="API\ManagerCategoryController.cs" />
     <Compile Include="API\ManagerCourseController.cs" />
     <Compile Include="API\TeacherController.cs" />
+    <Compile Include="API\TestController.cs" />
     <Compile Include="API\UserCourseController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />

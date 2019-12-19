@@ -141,5 +141,23 @@ namespace eLearningSystem.Services.Service
             }
             return null;
         }
+
+        public PagedResults<Course> GetCoursesCategory(int pageNumber, int pageSize, int id)
+        {
+            var list = _courseRepository.GetListCourseByCategory(id);
+            int count = list.Count();
+            int CurrentPage = pageNumber;
+            int TotalPages = (int)Math.Ceiling(count / (double)pageSize);
+            var items = list.Skip((CurrentPage - 1) * pageSize).Take(pageSize).ToList();
+
+            return new PagedResults<Course>
+            {
+                Results = items,
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                TotalNumberOfPages = TotalPages,
+                TotalNumberOfRecords = count
+            };
+        }
     }
 }

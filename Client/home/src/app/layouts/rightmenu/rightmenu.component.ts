@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
   templateUrl: './rightmenu.component.html'
 })
 export class RightmenuComponent implements OnInit {
-
   listCategory: Category[];
   myCategory: Category;
   listCourseNew: Course[];
@@ -24,29 +23,29 @@ export class RightmenuComponent implements OnInit {
     private _courseService: CourseService,
     // tslint:disable-next-line:variable-name
     private _router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this._categoryService.loadAllCategory()
-    .subscribe(res => {
+    this._categoryService.loadAllCategory().subscribe(res => {
       this.listCategory = res;
     });
 
-    this._courseService.loadAllCourseNew({
-      pageNumber: 1,
-      pageSize: 2
-    })
-    .subscribe(res => {
-      this.listCourseNew = res.Results;
-    });
+    this._courseService
+      .loadAllCourseNew({
+        pageNumber: 1,
+        pageSize: 2
+      })
+      .subscribe(res => {
+        this.listCourseNew = res.Results;
+      });
 
-    this._courseService.loadAllCourseHot({
-      pageNumber: 1,
-      pageSize: 2
-    })
-    .subscribe(res => {
-      this.listCourseHot = res.Results;
-    });
+    // this._courseService.loadAllCourseHot({
+    //   pageNumber: 1,
+    //   pageSize: 2
+    // })
+    // .subscribe(res => {
+    //   this.listCourseHot = res.Results;
+    // });
   }
 
   searchCourse() {

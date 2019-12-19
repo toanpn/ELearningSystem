@@ -50,6 +50,28 @@ namespace eLearningSystem.WebApi.API
             return Ok(response);
         }
 
+        [Route("api/course/getCoursesByCategory")]
+        public IHttpActionResult GetCoursesCategory(int pageSize, int pageNumber, int id)
+        {
+            ResponseDataDTO<PagedResults<Course>> response = new ResponseDataDTO<PagedResults<Course>>();
+            try
+            {
+                response.Code = HttpCode.OK;
+                response.Message = MessageResponse.SUCCESS;
+                response.Data = _courseService.GetCoursesCategory(pageNumber, pageSize, id);
+            }
+            catch (Exception ex)
+            {
+                response.Code = HttpCode.INTERNAL_SERVER_ERROR;
+                response.Message = MessageResponse.FAIL;
+                response.Data = null;
+
+                Console.WriteLine(ex.ToString());
+            }
+
+            return Ok(response);
+        }
+
         /// <summary>
         /// Lấy ra khoá học theo id
         /// </summary>
@@ -249,6 +271,22 @@ namespace eLearningSystem.WebApi.API
             }
 
             return Ok(response);
+        }
+
+        [AllowAnonymous]
+        [Route("api/course/GetCoursesNewPageResult")]
+        [HttpGet]
+        public PagedResults<Course> GetCoursesNewPageResult(int pageSize, int pageNumber)
+        {
+            return _courseService.GetListCourseNewPageResult(pageNumber, pageSize);
+        }
+
+        [AllowAnonymous]
+        [Route("api/course/GetCoursesHot")]
+        [HttpGet]
+        public ICollection<Course> GetCoursesHot()
+        {
+            return _courseService.GetListCourseHot();
         }
         #endregion
     }

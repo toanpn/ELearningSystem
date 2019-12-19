@@ -59,10 +59,10 @@ export class CoursesComponent implements OnInit {
           this.getCourseNew();
         } else if (params.type === '2') {
           this.myTitleBreadCrum = 'Khóa học hot nhất';
-          this.getCourseHot();
+          this.getCourseNew();
         } else if (params.type === '3') {
           this.myTitleBreadCrum = 'Khóa học miễn phí';
-          this.getCourseFree();
+          this.getCourseNew();
         }
       } else {
         this.myTitleBreadCrum = 'Danh sách khóa học';
@@ -84,9 +84,9 @@ export class CoursesComponent implements OnInit {
         pageSize: this.countSize
       })
       .subscribe(res => {
-        this.totalItems = res.TotalNumberOfRecords;
-        this.listCourse = res.Results;
-        this.totalPage = res.TotalNumberOfPages;
+        this.totalItems = res.Data.TotalNumberOfRecords;
+        this.listCourse = res.Data.Results;
+        this.totalPage = res.Data.TotalNumberOfPages;
       });
   }
 
@@ -114,9 +114,9 @@ export class CoursesComponent implements OnInit {
           pageSize: this.countSize
         })
         .subscribe(res => {
-          this.totalItems = res.TotalNumberOfRecords;
-          this.listCourse = res.Results;
-          this.totalPage = res.TotalNumberOfPages;
+          this.totalItems = res.Data.TotalNumberOfRecords;
+          this.listCourse = res.Data.Results;
+          this.totalPage = res.Data.TotalNumberOfPages;
         });
     });
   }
@@ -124,19 +124,6 @@ export class CoursesComponent implements OnInit {
   getCourseNew() {
     this._courseService
       .loadAllCourseNew({
-        pageNumber: this.currentPage,
-        pageSize: this.countSize
-      })
-      .subscribe(res => {
-        this.totalItems = res.TotalNumberOfRecords;
-        this.listCourse = res.Results;
-        this.totalPage = res.TotalNumberOfPages;
-      });
-  }
-
-  getCourseHot() {
-    this._courseService
-      .loadAllCourseHot({
         pageNumber: this.currentPage,
         pageSize: this.countSize
       })

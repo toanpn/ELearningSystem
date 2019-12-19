@@ -7,7 +7,8 @@ const router = {
   getAll: 'http://localhost:60793/api/Cart/GetAllCart',
   addCart: 'http://localhost:60793/api/Cart/AddCart',
   removeCart: 'http://localhost:60793/api/Cart/DeleteCart?Id=',
-  getNumberCart: 'http://localhost:60793/api/Cart/GetNumber'
+  getNumberCart: 'http://localhost:60793/api/Cart/GetNumber',
+  buyCourse: 'http://localhost:60793/api/user-course/create/'
 };
 
 @Injectable({
@@ -30,5 +31,10 @@ export class CartService {
 
   getNumberCart(): Observable<any> {
     return this.http.get(`${router.getNumberCart}`);
+  }
+
+  buyCourse(courseId) {
+    const uri = `${router.buyCourse}${courseId}`;
+    return this.http.get(uri);
   }
 }

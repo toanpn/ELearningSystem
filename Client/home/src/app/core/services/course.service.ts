@@ -11,8 +11,10 @@ const router = {
   getCourseFree: 'http://localhost:60793/api/Course/GetCoursesFreePageResult',
   getCoursePage: 'http://localhost:60793/api/course/page',
   searchCourse: 'http://localhost:60793/api/Course/SearchPageResult',
-  getCourseByCategory: 'http://localhost:60793/api/Course/GetCourseByCategory',
-  getTeacherByCourseId: `http://localhost:60793/api/course/getteacher/`
+  getCourseByCategory:
+    'http://localhost:60793/api/course/getCoursesByCategory/',
+  getTeacherByCourseId: `http://localhost:60793/api/course/getteacher/`,
+  getMyCourses: `http://localhost:60793/api/user-course/all`
 };
 
 @Injectable({
@@ -94,5 +96,9 @@ export class CourseService {
         `&pageSize=${filter.pageSize}` +
         `&pageNumber=${filter.pageNumber}`
     );
+  }
+
+  loadOwnCourses() {
+    return this.http.get(router.getMyCourses);
   }
 }

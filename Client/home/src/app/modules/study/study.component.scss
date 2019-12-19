@@ -1,29 +1,35 @@
-*{
-    font-size: 16px;
-}
-.video-wrap{
-    padding-top: 60px;
-    border-top: 1px solid black;
-}
+:host {
+  * {
+    font-size: 15px;
+  }
+  .study-container {
+    padding: 50px 100px;
+    .video-wrap {
+      padding-top: 60px;
+      border-top: 1px solid black;
+    }
 
-.title{
-    font-size: 30px;
-    border-bottom: 1px solid white;
-}
-.left-column {
-    background: #F0F1F4;
-    overflow: hidden;
-}
-.text-bold{
-    font-weight: bold;
-}
-.fa-play-circle,.fa-star{
-    font-size: 25px;
-    padding-top: 5px;
-}
-.rate{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
+    .title {
+      font-size: 30px;
+      border-bottom: 1px solid white;
+    }
+    .left-column {
+      background: #f0f1f4;
+      overflow: hidden;
+    }
+    .text-bold {
+      font-weight: bold;
+    }
+    .fa-play-circle,
+    .fa-star {
+      font-size: 25px;
+      padding-top: 5px;
+    }
+    .rate {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+    }
+  }
 }

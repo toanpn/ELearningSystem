@@ -64,6 +64,10 @@
     <Compile Include="Constants\MessageResponse.cs" />
     <Compile Include="DTO\PagedResults.cs" />
     <Compile Include="DTO\ResponseDataDTO.cs" />
+    <Compile Include="Migrations\201912181815160_Update-DB.cs" />
+    <Compile Include="Migrations\201912181815160_Update-DB.Designer.cs">
+      <DependentUpon>201912181815160_Update-DB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Anwser.cs" />
     <Compile Include="Model\Cart.cs" />
@@ -86,6 +90,7 @@
     <Compile Include="ViewModels\ChapterViewModel.cs" />
     <Compile Include="ViewModels\CreateChaptersViewModel.cs" />
     <Compile Include="ViewModels\LessonViewModel.cs" />
+    <Compile Include="ViewModels\SubmitTestViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -93,6 +98,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201912181815160_Update-DB.resx">
+      <DependentUpon>201912181815160_Update-DB.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

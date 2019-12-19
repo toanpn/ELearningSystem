@@ -7,12 +7,9 @@ import { Course } from 'src/app/core/models/course.model';
   styleUrls: ['./item-courser.component.scss']
 })
 export class ItemCourserComponent implements OnInit {
+  @Input() course: any;
 
-  @Input() course: Course;
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="latest-courses">
+        <h2>Giỏ hàng</h2>
+
+        <ul class="p-0 m-0" *ngFor="let cart of carts$ | async">
+          <li class="flex flex-wrap justify-content-between align-items-center">
+            <img
+              [src]="'http://localhost:60793' + cart.Course.ImageUrl"
+              alt=""
+            />
+
+            <div class="content-wrap">
+              <h3>
+                <a href="#/course/{{ cart.Course.Id }}">{{
+                  cart.Course.Name
+                }}</a>
+              </h3>
+
+              <div
+                class="course-cos free-costt"
+                *ngIf="cart.Course.Price === 0"
+              >
+                <div class="course-cost free-cost">Free</div>
+              </div>
+              <!-- .price-drop -->
+              <div class="course-cost" *ngIf="cart.Course.Price !== 0">
+                ${{ cart.Course.Price }}
+              </div>
+              <!-- .price-drop -->
+            </div>
+            <button
+              mat-button
+              mat-flat-button
+              color="warn"
+              (click)="onBuyCourse(cart.Course.Id)"
+            >
+              Mua khoá học
+            </button>
+            <!-- .content-wrap -->
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>

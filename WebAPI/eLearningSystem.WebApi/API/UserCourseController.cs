@@ -44,6 +44,33 @@ namespace eLearningSystem.WebApi.API
             }
 
             return Ok(response);
+
+
+
+        }
+
+        [Route("api/user-course/create/{courseId}")]
+        [HttpGet]
+        public IHttpActionResult BuyCourse(int courseId)
+        {
+            String userName = User.Identity.Name;
+            ResponseDataDTO<int> response = new ResponseDataDTO<int>();
+            try
+            {
+                response.Code = HttpCode.OK;
+                response.Message = MessageResponse.SUCCESS;
+                response.Data = _userCourseService.BuyCourse(courseId, userName);
+            }
+            catch (Exception ex)
+            {
+                response.Code = HttpCode.INTERNAL_SERVER_ERROR;
+                response.Message = MessageResponse.FAIL;
+                response.Data = 0;
+
+                Console.WriteLine(ex.ToString());
+            }
+
+            return Ok(response);
         }
     }
 }

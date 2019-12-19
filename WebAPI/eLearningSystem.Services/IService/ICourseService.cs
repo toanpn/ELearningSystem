@@ -22,5 +22,6 @@ namespace eLearningSystem.Services.IService
         PagedResults<Course> GetListCourseNewPageResult(int pageNumber, int pageSize);
         PagedResults<Course> GetListCourseFreePageResult(int pageNumber, int pageSize);
         Teacher GetTeacherByCourseId(int courseId);
+        PagedResults<Course> GetCoursesCategory(int pageNumber, int pageSize, int id);
     }
 }

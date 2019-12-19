@@ -1,3 +1,5 @@
+import { CartComponent } from './modules/cart/cart.component';
+import { MyCourseComponent } from './modules/my-course/my-course.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './modules/authentication/login/login.component';
@@ -22,7 +24,7 @@ const ROUTES: Routes = [
         component: HomeComponent
       },
       {
-        path: 'test',
+        path: 'test/:courseId/:chapterId',
         component: TestComponent
       },
       {
@@ -40,12 +42,20 @@ const ROUTES: Routes = [
       {
         path: 'course/:id',
         component: SingleCourseComponent
+      },
+      {
+        path: 'my-course',
+        component: MyCourseComponent
+      },
+      {
+        path: 'study/:id',
+        component: StudyComponent
+      },
+      {
+        path: 'cart',
+        component: CartComponent
       }
     ]
-  },
-  {
-    path: 'study',
-    component: StudyComponent
   },
   {
     path: 'login',

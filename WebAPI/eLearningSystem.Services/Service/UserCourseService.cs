@@ -18,16 +18,45 @@ namespace eLearningSystem.Services.Service
         private readonly IUnitOfWork _unitOfWork;
         private readonly IUserCourseRepository _userCourseRepository;
         private readonly IUserRepository _userRepository;
+        private readonly ICartRepository _cartRepository;
         private readonly ICourseRepository _courseRepository;
         public UserCourseService(IUnitOfWork unitOfWork,
             IUserCourseRepository repository,
             IUserRepository userRepository,
+            ICartRepository cartRepository,
             ICourseRepository courseRepository) : base(unitOfWork, repository)
         {
             this._unitOfWork = unitOfWork;
             this._userCourseRepository = repository;
             this._userRepository = userRepository;
+            this._cartRepository = cartRepository;
             this._courseRepository = courseRepository;
+        }
+
+        public int BuyCourse(int courseId, string userName)
+        {
+            User user = _userRepository.GetUserByUserName(userName);
+            if (user != null)
+            {
+                Cart cart = _cartRepository.FindBy(t => t.CourseId == courseId && t.UserId == user.Id).FirstOrDefault();
+                if (cart != null)
+                {
+                    UserCourse userCourse = new UserCourse
+                    {
+                        UserId = user.Id,
+                        CourseId = courseId,
+                        IsOwner = true,
+                        Time = DateTime.Now
+                    };
+                    this._userCourseRepository.Add(userCourse);
+
+                    _cartRepository.Delete(cart);
+
+                    _unitOfWork.Commit();
+                }
+
+            }
+            return 1;
         }
 
         public List<Course> GetOwnCourses(string userName)

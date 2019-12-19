@@ -22,11 +22,13 @@ namespace eLearningSystem.Data.Model
         [StringLength(1)]
         public string CorrectAnswer { get; set; }
 
+        public string Content { get; set; }
+
         public int? IndexNumber { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public  ICollection<Anwser> Anwsers { get; set; }
+        public virtual ICollection<Anwser> Anwsers { get; set; }
 
-        public  Test Test { get; set; }
+        public Test Test { get; set; }
     }
 }
