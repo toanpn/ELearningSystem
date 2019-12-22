@@ -13,6 +13,8 @@ import { CourseFormDialogComponent } from './components/course-form-dialog/cours
 import { ChapterComponent } from './pages/chapter/chapter.component';
 import { ChapterFormDialogComponent } from './components/chapter-form-dialog/chapter-form-dialog.component';
 import { LessonFormDialogComponent } from './components/lesson-form-dialog/lesson-form-dialog.component';
+import { CategoryComponent } from './pages/category/category.component';
+import { CategoryFormDialogComponent } from './components/category-form-dialog/category-form-dialog.component';
 const components = [
   ManagmentLibraryLayoutComponent,
   CourseFormDialogComponent,
@@ -21,7 +23,7 @@ const components = [
 ];
 const pages = [DashboardComponent, CourseComponent, ChapterComponent];
 @NgModule({
-  declarations: [...components, ...pages],
+  declarations: [...components, ...pages, CategoryComponent, CategoryFormDialogComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -34,7 +36,8 @@ const pages = [DashboardComponent, CourseComponent, ChapterComponent];
   entryComponents: [
     CourseFormDialogComponent,
     ChapterFormDialogComponent,
-    LessonFormDialogComponent
+    LessonFormDialogComponent,
+    CategoryFormDialogComponent
   ]
 })
 export class ManagementLibraryDashboardModule {

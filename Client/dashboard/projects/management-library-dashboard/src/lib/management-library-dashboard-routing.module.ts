@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ManagmentLibraryLayoutComponent } from './layouts/managment-library-layout/managment-library-layout.component';
 import { CourseComponent } from './pages/course/course.component';
+import { CategoryComponent } from './pages/category/category.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,11 @@ const routes: Routes = [
         path: 'home',
         component: DashboardComponent,
         data: { title: 'Dashboard', type: 'Dashboard' }
+      },
+      {
+        path: 'category',
+        component: CategoryComponent,
+        data: { title: 'Category', type: 'Category' }
       },
       {
         path: 'manager-course',
@@ -35,6 +41,6 @@ const routes: Routes = [
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+exports: [RouterModule]
 })
 export class ManagementLibraryDashboardRoutingModule {}

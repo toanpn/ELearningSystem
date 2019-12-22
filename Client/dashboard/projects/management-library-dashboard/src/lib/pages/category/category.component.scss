@@ -1,0 +1,19 @@
+:host {
+    .table-container {
+      .table-header {
+        display: flex;
+        justify-content: flex-end;
+      }
+      table {
+        width: 100%;
+        .img-w-80 {
+          max-width: 80px;
+        }
+  
+        i {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+  

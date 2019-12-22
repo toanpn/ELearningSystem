@@ -12,5 +12,10 @@ export const DashBoardNavigation: {
     url: '/app/dashboard/manager-course',
     name: 'Quản lý khoá học',
     icon: 'fa fa-book'
+  },
+  {
+    url: '/app/dashboard/category',
+    name: 'Quản lý tiêu đề',
+    icon: 'fa fa-book'
   }
 ];
